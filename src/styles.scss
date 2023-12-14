@@ -1,1 +1,142 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --color-background: #21222c;
+  --color-ground: #272a3c;
+  --color-foreground: #282a36;
+
+  --color-inactive-text: #5c6a9a;
+  --color-active-text: #f8f8f2;
+
+  --color-main-accent: #ff79c6;
+
+  --size-constant: 50px;
+
+  --size-height-tabs: var(--size-constant);
+  --size-tabs-text: calc(var(--size-constant) * 0.5);
+  --size-height-breadcrumbs: calc(var(--size-constant) * 0.75);
+  --size-text-breadcrumbs: calc(var(--size-constant) * 0.4);
+  --size-text-editor: calc(var(--size-constant) * 0.35);
+  --size-gap: calc(var(--size-constant) / 3);
+
+}
+body {
+  margin: 0;
+
+  > noscript {
+    display: block;
+    min-height: 100vh;
+    font-family: sans-serif;
+
+    div.header {
+      div.tabs {
+        font-style: italic;
+        height: var(--size-height-tabs);
+        background-color: var(--color-background);
+
+        div.tab {
+          box-sizing: border-box;
+          height: 100%;
+          display: inline-flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: var(--size-gap);
+          padding: 0 var(--size-gap);
+          border-top: 1px solid var(--color-ground);
+          color: var(--color-inactive-text);
+          background-color: var(--color-ground);
+          cursor: pointer;
+
+          &.current {
+            color: var(--color-active-text);
+            border-top: 1px solid var(--color-main-accent);
+            background-color: var(--color-foreground);
+          }
+
+          img {
+            width: var(--size-tabs-text);
+            height: var(--size-tabs-text);
+          }
+
+          span {
+            font-size: var(--size-tabs-text);
+          }
+        }
+      }
+
+      div.breadcrumbs {
+        display: flex;
+        align-items: center;
+        gap: var(--size-gap);
+        height: var(--size-height-breadcrumbs);
+        padding-left: var(--size-gap);
+        background-color: var(--color-foreground);
+
+        img {
+          width: var(--size-text-breadcrumbs);
+          height: var(--size-text-breadcrumbs);
+        }
+
+        span {
+          color: var(--color-inactive-text);
+          font-size: var(--size-text-breadcrumbs);
+          cursor: pointer;
+
+          &:hover {
+            color: var(--color-active-text);
+          }
+        }
+      }
+    }
+
+    div.body {
+      min-height: calc(100vh - (var(--size-height-tabs) + var(--size-height-breadcrumbs)));
+      background-color: var(--color-foreground);
+
+      ol {
+        margin: 0;
+        padding-top: 5px;
+
+        li,
+        li::marker {
+          color: var(--color-inactive-text);
+        }
+
+        li {
+          font-size: var(--size-text-editor);
+          line-height: var(--size-text-editor);
+
+          p {
+            margin: 0 0 0 var(--size-gap);
+            font-size: var(--size-text-editor);
+            line-height: var(--size-text-editor);
+
+            &.cursor {
+              width: 1px;
+              height: var(--size-text-editor);
+              display: block;
+              animation-name: blinking_cursor;
+              animation-duration: 1s;
+              animation-iteration-count: infinite;
+              animation-timing-function: linear;
+            }
+
+            @keyframes blinking_cursor {
+              25% {
+                background-color: var(--color-foreground);
+              }
+              40% {
+                background-color: var(--color-active-text);
+              }
+              60% {
+                background-color: var(--color-active-text);
+              }
+              75% {
+                background-color: var(--color-foreground);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
