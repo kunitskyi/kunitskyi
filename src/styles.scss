@@ -17,7 +17,6 @@
   --size-text-breadcrumbs: calc(var(--size-constant) * 0.4);
   --size-text-editor: calc(var(--size-constant) * 0.35);
   --size-gap: calc(var(--size-constant) / 3);
-
 }
 body {
   margin: 0;
@@ -89,7 +88,9 @@ body {
     }
 
     div.body {
-      min-height: calc(100vh - (var(--size-height-tabs) + var(--size-height-breadcrumbs)));
+      min-height: calc(
+        100vh - (var(--size-height-tabs) + var(--size-height-breadcrumbs))
+      );
       background-color: var(--color-foreground);
 
       ol {
