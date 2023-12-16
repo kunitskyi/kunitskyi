@@ -1,0 +1,49 @@
+name: Angular-CI-CD
+
+on:
+  workflow_dispatch:
+  # push:
+    # branches:
+      # - test-ci-cd
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Change this to your Node.js version
+
+      - name: Install dependencies with Yarn
+        run: yarn install
+
+      - name: Build Angular app
+        run: yarn build --prod
+        
+      - name: Check folder
+        run: ls -la
+
+      # - name: Clone other repository
+      #   uses: actions/checkout@v4
+      #   with:
+      #     repository: kunitskyi/kunitskyi.github.io # Replace with the username and repository name of the other repository
+      #     token: ${{ secrets.ACCESS_TOKEN }} # Provide a personal access token with repo access
+
+      # - name: Copy build files
+      #   run: |
+      #     mkdir -p ./path/to/other-repo/build
+      #     cp -a ./dist/* ./path/to/other-repo/build
+
+      # - name: Commit and push changes
+      #   run: |
+      #     cd ./path/to/other-repo
+      #     git config --local user.email "actions@github.com"
+      #     git config --local user.name "GitHub Actions"
+      #     git add .
+      #     git commit -m "Update build files from Angular app"
+      #     git push origin main # Change 'main' to your branch name
