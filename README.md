@@ -23,4 +23,4 @@ ___
 
 ___
 
-`*` - This repository contain source code for my portfolio build on Angular, you can check it out on **[:earth_africa:kunitskyi.github.io](kunitskyi.github.io)**
+`*` - This repository contain source code for my portfolio build on Angular, you can check it out on **[:earth_africa:kunitskyi.github.io](https://kunitskyi.pp.ua/)**
