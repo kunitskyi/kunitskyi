@@ -7,7 +7,7 @@
 
 ___
 
-> I love all about IT and learn new tech, see ya in commits! :sparkles: YYAY !!!
+> I love everything about IT and learning new tech, see ya in commits! :sparkles: YYAY !!!
 
 ___
 
@@ -23,4 +23,4 @@ ___
 
 ___
 
-`*` - This repository contain source code for my portfolio build on Angular, you can check it out on **[:earth_africa:kunitskyi.github.io](https://kunitskyi.pp.ua/)**
+`*` - This repository contain source code for my site-profile build on Angular, you can check it out on **[:earth_africa:kunitskyi.github.io](https://kunitskyi.pp.ua/)**
