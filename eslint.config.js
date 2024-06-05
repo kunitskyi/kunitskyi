@@ -47,7 +47,7 @@ module.exports = tseslint.config(
     ignores: ["*inline-template-*.component.html"],
     extends: [recommendedPrettier],
     rules: {
-      "prettier/prettier": ["error", { "parser": "angular" }]
-    }
-  }
+      "prettier/prettier": ["error", { parser: "angular" }],
+    },
+  },
 );
