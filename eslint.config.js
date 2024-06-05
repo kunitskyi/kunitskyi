@@ -2,12 +2,14 @@
 const eslint = require("@eslint/js");
 const tseslint = require("typescript-eslint");
 const angular = require("angular-eslint");
+const recommendedPrettier = require("eslint-plugin-prettier/recommended");
 
 module.exports = tseslint.config(
   {
     files: ["**/*.ts"],
     extends: [
       eslint.configs.recommended,
+      recommendedPrettier,
       ...tseslint.configs.recommended,
       ...tseslint.configs.stylistic,
       ...angular.configs.tsRecommended,
@@ -40,4 +42,12 @@ module.exports = tseslint.config(
     ],
     rules: {},
   },
+  {
+    files: ["**/*.html"],
+    ignores: ["*inline-template-*.component.html"],
+    extends: [recommendedPrettier],
+    rules: {
+      "prettier/prettier": ["error", { "parser": "angular" }]
+    }
+  }
 );
