@@ -1,26 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+@use "sass:map";
+@use "palette";
+@use "sizes";
+
 :root {
-  --color-background: #21222c;
-  --color-ground: #272a3c;
-  --color-foreground: #282a36;
+  --color-background: #{map.get(palette.$code, "background")};
+  --color-ground: #{map.get(palette.$code, "ground")};
+  --color-foreground: #{map.get(palette.$code, "foreground")};
 
-  --color-inactive-text: #5c6a9a;
-  --color-active-text: #f8f8f2;
+  --color-inactive-text: #{map.get(palette.$code, "text-comment")};
+  --color-active-text: #{map.get(palette.$code, "text-hover")};
 
-  --color-main-accent: #ff79c6;
+  --color-main-accent: #{map.get(palette.$code, "accent")};
 
-  --size-constant: 50px;
-
-  --size-height-tabs: var(--size-constant);
-  --size-tabs-text: calc(var(--size-constant) * 0.5);
-  --size-height-breadcrumbs: calc(var(--size-constant) * 0.75);
-  --size-text-breadcrumbs: calc(var(--size-constant) * 0.4);
-  --size-text-editor: calc(var(--size-constant) * 0.35);
-  --size-gap: calc(var(--size-constant) / 3);
+  --size-height-tabs: #{map.get(sizes.$code, "tabs-height")};
+  --size-tabs-text: #{map.get(sizes.$code, "tabs-text")};
+  --size-height-breadcrumbs: #{map.get(sizes.$code, "breadcrumbs-height")};
+  --size-text-breadcrumbs: #{map.get(sizes.$code, "breadcrumbs-text")};
+  --size-text-editor: #{map.get(sizes.$code, "text-editor")};
+  --size-gap: #{map.get(sizes.$code, "gap")};
 }
-body {
-  margin: 0;
 
+* {
+  margin: 0;
+}
+
+body {
   > noscript {
     display: block;
     min-height: 100vh;
