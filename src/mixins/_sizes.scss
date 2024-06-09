@@ -3,10 +3,10 @@
 $magic-constant: 54px;
 
 $code: (
-    tabs-height: $magic-constant,
-    tabs-text: $magic-constant * 0.45,
-    breadcrumbs-height: $magic-constant * 0.75,
-    breadcrumbs-text: $magic-constant * 0.4,
-    text-editor: $magic-constant * 0.35,
-    gap: math.div($magic-constant, 3),
+  tabs-height: $magic-constant,
+  tabs-text: $magic-constant * 0.45,
+  breadcrumbs-height: $magic-constant * 0.75,
+  breadcrumbs-text: $magic-constant * 0.4,
+  text-editor: $magic-constant * 0.35,
+  gap: math.div($magic-constant, 3),
 );
