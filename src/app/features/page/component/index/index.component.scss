@@ -1,0 +1,9 @@
+@use "sass:map";
+@use "palette";
+@use "sizes";
+
+:host {
+  display: block;
+  min-height: 110vh;
+  background-color: map.get(palette.$page, "background");
+}
