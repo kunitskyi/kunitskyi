@@ -6,15 +6,15 @@
 $full-size-component: sizes.$magic-constant * 2;
 
 :host {
-  --ear-min-size: #{math.div(sizes.$magic-constant, 2)};
+  --icon-size: #{sizes.$magic-constant};
   --ear-start-path: polygon(
-    var(--ear-min-size) 0,
-    0 var(--ear-min-size),
-    var(--ear-min-size) var(--ear-min-size)
+    var(--icon-size) 0,
+    0 var(--icon-size),
+    var(--icon-size) var(--icon-size)
   );
   --foreground-start-path: polygon(
-    var(--ear-min-size) 0,
-    0 var(--ear-min-size),
+    var(--icon-size) 0,
+    0 var(--icon-size),
     0 100%,
     100% 100%,
     100% 0
@@ -25,11 +25,58 @@ $full-size-component: sizes.$magic-constant * 2;
   display: block;
   height: $full-size-component;
   width: $full-size-component;
-  background-color: map.get(palette.$code, "background");
   cursor: pointer;
+
+  svg#CodeIcon {
+    display: block;
+    height: var(--icon-size);
+    width: var(--icon-size);
+    padding-right: var(--icon-size);
+    padding-bottom: var(--icon-size);
+    background-color: map.get(palette.$code, "background");
+    opacity: 0.5;
+
+    > g {
+      rect {
+        fill: map.get(palette.$code, "text-comment");
+        transition: fill 1s;
+      }
+
+      &.Less {
+        rect {
+          transform-origin: 150px 500px;
+
+          &.Top {
+            transform: rotate(-45deg);
+          }
+          &.Bottom {
+            transform: rotate(45deg);
+          }
+        }
+      }
+      &.Slash rect {
+        transform-origin: 500px 500px;
+        transform: rotate(-75deg);
+      }
+
+      &.More {
+        rect {
+          transform-origin: 850px 500px;
+
+          &.Top {
+            transform: rotate(-135deg);
+          }
+          &.Bottom {
+            transform: rotate(135deg);
+          }
+        }
+      }
+    }
+  }
 
   div.Foreground,
   div.Ear {
+    display: none !important;
     position: absolute;
     top: 0;
     left: 0;
@@ -53,6 +100,10 @@ $full-size-component: sizes.$magic-constant * 2;
   }
 
   &:hover {
+    svg#CodeIcon g rect {
+      fill: map.get(palette.$code, "accent");
+    }
+
     div.Foreground {
       animation-name: startForegroundAnimation;
     }
