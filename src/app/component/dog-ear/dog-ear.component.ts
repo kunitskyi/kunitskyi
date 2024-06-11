@@ -3,11 +3,11 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  HostListener,
   OnDestroy,
   Output,
   Renderer2,
   RendererStyleFlags2,
+  ViewChild,
 } from '@angular/core';
 import { FeatureView } from '@app/types/general-enums';
 import { Observable, Subscription, fromEvent } from 'rxjs';
@@ -21,21 +21,16 @@ import { Observable, Subscription, fromEvent } from 'rxjs';
 })
 export class DogEarComponent implements AfterViewInit, OnDestroy {
   @Output() changeViewEvent = new EventEmitter<FeatureView>();
-  @HostListener('click') changeView() {
-    this.changeViewEvent.emit(FeatureView.Code);
-  }
+  @ViewChild('ear') earRef!: ElementRef;
 
   hoverObservable!: Observable<MouseEvent>;
   hoverSubscription!: Subscription;
 
-  constructor(
-    private renderer: Renderer2,
-    private dogEarRef: ElementRef,
-  ) {}
+  constructor(private renderer: Renderer2) {}
 
   ngAfterViewInit(): void {
     this.hoverObservable = fromEvent<MouseEvent>(
-      this.dogEarRef.nativeElement,
+      this.earRef.nativeElement,
       'mousemove',
     );
 
@@ -54,7 +49,7 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
       }
 
       this.renderer.setStyle(
-        this.dogEarRef.nativeElement,
+        this.earRef.nativeElement,
         '--background-computed-path',
         `polygon(
           ${cordX}px 0,
@@ -65,7 +60,7 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
       );
 
       this.renderer.setStyle(
-        this.dogEarRef.nativeElement,
+        this.earRef.nativeElement,
         '--ear-computed-path',
         `polygon(
           ${cordX}px 0,
@@ -79,5 +74,9 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.hoverSubscription.unsubscribe();
+  }
+
+  changeView() {
+    this.changeViewEvent.emit(FeatureView.Code);
   }
 }

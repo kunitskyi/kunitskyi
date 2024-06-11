@@ -1,6 +1,7 @@
 @if (view === FeatureView.Page) {
-  <kun-dog-ear (changeViewEvent)="changeView($event)"></kun-dog-ear>
-  <kun-index></kun-index>
+  <kun-dog-ear (changeViewEvent)="changeView($event)">
+    <kun-index></kun-index>
+  </kun-dog-ear>
 } @else if (true) {
   <kun-editor></kun-editor>
 }

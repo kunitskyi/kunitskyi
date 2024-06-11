@@ -3,7 +3,7 @@
 @use "palette";
 @use "sizes";
 
-:host {
+button.Ear {
   --icon-size: #{sizes.$magic-constant};
   --full-size-component: calc(var(--icon-size) * 2);
   --ear-start-path: polygon(
@@ -16,11 +16,15 @@
   --background-computed-path: var(--background-start-path);
 
   display: block;
-  height: var(--icon-size);
-  width: var(--icon-size);
-  padding-right: calc(var(--full-size-component) - var(--icon-size));
-  padding-bottom: calc(var(--full-size-component) - var(--icon-size));
   position: absolute;
+  height: 0;
+  width: 0;
+  padding-top: 0;
+  padding-right: var(--full-size-component);
+  padding-bottom: var(--full-size-component);
+  padding-left: 0;
+  border: none;
+  background-color: transparent;
   cursor: pointer;
 
   svg.CodeIcon {
@@ -67,7 +71,7 @@
   }
 
   div.Background,
-  div.Ear {
+  &::before {
     position: absolute;
     top: 0;
     left: 0;
@@ -84,7 +88,8 @@
     animation-name: endBackgroundAnimation;
   }
 
-  div.Ear {
+  &::before {
+    content: '';
     background-color: map.get(palette.$page, "background");
     clip-path: var(--ear-start-path);
     animation-name: endEarAnimation;
@@ -99,7 +104,7 @@
       }
     }
 
-    div.Ear {
+    &::before {
       animation-name: startEarAnimation;
     }
   }
