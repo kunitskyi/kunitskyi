@@ -3,10 +3,9 @@
 @use "palette";
 @use "sizes";
 
-$full-size-component: sizes.$magic-constant * 2;
-
 :host {
   --icon-size: #{sizes.$magic-constant};
+  --full-size-component: calc(var(--icon-size) * 2);
   --ear-start-path: polygon(
     var(--icon-size) 0,
     0 var(--icon-size),
@@ -17,8 +16,10 @@ $full-size-component: sizes.$magic-constant * 2;
   --background-computed-path: var(--background-start-path);
 
   display: block;
-  height: $full-size-component;
-  width: $full-size-component;
+  height: var(--icon-size);
+  width: var(--icon-size);
+  padding-right: calc(var(--full-size-component) - var(--icon-size));
+  padding-bottom: calc(var(--full-size-component) - var(--icon-size));
   cursor: pointer;
 
   svg.CodeIcon {
@@ -70,8 +71,8 @@ $full-size-component: sizes.$magic-constant * 2;
     top: 0;
     left: 0;
     display: block;
-    height: $full-size-component;
-    width: $full-size-component;
+    height: var(--full-size-component);
+    width: var(--full-size-component);
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
   }
