@@ -8,7 +8,6 @@ import {
   Output,
   Renderer2,
   RendererStyleFlags2,
-  ViewChild,
 } from '@angular/core';
 import { FeatureView } from '@app/types/general-enums';
 import { Observable, Subscription, fromEvent } from 'rxjs';
@@ -25,9 +24,6 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
   @HostListener('click') changeView() {
     this.changeViewEvent.emit(FeatureView.Code);
   }
-
-  @ViewChild('Ear') earRef!: ElementRef;
-  @ViewChild('Foreground') foregroundRef!: ElementRef;
 
   hoverObservable!: Observable<MouseEvent>;
   hoverSubscription!: Subscription;
@@ -59,13 +55,11 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
 
       this.renderer.setStyle(
         this.dogEarRef.nativeElement,
-        '--foreground-computed-path',
+        '--background-computed-path',
         `polygon(
           ${cordX}px 0,
-          0 ${cordY}px,
-          0 100%,
-          100% 100%,
-          100% 0
+          0 0,
+          0 ${cordY}px
         )`,
         RendererStyleFlags2.DashCase,
       );

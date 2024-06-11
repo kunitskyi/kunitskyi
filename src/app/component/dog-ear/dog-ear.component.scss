@@ -12,29 +12,19 @@ $full-size-component: sizes.$magic-constant * 2;
     0 var(--icon-size),
     var(--icon-size) var(--icon-size)
   );
-  --foreground-start-path: polygon(
-    var(--icon-size) 0,
-    0 var(--icon-size),
-    0 100%,
-    100% 100%,
-    100% 0
-  );
+  --background-start-path: polygon(var(--icon-size) 0, 0 0, 0 var(--icon-size));
   --ear-computed-path: var(--ear-start-path);
-  --foreground-computed-path: var(--foreground-start-path);
+  --background-computed-path: var(--background-start-path);
 
   display: block;
   height: $full-size-component;
   width: $full-size-component;
   cursor: pointer;
 
-  svg#CodeIcon {
+  svg.CodeIcon {
     display: block;
     height: var(--icon-size);
     width: var(--icon-size);
-    padding-right: var(--icon-size);
-    padding-bottom: var(--icon-size);
-    background-color: map.get(palette.$code, "background");
-    opacity: 0.5;
 
     > g {
       rect {
@@ -74,9 +64,8 @@ $full-size-component: sizes.$magic-constant * 2;
     }
   }
 
-  div.Foreground,
+  div.Background,
   div.Ear {
-    display: none !important;
     position: absolute;
     top: 0;
     left: 0;
@@ -87,10 +76,10 @@ $full-size-component: sizes.$magic-constant * 2;
     animation-fill-mode: forwards;
   }
 
-  div.Foreground {
-    background-color: map.get(palette.$page, "primary");
-    clip-path: var(--foreground-start-path);
-    animation-name: endForegroundAnimation;
+  div.Background {
+    background-color: map.get(palette.$code, "background");
+    clip-path: var(--background-start-path);
+    animation-name: endBackgroundAnimation;
   }
 
   div.Ear {
@@ -100,12 +89,12 @@ $full-size-component: sizes.$magic-constant * 2;
   }
 
   &:hover {
-    svg#CodeIcon g rect {
-      fill: map.get(palette.$code, "accent");
-    }
+    div.Background {
+      animation-name: startBackgroundAnimation;
 
-    div.Foreground {
-      animation-name: startForegroundAnimation;
+      svg.CodeIcon g rect {
+        fill: map.get(palette.$code, "accent");
+      }
     }
 
     div.Ear {
@@ -114,21 +103,21 @@ $full-size-component: sizes.$magic-constant * 2;
   }
 }
 
-@keyframes startForegroundAnimation {
+@keyframes startBackgroundAnimation {
   from {
-    clip-path: var(--foreground-start-path);
+    clip-path: var(--background-start-path);
   }
   to {
-    clip-path: var(--foreground-computed-path);
+    clip-path: var(--background-computed-path);
   }
 }
 
-@keyframes endForegroundAnimation {
+@keyframes endBackgroundAnimation {
   from {
-    clip-path: var(--foreground-computed-path);
+    clip-path: var(--background-computed-path);
   }
   to {
-    clip-path: var(--foreground-start-path);
+    clip-path: var(--background-start-path);
   }
 }
 
