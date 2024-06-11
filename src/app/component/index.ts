@@ -1,1 +1,1 @@
-export * from './view-switcher/view-switcher.component';
+export * from './dog-ear/dog-ear.component';
