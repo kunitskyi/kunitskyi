@@ -1,1 +1,5 @@
-<kun-index></kun-index>
+@if (view === FeatureView.Page) {
+  <kun-index (changeViewEvent)="changeView($event)"></kun-index>
+} @else if (true) {
+  <kun-editor></kun-editor>
+}
