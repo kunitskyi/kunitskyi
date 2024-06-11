@@ -1,0 +1,100 @@
+@use "sass:map";
+@use "sass:math";
+@use "palette";
+@use "sizes";
+
+$full-size-component: sizes.$magic-constant * 2;
+
+:host {
+  --ear-min-size: #{math.div(sizes.$magic-constant, 2)};
+  --ear-start-path: polygon(
+    var(--ear-min-size) 0,
+    0 var(--ear-min-size),
+    var(--ear-min-size) var(--ear-min-size)
+  );
+  --foreground-start-path: polygon(
+    var(--ear-min-size) 0,
+    0 var(--ear-min-size),
+    0 100%,
+    100% 100%,
+    100% 0
+  );
+  --ear-computed-path: var(--ear-start-path);
+  --foreground-computed-path: var(--foreground-start-path);
+
+  display: block;
+  height: $full-size-component;
+  width: $full-size-component;
+  background-color: map.get(palette.$code, "background");
+  cursor: pointer;
+
+  div.Foreground,
+  div.Ear {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    height: $full-size-component;
+    width: $full-size-component;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+  }
+
+  div.Foreground {
+    background-color: map.get(palette.$page, "primary");
+    clip-path: var(--foreground-start-path);
+    animation-name: endForegroundAnimation;
+  }
+
+  div.Ear {
+    background-color: map.get(palette.$page, "background");
+    clip-path: var(--ear-start-path);
+    animation-name: endEarAnimation;
+  }
+
+  &:hover {
+    div.Foreground {
+      animation-name: startForegroundAnimation;
+    }
+
+    div.Ear {
+      animation-name: startEarAnimation;
+    }
+  }
+}
+
+@keyframes startForegroundAnimation {
+  from {
+    clip-path: var(--foreground-start-path);
+  }
+  to {
+    clip-path: var(--foreground-computed-path);
+  }
+}
+
+@keyframes endForegroundAnimation {
+  from {
+    clip-path: var(--foreground-computed-path);
+  }
+  to {
+    clip-path: var(--foreground-start-path);
+  }
+}
+
+@keyframes startEarAnimation {
+  from {
+    clip-path: var(--ear-start-path);
+  }
+  to {
+    clip-path: var(--ear-computed-path);
+  }
+}
+
+@keyframes endEarAnimation {
+  from {
+    clip-path: var(--ear-computed-path);
+  }
+  to {
+    clip-path: var(--ear-start-path);
+  }
+}
