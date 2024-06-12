@@ -35,7 +35,7 @@ button.Ear {
     left: 0;
     padding-right: var(--full-size-component);
 
-    svg.CodeIcon {
+    svg {
       transform: rotateY(0deg);
     }
   }
@@ -50,23 +50,23 @@ button.Ear {
     right: 0;
     padding-left: var(--full-size-component);
 
-    svg.CodeIcon {
+    svg {
       transform: rotateY(180deg);
     }
   }
 
-  svg.CodeIcon {
+  svg {
     position: absolute;
     display: block;
     height: var(--icon-size);
     width: var(--icon-size);
 
-    > g {
-      rect {
-        fill: var(--color-inactive);
-        transition: fill 1s;
-      }
+    rect {
+      fill: var(--color-inactive);
+      transition: fill 1s;
+    }
 
+    &.CodeIcon g {
       &.Less {
         rect {
           transform-origin: 150px 500px;
@@ -128,7 +128,7 @@ button.Ear {
     div.Background {
       animation-name: startBackgroundAnimation;
 
-      svg.CodeIcon g rect {
+      svg rect {
         fill: var(--color-active);
       }
     }
