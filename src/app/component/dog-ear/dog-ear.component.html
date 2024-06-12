@@ -1,4 +1,12 @@
-<button #ear class="Ear" (click)="changeView()">
+<button
+  #ear
+  [class]="{
+    Ear: true,
+    Page: featureView === FeatureView.Page,
+    Code: featureView === FeatureView.Code,
+  }"
+  (click)="startViewChange()"
+>
   <div class="Background">
     <svg class="CodeIcon" viewBox="0 0  1000 1000">
       <g class="Less">

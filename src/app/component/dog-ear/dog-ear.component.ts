@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  Input,
   OnDestroy,
   Output,
   Renderer2,
@@ -20,11 +21,18 @@ import { Observable, Subscription, fromEvent } from 'rxjs';
   styleUrl: './dog-ear.component.scss',
 })
 export class DogEarComponent implements AfterViewInit, OnDestroy {
-  @Output() changeViewEvent = new EventEmitter<FeatureView>();
-  @ViewChild('ear') earRef!: ElementRef;
+  @Output() private changeViewEvent = new EventEmitter<FeatureView>();
 
-  hoverObservable!: Observable<MouseEvent>;
-  hoverSubscription!: Subscription;
+  @ViewChild('ear') private earRef!: ElementRef;
+
+  @Input({ required: true }) public featureView!: FeatureView;
+  @Input({ required: true }) public isViewChangeTriggered = false;
+
+  private hoverObservable!: Observable<MouseEvent>;
+  private hoverSubscription!: Subscription;
+  protected get FeatureView() {
+    return FeatureView;
+  }
 
   constructor(private renderer: Renderer2) {}
 
@@ -35,10 +43,10 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
     );
 
     this.hoverSubscription = this.hoverObservable.subscribe((e) => {
-      const relationship = e.layerX / e.layerY;
+      const relationship: number = e.layerX / e.layerY;
 
-      let cordX = e.layerX;
-      let cordY = e.layerY;
+      let cordX: number = e.layerX;
+      let cordY: number = e.layerY;
 
       if (relationship > 2) {
         cordX = e.layerX;
@@ -76,7 +84,16 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
     this.hoverSubscription.unsubscribe();
   }
 
-  changeView() {
-    this.changeViewEvent.emit(FeatureView.Code);
+  startViewChange(): void {
+    this.isViewChangeTriggered = true;
+    this.changeView();
+  }
+
+  changeView(): void {
+    this.changeViewEvent.emit(
+      this.featureView !== FeatureView.Page
+        ? FeatureView.Page
+        : FeatureView.Code,
+    );
   }
 }

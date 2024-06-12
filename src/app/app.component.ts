@@ -14,12 +14,14 @@ import { DogEarComponent } from './component/dog-ear/dog-ear.component';
   imports: [RouterOutlet, IndexComponent, EditorComponent, DogEarComponent],
 })
 export class AppComponent {
+  protected view: FeatureView = FeatureView.Page;
+  protected isViewChangeTriggered = false;
   protected get FeatureView() {
     return FeatureView;
   }
-  protected view: FeatureView = FeatureView.Page;
 
   protected changeView(e: FeatureView) {
+    this.isViewChangeTriggered = false;
     this.view = e;
   }
 }

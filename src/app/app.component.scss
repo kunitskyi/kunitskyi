@@ -5,4 +5,8 @@
   display: block;
   min-height: 100vh;
   background-color: map.get(palette.$code, "background");
+
+  kun-dog-ear.Active {
+    z-index: 100;
+  }
 }

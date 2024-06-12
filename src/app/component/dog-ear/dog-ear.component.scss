@@ -15,26 +15,55 @@ button.Ear {
   --ear-computed-path: var(--ear-start-path);
   --background-computed-path: var(--background-start-path);
 
-  display: block;
   position: absolute;
+  display: block;
   height: 0;
   width: 0;
-  padding-top: 0;
-  padding-right: var(--full-size-component);
+  padding: 0;
   padding-bottom: var(--full-size-component);
-  padding-left: 0;
   border: none;
   background-color: transparent;
   cursor: pointer;
 
+  &.Page {
+    --color-background: #{map.get(palette.$code, "background")};
+    --color-ear: #{map.get(palette.$page, "background")};
+    --color-inactive: #{map.get(palette.$code, "text-comment")};
+    --color-active: #{map.get(palette.$code, "accent")};
+
+    transform: rotateY(0deg);
+    left: 0;
+    padding-right: var(--full-size-component);
+
+    svg.CodeIcon {
+      transform: rotateY(0deg);
+    }
+  }
+
+  &.Code {
+    --color-background: #{map.get(palette.$page, "background")};
+    --color-ear: #{map.get(palette.$code, "text-comment")};
+    --color-inactive: #{map.get(palette.$page, "helper")};
+    --color-active: #{map.get(palette.$page, "accent")};
+
+    transform: rotateY(180deg);
+    right: 0;
+    padding-left: var(--full-size-component);
+
+    svg.CodeIcon {
+      transform: rotateY(180deg);
+    }
+  }
+
   svg.CodeIcon {
+    position: absolute;
     display: block;
     height: var(--icon-size);
     width: var(--icon-size);
 
     > g {
       rect {
-        fill: map.get(palette.$code, "text-comment");
+        fill: var(--color-inactive);
         transition: fill 1s;
       }
 
@@ -83,14 +112,14 @@ button.Ear {
   }
 
   div.Background {
-    background-color: map.get(palette.$code, "background");
+    background-color: var(--color-background);
     clip-path: var(--background-start-path);
     animation-name: endBackgroundAnimation;
   }
 
   &::before {
-    content: '';
-    background-color: map.get(palette.$page, "background");
+    content: "";
+    background-color: var(--color-ear);
     clip-path: var(--ear-start-path);
     animation-name: endEarAnimation;
   }
@@ -100,7 +129,7 @@ button.Ear {
       animation-name: startBackgroundAnimation;
 
       svg.CodeIcon g rect {
-        fill: map.get(palette.$code, "accent");
+        fill: var(--color-active);
       }
     }
 

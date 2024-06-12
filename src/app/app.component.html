@@ -1,7 +1,21 @@
-@if (view === FeatureView.Page) {
-  <kun-dog-ear (changeViewEvent)="changeView($event)">
+@if (isViewChangeTriggered || view === FeatureView.Page) {
+  <kun-dog-ear
+    [class.Active]="view === FeatureView.Page"
+    [featureView]="FeatureView.Page"
+    [isViewChangeTriggered]="isViewChangeTriggered"
+    (changeViewEvent)="changeView($event)"
+  >
     <kun-index></kun-index>
   </kun-dog-ear>
-} @else if (true) {
-  <kun-editor></kun-editor>
+}
+
+@if (isViewChangeTriggered || view === FeatureView.Code) {
+  <kun-dog-ear
+    [class.Active]="view === FeatureView.Code"
+    [featureView]="FeatureView.Code"
+    [isViewChangeTriggered]="isViewChangeTriggered"
+    (changeViewEvent)="changeView($event)"
+  >
+    <kun-editor></kun-editor>
+  </kun-dog-ear>
 }
