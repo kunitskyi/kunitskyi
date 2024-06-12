@@ -34,7 +34,10 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
     return FeatureView;
   }
 
-  constructor(private renderer: Renderer2) {}
+  constructor(
+    private renderer: Renderer2,
+    private dogEarRef: ElementRef,
+  ) {}
 
   ngAfterViewInit(): void {
     this.hoverObservable = fromEvent<MouseEvent>(
@@ -57,7 +60,7 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
       }
 
       this.renderer.setStyle(
-        this.earRef.nativeElement,
+        this.dogEarRef.nativeElement,
         '--background-computed-path',
         `polygon(
           ${cordX}px 0,
@@ -68,12 +71,25 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
       );
 
       this.renderer.setStyle(
-        this.earRef.nativeElement,
+        this.dogEarRef.nativeElement,
         '--ear-computed-path',
         `polygon(
           ${cordX}px 0,
           0 ${cordY}px,
           ${e.layerX}px ${e.layerY}px
+        )`,
+        RendererStyleFlags2.DashCase,
+      );
+
+      this.renderer.setStyle(
+        this.dogEarRef.nativeElement,
+        '--content-computed-path',
+        `polygon(
+          0 ${cordY}px,
+          ${cordX}px 0,
+          100% 0,
+          100% 100%,
+          0 100%
         )`,
         RendererStyleFlags2.DashCase,
       );

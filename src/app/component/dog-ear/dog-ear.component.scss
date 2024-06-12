@@ -3,7 +3,7 @@
 @use "palette";
 @use "sizes";
 
-button.Ear {
+:host {
   --icon-size: #{sizes.$magic-constant};
   --full-size-component: calc(var(--icon-size) * 2);
   --ear-start-path: polygon(
@@ -12,10 +12,21 @@ button.Ear {
     var(--icon-size) var(--icon-size)
   );
   --background-start-path: polygon(var(--icon-size) 0, 0 0, 0 var(--icon-size));
+  --content-start-path: polygon(
+    0 var(--icon-size),
+    var(--icon-size) 0,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
   --ear-computed-path: var(--ear-start-path);
   --background-computed-path: var(--background-start-path);
+  --content-computed-path: var(--content-start-path);
+}
 
+button.Ear {
   position: absolute;
+  z-index: 100;
   display: block;
   height: 0;
   width: 0;
@@ -172,5 +183,48 @@ button.Ear {
   }
   to {
     clip-path: var(--ear-start-path);
+  }
+}
+
+div.Content{
+  display: block;
+  overflow: hidden;
+  clip-path: var(--content-start-path);
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-name: endContentAnimation;
+
+  &.Page {
+    transform: rotateY(0deg);
+  }
+
+  &.Code {
+    transform: rotateY(180deg);
+
+    div.rotation-fixer {
+      transform: rotateY(180deg);
+    }
+  }
+}
+
+button.Ear:hover + div.Content {
+  animation-name: startContentAnimation;
+} 
+
+@keyframes startContentAnimation {
+  from {
+    clip-path: var(--content-start-path);
+  }
+  to {
+    clip-path: var(--content-computed-path);
+  }
+}
+
+@keyframes endContentAnimation {
+  from {
+    clip-path: var(--content-computed-path);
+  }
+  to {
+    clip-path: var(--content-start-path);
   }
 }

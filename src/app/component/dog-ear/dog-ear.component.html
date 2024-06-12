@@ -44,6 +44,14 @@
     }
   </div>
 </button>
-<div class="Content">
-  <ng-content></ng-content>
+<div
+  [class]="{
+    Content: true,
+    Page: featureView === FeatureView.Page,
+    Code: featureView === FeatureView.Code,
+  }"
+>
+  <div class="rotation-fixer">
+    <ng-content></ng-content>
+  </div>
 </div>
