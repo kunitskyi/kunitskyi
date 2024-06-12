@@ -186,7 +186,7 @@ button.Ear {
   }
 }
 
-div.Content{
+div.Content {
   display: block;
   overflow: hidden;
   clip-path: var(--content-start-path);
@@ -209,7 +209,7 @@ div.Content{
 
 button.Ear:hover + div.Content {
   animation-name: startContentAnimation;
-} 
+}
 
 @keyframes startContentAnimation {
   from {

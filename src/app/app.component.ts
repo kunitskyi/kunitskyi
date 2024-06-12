@@ -20,6 +20,10 @@ export class AppComponent {
     return FeatureView;
   }
 
+  protected startChangeView(e: boolean) {
+    this.isViewChangeTriggered = e;
+  }
+
   protected changeView(e: FeatureView) {
     this.isViewChangeTriggered = false;
     this.view = e;

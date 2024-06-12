@@ -2,11 +2,19 @@
 @use "palette";
 
 :host {
-  display: block;
+  display: grid;
   min-height: 100vh;
   background-color: map.get(palette.$code, "background");
 
-  kun-dog-ear.Active {
-    z-index: 100;
+  kun-dog-ear {
+    position: fixed;
+    grid-column: 1;
+    grid-row: 1;
+    z-index: 50;
+
+    &.Active {
+      position: relative;
+      z-index: 100;
+    }
   }
 }

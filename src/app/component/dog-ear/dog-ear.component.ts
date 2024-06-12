@@ -21,6 +21,7 @@ import { Observable, Subscription, fromEvent } from 'rxjs';
   styleUrl: './dog-ear.component.scss',
 })
 export class DogEarComponent implements AfterViewInit, OnDestroy {
+  @Output() private startChangeViewEvent = new EventEmitter<boolean>();
   @Output() private changeViewEvent = new EventEmitter<FeatureView>();
 
   @ViewChild('ear') private earRef!: ElementRef;
@@ -102,7 +103,10 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
 
   startViewChange(): void {
     this.isViewChangeTriggered = true;
-    this.changeView();
+    this.startChangeViewEvent.emit(this.isViewChangeTriggered);
+    setTimeout(() => {
+      this.changeView();
+    }, 1000);
   }
 
   changeView(): void {

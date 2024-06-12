@@ -3,6 +3,7 @@
     [class.Active]="view === FeatureView.Page"
     [featureView]="FeatureView.Page"
     [isViewChangeTriggered]="isViewChangeTriggered"
+    (startChangeViewEvent)="startChangeView($event)"
     (changeViewEvent)="changeView($event)"
   >
     <kun-index></kun-index>
@@ -14,6 +15,7 @@
     [class.Active]="view === FeatureView.Code"
     [featureView]="FeatureView.Code"
     [isViewChangeTriggered]="isViewChangeTriggered"
+    (startChangeViewEvent)="startChangeView($event)"
     (changeViewEvent)="changeView($event)"
   >
     <kun-editor></kun-editor>
