@@ -2,27 +2,99 @@
 @use "sass:math";
 @use "palette";
 @use "sizes";
-
+//test -cp1
 :host {
   --icon-size: #{sizes.$magic-constant};
   --full-size-component: calc(var(--icon-size) * 2);
-  --ear-start-path: polygon(
+  --earTip-start-path: polygon(
+    var(--icon-size) 0,
+    var(--icon-size) var(--icon-size),
+    0 var(--icon-size),
+    0 var(--icon-size)
+  );
+  --earBackground-start-path: polygon(
+    0 0,
     var(--icon-size) 0,
     0 var(--icon-size),
-    var(--icon-size) var(--icon-size)
+    0 var(--icon-size)
   );
-  --background-start-path: polygon(var(--icon-size) 0, 0 0, 0 var(--icon-size));
   --content-start-path: polygon(
-    0 var(--icon-size),
     var(--icon-size) 0,
     100% 0,
     100% 100%,
-    0 100%
+    0 100%,
+    0 var(--icon-size)
   );
-  --ear-computed-path: var(--ear-start-path);
-  --background-computed-path: var(--background-start-path);
+  --earTip-computed-path: var(--earTip-start-path);
+  --earBackground-computed-path: var(--earBackground-start-path);
   --content-computed-path: var(--content-start-path);
+
+  &.Page {
+    --color-background: #{map.get(palette.$code, "background")};
+    --color-ear: #{map.get(palette.$page, "background")};
+    --color-inactive: #{map.get(palette.$code, "text-comment")};
+    --color-active: #{map.get(palette.$code, "accent")};
+
+    button.Ear,
+    div.EarBackground,
+    div.EarTip {
+      transform: rotateY(0deg);
+      left: 0;
+    }
+
+    button.Ear {
+      padding-right: var(--full-size-component);
+    }
+
+    div.EarBackground {
+      svg {
+        transform: rotateY(0deg);
+      }
+    }
+
+    div.Content {
+      transform: rotateY(0deg);
+    }
+  }
+
+  &.Code {
+    --color-background: #{map.get(palette.$page, "background")};
+    --color-ear: #{map.get(palette.$code, "text-comment")};
+    --color-inactive: #{map.get(palette.$page, "helper")};
+    --color-active: #{map.get(palette.$page, "accent")};
+
+    button.Ear,
+    div.EarBackground,
+    div.EarTip {
+      transform: rotateY(180deg);
+      right: 0;
+    }
+
+    button.Ear {
+      padding-left: var(--full-size-component);
+    }
+
+    div.EarBackground {
+      svg {
+        transform: rotateY(180deg);
+      }
+    }
+
+    div.Content {
+      transform: rotateY(180deg);
+
+      div.rotation-fixer {
+        transform: rotateY(180deg);
+      }
+    }
+  }
 }
+
+/*
+*
+* Ear Button Styling
+*
+*/
 
 button.Ear {
   position: absolute;
@@ -35,36 +107,27 @@ button.Ear {
   border: none;
   background-color: transparent;
   cursor: pointer;
+}
 
-  &.Page {
-    --color-background: #{map.get(palette.$code, "background")};
-    --color-ear: #{map.get(palette.$page, "background")};
-    --color-inactive: #{map.get(palette.$code, "text-comment")};
-    --color-active: #{map.get(palette.$code, "accent")};
+/*
+*
+* Ear Button Styling
+*
+*/
 
-    transform: rotateY(0deg);
-    left: 0;
-    padding-right: var(--full-size-component);
-
-    svg {
-      transform: rotateY(0deg);
-    }
-  }
-
-  &.Code {
-    --color-background: #{map.get(palette.$page, "background")};
-    --color-ear: #{map.get(palette.$code, "text-comment")};
-    --color-inactive: #{map.get(palette.$page, "helper")};
-    --color-active: #{map.get(palette.$page, "accent")};
-
-    transform: rotateY(180deg);
-    right: 0;
-    padding-left: var(--full-size-component);
-
-    svg {
-      transform: rotateY(180deg);
-    }
-  }
+div.EarBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  display: block;
+  height: 100%;
+  width: 100%;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  background-color: var(--color-background);
+  clip-path: var(--earBackground-start-path);
+  animation-name: endEarBackgroundAnimation;
 
   svg {
     position: absolute;
@@ -109,82 +172,82 @@ button.Ear {
       }
     }
   }
+}
 
-  div.Background,
-  &::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    height: var(--full-size-component);
-    width: var(--full-size-component);
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
-  }
+button.Ear:hover ~ div.EarBackground {
+  animation-name: startEarBackgroundAnimation;
 
-  div.Background {
-    background-color: var(--color-background);
-    clip-path: var(--background-start-path);
-    animation-name: endBackgroundAnimation;
-  }
-
-  &::before {
-    content: "";
-    background-color: var(--color-ear);
-    clip-path: var(--ear-start-path);
-    animation-name: endEarAnimation;
-  }
-
-  &:hover {
-    div.Background {
-      animation-name: startBackgroundAnimation;
-
-      svg rect {
-        fill: var(--color-active);
-      }
-    }
-
-    &::before {
-      animation-name: startEarAnimation;
-    }
+  svg rect {
+    fill: var(--color-active);
   }
 }
 
-@keyframes startBackgroundAnimation {
+@keyframes startEarBackgroundAnimation {
   from {
-    clip-path: var(--background-start-path);
+    clip-path: var(--earBackground-start-path);
   }
   to {
-    clip-path: var(--background-computed-path);
+    clip-path: var(--earBackground-computed-path);
   }
 }
 
-@keyframes endBackgroundAnimation {
+@keyframes endEarBackgroundAnimation {
   from {
-    clip-path: var(--background-computed-path);
+    clip-path: var(--earBackground-computed-path);
   }
   to {
-    clip-path: var(--background-start-path);
+    clip-path: var(--earBackground-start-path);
   }
+}
+
+/*
+*
+* EarTip Styling
+*
+*/
+
+div.EarTip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  display: block;
+  height: 100%;
+  width: 100%;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  background-color: var(--color-ear);
+  clip-path: var(--earTip-start-path);
+  animation-name: endEarAnimation;
+}
+
+button.Ear:hover ~ div.EarTip {
+  animation-name: startEarAnimation;
 }
 
 @keyframes startEarAnimation {
   from {
-    clip-path: var(--ear-start-path);
+    clip-path: var(--earTip-start-path);
   }
   to {
-    clip-path: var(--ear-computed-path);
+    clip-path: var(--earTip-computed-path);
   }
 }
 
 @keyframes endEarAnimation {
   from {
-    clip-path: var(--ear-computed-path);
+    clip-path: var(--earTip-computed-path);
   }
   to {
-    clip-path: var(--ear-start-path);
+    clip-path: var(--earTip-start-path);
   }
 }
+
+/*
+*
+* Content Styling
+*
+*/
 
 div.Content {
   display: block;
@@ -193,21 +256,9 @@ div.Content {
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
   animation-name: endContentAnimation;
-
-  &.Page {
-    transform: rotateY(0deg);
-  }
-
-  &.Code {
-    transform: rotateY(180deg);
-
-    div.rotation-fixer {
-      transform: rotateY(180deg);
-    }
-  }
 }
 
-button.Ear:hover + div.Content {
+button.Ear:hover ~ div.Content {
   animation-name: startContentAnimation;
 }
 
