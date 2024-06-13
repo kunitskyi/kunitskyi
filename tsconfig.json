@@ -5,7 +5,9 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "paths": {
-      "@app/*": ["src/app/*"]
+      "@app/*": ["src/app/*"],
+      "@app-code/*": ["src/app/features/code/*"],
+      "@app-page/*": ["src/app/features/page/*"]
     },
     "strict": true,
     "noImplicitOverride": true,

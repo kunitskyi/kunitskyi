@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CoverComponent } from '../cover/cover.component';
+import { CoverComponent } from '@app-page/component';
 
 @Component({
   selector: 'kun-page-index',

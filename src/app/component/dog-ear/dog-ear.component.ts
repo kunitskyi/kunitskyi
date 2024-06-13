@@ -11,7 +11,7 @@ import {
   RendererStyleFlags2,
   ViewChild,
 } from '@angular/core';
-import { FeatureView } from '@app/types/general-enums';
+import { FeatureView } from '@app/types';
 import { Subject, Subscription } from 'rxjs';
 
 @Component({
