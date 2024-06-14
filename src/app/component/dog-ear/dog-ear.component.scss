@@ -94,6 +94,51 @@
       }
     }
   }
+
+  &.StartEndAnimation {
+    div.EarBackground {
+      animation-name: endEarBackgroundAnimation;
+    }
+
+    div.EarTip {
+      animation-name: endEarAnimation;
+    }
+
+    div.Content {
+      animation-name: endContentAnimation;
+    }
+
+    button.Ear:hover ~ {
+      div.EarBackground {
+        animation-name: startEarBackgroundAnimation;
+      }
+
+      div.EarTip {
+        animation-name: startEarAnimation;
+      }
+
+      div.Content {
+        animation-name: startContentAnimation;
+      }
+    }
+  }
+
+
+  div.EarBackground, div.EarTip, div.Content {
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+  }
+
+  div.EarBackground, div.EarTip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+
 }
 
 /*
@@ -126,18 +171,8 @@ button.Ear {
 */
 
 div.EarBackground {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 99;
-  display: block;
-  height: 100%;
-  width: 100%;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
   background-color: var(--color-background);
   clip-path: var(--earBackground-start-path);
-  animation-name: endEarBackgroundAnimation;
 
   svg {
     position: absolute;
@@ -185,8 +220,6 @@ div.EarBackground {
 }
 
 button.Ear:hover ~ div.EarBackground {
-  animation-name: startEarBackgroundAnimation;
-
   svg rect {
     fill: var(--color-active);
   }
@@ -217,22 +250,8 @@ button.Ear:hover ~ div.EarBackground {
 */
 
 div.EarTip {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 99;
-  display: block;
-  height: 100%;
-  width: 100%;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
   background-color: var(--color-ear);
   clip-path: var(--earTip-start-path);
-  animation-name: endEarAnimation;
-}
-
-button.Ear:hover ~ div.EarTip {
-  animation-name: startEarAnimation;
 }
 
 @keyframes startEarAnimation {
@@ -262,13 +281,6 @@ button.Ear:hover ~ div.EarTip {
 div.Content {
   display: block;
   clip-path: var(--content-start-path);
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
-  animation-name: endContentAnimation;
-}
-
-button.Ear:hover ~ div.Content {
-  animation-name: startContentAnimation;
 }
 
 @keyframes startContentAnimation {

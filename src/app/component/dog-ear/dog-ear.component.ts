@@ -22,6 +22,9 @@ import { Subject, Subscription } from 'rxjs';
   styleUrl: './dog-ear.component.scss',
 })
 export class DogEarComponent implements AfterViewInit, OnDestroy {
+  @HostBinding('class.StartEndAnimation') get isStartEndAnimation(): boolean {
+    return !this.isViewChangeTriggered;
+  }
   @HostBinding('class.Page') get isPageView(): boolean {
     return this.featureView === FeatureView.Page;
   }
