@@ -123,13 +123,15 @@
     }
   }
 
-
-  div.EarBackground, div.EarTip, div.Content {
+  div.EarBackground,
+  div.EarTip,
+  div.Content {
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
   }
 
-  div.EarBackground, div.EarTip {
+  div.EarBackground,
+  div.EarTip {
     position: absolute;
     top: 0;
     left: 0;
@@ -138,7 +140,6 @@
     height: 100%;
     width: 100%;
   }
-
 }
 
 /*

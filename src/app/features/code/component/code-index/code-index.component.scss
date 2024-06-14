@@ -3,8 +3,30 @@
 @use "sizes";
 
 :host {
-  display: block;
+  display: grid;
   min-height: 100vh;
   min-width: 500px;
+  gap: 0px;
+  grid-template-areas: "sidebar side-panel editor" "sidebar side-panel workbench" "state-bar state-bar state-bar";
   background-color: map.get(palette.$code, "background");
+
+  kun-sidebar {
+    grid-area: sidebar;
+  }
+
+  kun-side-panel {
+    grid-area: side-panel;
+  }
+
+  kun-editor {
+    grid-area: editor;
+  }
+
+  kun-workbench {
+    grid-area: workbench;
+  }
+
+  kun-state-bar {
+    grid-area: state-bar;
+  }
 }
