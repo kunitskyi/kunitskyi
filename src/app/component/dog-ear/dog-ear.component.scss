@@ -2,7 +2,7 @@
 @use "sass:math";
 @use "palette";
 @use "sizes";
-//test -cp1
+
 :host {
   --icon-size: #{sizes.$magic-constant};
   --full-size-component: calc(var(--icon-size) * 2);
@@ -251,7 +251,6 @@ button.Ear:hover ~ div.EarTip {
 
 div.Content {
   display: block;
-  overflow: hidden;
   clip-path: var(--content-start-path);
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
