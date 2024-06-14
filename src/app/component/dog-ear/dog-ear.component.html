@@ -3,6 +3,7 @@
   class="Ear"
   (mousemove)="hoverObservable.next($event)"
   (click)="startViewChange($event)"
+  [disabled]="isViewChangeTriggered"
 ></button>
 <div #earBackground class="EarBackground">
   @if (isPageView) {
