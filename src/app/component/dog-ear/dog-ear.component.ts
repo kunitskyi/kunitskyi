@@ -178,6 +178,7 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
         },
       ],
       {
+        fill: 'forwards',
         duration: timeInMS,
       },
     );
@@ -210,6 +211,7 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
         },
       ],
       {
+        fill: 'forwards',
         duration: timeInMS,
       },
     );
@@ -245,6 +247,7 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
         },
       ],
       {
+        fill: 'forwards',
         duration: timeInMS,
       },
     );
