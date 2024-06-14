@@ -32,6 +32,7 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
   @Output() private startChangeViewEvent = new EventEmitter<boolean>();
   @Output() private changeViewEvent = new EventEmitter<FeatureView>();
 
+  @ViewChild('earButton') private earButton!: ElementRef;
   @ViewChild('earBackground') private earBackgroundRef!: ElementRef;
   @ViewChild('earTip') private earTipRef!: ElementRef;
   @ViewChild('content') private contentRef!: ElementRef;
@@ -43,6 +44,10 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
   private earDivisionLine!: {
     x: number;
     y: number;
+  };
+  private relativeMousePosition = {
+    x: 0,
+    y: 0,
   };
   protected hoverObservable!: Subject<MouseEvent>;
   private hoverSubscription!: Subscription;
@@ -65,12 +70,20 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.hoverSubscription = this.hoverObservable.subscribe((e) => {
-      this.earDivisionLine.x = e.layerX;
+    this.hoverSubscription = this.hoverObservable.subscribe((e: MouseEvent) => {
+      this.relativeMousePosition.x =
+        this.featureView === FeatureView.Page
+          ? e.layerX
+          : this.earButton.nativeElement.offsetHeight - e.layerX; // invert X pos for FeatureView.Code
+      this.relativeMousePosition.y = e.layerY;
+      this.earDivisionLine.x =
+        this.featureView === FeatureView.Page
+          ? e.layerX
+          : this.relativeMousePosition.x; // use invert X pos for FeatureView.Code
       this.earDivisionLine.y = e.layerY;
 
       const relationship: number =
-        this.earDivisionLine.x / this.earDivisionLine.y;
+        this.relativeMousePosition.x / this.relativeMousePosition.y;
 
       if (relationship > 2) {
         this.earDivisionLine.y = this.earDivisionLine.x / 2;
@@ -95,7 +108,7 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
         '--earTip-computed-path',
         `polygon(
           ${this.earDivisionLine.x}px 0,
-          ${e.layerX}px ${e.layerY}px,
+          ${this.relativeMousePosition.x}px ${this.relativeMousePosition.y}px,
           0 ${this.earDivisionLine.y}px,
           0 ${this.earDivisionLine.y}px
         )`,

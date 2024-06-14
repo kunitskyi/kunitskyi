@@ -35,7 +35,10 @@
     --color-inactive: #{map.get(palette.$code, "text-comment")};
     --color-active: #{map.get(palette.$code, "accent")};
 
-    button.Ear,
+    button.Ear {
+      left: 0;
+    }
+
     div.EarBackground,
     div.EarTip {
       transform: rotateY(0deg);
@@ -63,7 +66,10 @@
     --color-inactive: #{map.get(palette.$page, "helper")};
     --color-active: #{map.get(palette.$page, "accent")};
 
-    button.Ear,
+    button.Ear {
+      right: 0;
+    }
+
     div.EarBackground,
     div.EarTip {
       transform: rotateY(180deg);
