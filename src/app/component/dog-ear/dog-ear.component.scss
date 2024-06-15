@@ -36,7 +36,7 @@
   &.Page {
     --color-background: #{map.get(palette.$code, "background")};
     --color-ear: #{map.get(palette.$page, "background")};
-    --color-inactive: #{map.get(palette.$code, "text-comment")};
+    --color-inactive: #{map.get(palette.$code, "inactive")};
     --color-active: #{map.get(palette.$code, "accent")};
 
     button.Ear {
@@ -66,7 +66,7 @@
 
   &.Code {
     --color-background: #{map.get(palette.$page, "background")};
-    --color-ear: #{map.get(palette.$code, "text-comment")};
+    --color-ear: #{map.get(palette.$code, "inactive")};
     --color-inactive: #{map.get(palette.$page, "helper")};
     --color-active: #{map.get(palette.$page, "accent")};
 

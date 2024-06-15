@@ -4,10 +4,15 @@
 
 :host {
   display: grid;
-  min-height: 100vh;
-  min-width: 500px;
+  height: 100%;
+  width: 100%;
   gap: 0px;
-  grid-template-areas: "sidebar side-panel editor" "sidebar side-panel workbench" "state-bar state-bar state-bar";
+  grid-template-columns: 54px 200px calc(100% - 254px);
+  grid-template-rows: 2fr 1fr 27px;
+  grid-template-areas:
+    "sidebar side-panel editor"
+    "sidebar side-panel workbench"
+    "state-bar state-bar state-bar";
   background-color: map.get(palette.$code, "background");
 
   kun-sidebar {
@@ -19,6 +24,7 @@
   }
 
   kun-editor {
+    overflow: auto;
     grid-area: editor;
   }
 

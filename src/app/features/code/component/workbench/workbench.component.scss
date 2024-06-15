@@ -1,0 +1,10 @@
+@use "sass:map";
+@use "palette";
+@use "sizes";
+
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: map.get(palette.$code, "foreground");
+}

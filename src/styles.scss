@@ -8,8 +8,8 @@
   --color-ground: #{map.get(palette.$code, "ground")};
   --color-foreground: #{map.get(palette.$code, "foreground")};
 
-  --color-inactive-text: #{map.get(palette.$code, "text-comment")};
-  --color-active-text: #{map.get(palette.$code, "text-hover")};
+  --color-inactive-text: #{map.get(palette.$code, "inactive")};
+  --color-active-text: #{map.get(palette.$code, "active")};
 
   --color-main-accent: #{map.get(palette.$code, "accent")};
 
@@ -23,13 +23,13 @@
 
 * {
   margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
   > noscript {
     display: block;
     min-height: 100vh;
-    font-family: sans-serif;
 
     div.header {
       div.tabs {

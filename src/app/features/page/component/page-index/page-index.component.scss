@@ -4,6 +4,7 @@
 
 :host {
   display: block;
-  min-height: 110vh;
+  height: 100%;
+  width: 100%;
   background-color: map.get(palette.$page, "background");
 }

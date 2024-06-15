@@ -1,3 +1,4 @@
+@use "sass:math";
 @use "sass:map";
 @use "palette";
 @use "sizes";
@@ -97,7 +98,7 @@
     grid-area: problems;
     display: flex;
     align-items: center;
-    max-width: calc(sizes.$magic-constant * 2);
+    max-width: calc(sizes.$magic-constant * 1.5);
 
     svg {
       display: block;
@@ -146,7 +147,7 @@
         }
 
         circle {
-            stroke-width: 10px;
+          stroke-width: 10px;
         }
       }
     }
@@ -154,30 +155,30 @@
 
   button.Notifications {
     grid-area: notifications;
-    max-width: sizes.$magic-constant;
+    max-width: math.div(sizes.$magic-constant, 2);
 
     svg {
       display: block;
       height: 100%;
       max-width: 100%;
-        margin: auto;
+      margin: auto;
 
-      circle, rect {
+      circle,
+      rect {
         fill: map.get(palette.$code, "active");
       }
 
       g.Bell {
         rect.Middle {
-            height: 40px;
-            width: 40px;
-          }
+          height: 40px;
+          width: 40px;
+        }
 
-          rect.Bottom {
-            height: 15px;
-            width: 70px;
-          }
+        rect.Bottom {
+          height: 15px;
+          width: 70px;
+        }
       }
-
     }
   }
 }
