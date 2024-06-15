@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ChangeLanguageComponent } from '@app/component';
+import { FeatureView } from '@app/types';
 
 @Component({
   selector: 'kun-sidebar',
@@ -8,4 +9,6 @@ import { ChangeLanguageComponent } from '@app/component';
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })
-export class SidebarComponent {}
+export class SidebarComponent {
+  protected codeView: FeatureView = FeatureView.Code;
+}

@@ -8,73 +8,72 @@
   height: 100%;
   background-color: map.get(palette.$code, "sidebar-bg");
   grid-template-rows: 1fr sizes.$magic-constant;
-  grid-template-areas: 
+  grid-template-areas:
     "buttons"
     "language";
 
-    div.Buttons {
+  div.Buttons {
+    width: 100%;
+    max-width: 100%;
+
+    button {
+      box-sizing: border-box;
       width: 100%;
-      max-width: 100%;
+      height: sizes.$magic-constant;
+      border: 1px solid transparent;
+      padding: sizes.$padding-s;
+      background-color: transparent;
+      cursor: pointer;
 
-      button {
-        box-sizing: border-box;
-        width: 100%;
-        height: sizes.$magic-constant;
-        border: 1px solid transparent;
-        padding: sizes.$padding-s;
-        background-color: transparent;
-        cursor: pointer;
+      &.Active {
+        border-left-color: map.get(palette.$code, "accent");
+        background-color: map.get(palette.$code, "sidebar-bg-active");
 
-        &.Active {
-          border-left-color: map.get(palette.$code, "accent");
-          background-color: map.get(palette.$code, "sidebar-bg-active");
-
-          svg {
-            fill: map.get(palette.$code, "active");
-            stroke: map.get(palette.$code, "active");
-          }
-        }
-        
         svg {
-          fill: map.get(palette.$code, "inactive");
-          stroke: map.get(palette.$code, "inactive");
-        }
-
-        &:hover svg {
           fill: map.get(palette.$code, "active");
           stroke: map.get(palette.$code, "active");
         }
+      }
 
-        &.Explorer svg {
-          rect {
-            &.Top {
-              height: 200px;
-              width: 250px;
-              fill: transparent;
-            }
+      svg {
+        fill: map.get(palette.$code, "inactive");
+        stroke: map.get(palette.$code, "inactive");
+      }
 
-            &.TopHelper {
-              height: 100px;
-              width: 250px;
-              fill: transparent;
-            }
+      &:hover svg {
+        fill: map.get(palette.$code, "active");
+        stroke: map.get(palette.$code, "active");
+      }
 
-            &.Bottom {
-              height: 400px;
-              width: 600px;
-            }
+      &.Explorer svg {
+        rect {
+          &.Top {
+            height: 200px;
+            width: 250px;
+            fill: transparent;
+          }
 
-            &.BottomHelper {
-              height: 100px;
-              width: 300px;
-            }
+          &.TopHelper {
+            height: 100px;
+            width: 250px;
+            fill: transparent;
+          }
+
+          &.Bottom {
+            height: 400px;
+            width: 600px;
+          }
+
+          &.BottomHelper {
+            height: 100px;
+            width: 300px;
           }
         }
       }
     }
+  }
 
-    kun-change-language {
-      overflow: hidden;
-    }
-
+  kun-change-language {
+    overflow: hidden;
+  }
 }
