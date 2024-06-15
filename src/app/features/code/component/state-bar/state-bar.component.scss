@@ -1,0 +1,183 @@
+@use "sass:map";
+@use "palette";
+@use "sizes";
+
+:host {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  gap: 0;
+  grid-template-areas: "terminal branch problems . notifications";
+  grid-template-columns: sizes.$magic-constant auto auto 1fr auto;
+  background-color: map.get(palette.$code, "state-bar-bg");
+
+  button.Terminal,
+  span.Branch,
+  button.Problems,
+  button.Notifications {
+    border: 0;
+    padding: sizes.$padding-s;
+    height: 100%;
+    line-height: 100%;
+    box-sizing: border-box;
+    background-color: transparent;
+    color: map.get(palette.$code, "active");
+    overflow: hidden;
+    cursor: pointer;
+
+    &:hover {
+      background-color: map.get(palette.$code, "state-bar-bg-active");
+    }
+  }
+
+  button.Terminal {
+    grid-area: terminal;
+    background-color: map.get(palette.$page, "accent");
+
+    svg {
+      max-width: 100%;
+      max-height: 100%;
+
+      g rect {
+        width: 40px;
+        height: 10px;
+        fill: map.get(palette.$page, "helper");
+      }
+
+      g {
+        &.TopPart {
+          rect {
+            transform-origin: 50px 35px;
+
+            &.Top {
+              transform: rotate(35deg);
+            }
+
+            &.Bottom {
+              transform: rotate(-35deg);
+            }
+          }
+        }
+
+        &.BottomPart {
+          rect {
+            transform-origin: 50px 65px;
+
+            &.Top {
+              transform: rotate(215deg);
+            }
+
+            &.Bottom {
+              transform: rotate(-215deg);
+            }
+          }
+        }
+      }
+    }
+
+    &:hover {
+      background-color: map.get(palette.$page, "helper");
+
+      svg g rect {
+        fill: map.get(palette.$page, "accent");
+      }
+    }
+  }
+
+  span.Branch {
+    grid-area: branch;
+    cursor: default;
+
+    &:hover {
+      background-color: map.get(palette.$code, "state-bar-bg");
+    }
+  }
+
+  button.Problems {
+    grid-area: problems;
+    display: flex;
+    align-items: center;
+    max-width: calc(sizes.$magic-constant * 2);
+
+    svg {
+      display: block;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      margin: sizes.$margin-xs;
+      fill: map.get(palette.$code, "active");
+      stroke: map.get(palette.$code, "active");
+
+      &.Error {
+        circle {
+          stroke-width: 10px;
+          fill: transparent;
+        }
+
+        rect {
+          width: 40px;
+          height: 10px;
+          transform-origin: 50px 50px;
+
+          &.First {
+            transform: rotate(45deg);
+          }
+
+          &.Second {
+            transform: rotate(-45deg);
+          }
+        }
+      }
+
+      &.Warning {
+        rect {
+          width: 80px;
+          height: 10px;
+
+          &.Left {
+            transform-origin: 15px 85px;
+            transform: rotate(-60deg);
+          }
+
+          &.Right {
+            transform-origin: 85px 85px;
+            transform: rotate(60deg);
+          }
+        }
+
+        circle {
+            stroke-width: 10px;
+        }
+      }
+    }
+  }
+
+  button.Notifications {
+    grid-area: notifications;
+    max-width: sizes.$magic-constant;
+
+    svg {
+      display: block;
+      height: 100%;
+      max-width: 100%;
+        margin: auto;
+
+      circle, rect {
+        fill: map.get(palette.$code, "active");
+      }
+
+      g.Bell {
+        rect.Middle {
+            height: 40px;
+            width: 40px;
+          }
+
+          rect.Bottom {
+            height: 15px;
+            width: 70px;
+          }
+      }
+
+    }
+  }
+}
