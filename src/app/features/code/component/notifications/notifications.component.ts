@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
   selector: 'kun-notifications',
   standalone: true,
-  imports: [],
+  imports: [TranslocoPipe],
   templateUrl: './notifications.component.html',
   styleUrl: './notifications.component.scss',
 })

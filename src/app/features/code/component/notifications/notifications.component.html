@@ -1,1 +1,19 @@
-<p>notifications works!</p>
+<div class="Header">
+  <p>{{ "code.notifications.header" | transloco }}</p>
+  <button class="Close">
+    <svg viewBox="0 0 100 100">
+      <rect class="First" rx="5" x="10" y="45" />
+      <rect class="Second" rx="5" x="10" y="45" />
+    </svg>
+  </button>
+</div>
+<div class="Notifications">
+  <div class="Info">
+    <svg viewBox="0 0 100 100">
+      <circle class="Shell" cy="50" cx="50" r="40" />
+      <rect rx="5" x="30" y="45" />
+      <circle cy="70" cx="50" r="5" />
+    </svg>
+    <p>{{ "code.notifications.info" | transloco }}</p>
+  </div>
+</div>
