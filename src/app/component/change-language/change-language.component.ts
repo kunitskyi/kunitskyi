@@ -1,4 +1,5 @@
 import { Component, HostBinding, Input } from '@angular/core';
+import { LanguageHelper } from '@app/helper';
 import { FeatureView } from '@app/types';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 
@@ -23,10 +24,13 @@ export class ChangeLanguageComponent {
     return FeatureView;
   }
 
-  constructor(private translocoService: TranslocoService) {}
+  constructor(
+    private translocoService: TranslocoService,
+    private languageHelper: LanguageHelper,
+  ) {}
 
   protected changeLanguage(): void {
-    this.translocoService.setActiveLang(
+    this.languageHelper.setLanguage(
       this.translocoService.getActiveLang() === 'en' ? 'ua' : 'en',
     );
   }

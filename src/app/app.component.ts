@@ -8,6 +8,7 @@ import { PageIndexComponent } from './features/page/component/page-index/page-in
 import { Title } from '@angular/platform-browser';
 import { TranslocoService } from '@jsverse/transloco';
 import { Subscription } from 'rxjs';
+import { LanguageHelper } from './helper';
 
 @Component({
   selector: 'kunitskyi',
@@ -31,10 +32,13 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(
     private translocoService: TranslocoService,
+    private languageHelper: LanguageHelper,
     private titleService: Title,
   ) {}
 
   ngOnInit(): void {
+    this.languageHelper.initLanguage();
+
     this.titleSubscriber = this.translocoService
       .selectTranslate('author')
       .subscribe((value) => this.titleService.setTitle(value));
