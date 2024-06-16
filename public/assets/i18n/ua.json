@@ -1,3 +1,16 @@
 {
-  "currentLocale": "UA"
+  "currentLocale": "УКР",
+  "author": "Куніцький Владислав",
+
+  "code": {
+    "side-panel": {
+      "explorer": {
+        "header": "ДОСЛІДНИК"
+      }
+    },
+    "notifications": {
+      "header": "ПОВІДОМЛЕННЯ",
+      "info": "Не забувайте пити воду щодня!"
+    }
+  }
 }

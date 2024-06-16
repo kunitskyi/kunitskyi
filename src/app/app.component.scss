@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "palette";
+@use "sizes";
 
 :host {
   background-color: map.get(palette.$code, "background");
@@ -21,7 +22,8 @@
     }
 
     &.Code {
-      min-width: 390px;
+      min-width: sizes.$code-min-width;
+      overflow: hidden;
     }
   }
 }

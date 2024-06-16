@@ -2,9 +2,18 @@
 
 $magic-constant: 54px;
 
+$border-radius-s: 5px;
+
 $padding-s: 6px;
 
 $margin-xs: 2px;
+$margin-s: 6px;
+$margin-m: 12px;
+
+$text-size: 1rem;
+$text-size-s: $text-size * 0.7;
+
+$code-min-width: 390px;
 
 $code: (
   tabs-height: $magic-constant,
@@ -13,4 +22,5 @@ $code: (
   breadcrumbs-text: $magic-constant * 0.4,
   text-editor: $magic-constant * 0.35,
   gap: math.div($magic-constant, 3),
+  move-trigger: 5px,
 );

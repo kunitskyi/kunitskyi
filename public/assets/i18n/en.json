@@ -1,3 +1,16 @@
 {
-  "currentLocale": "EN"
+  "currentLocale": "ENG",
+  "author": "Kunitskyi Vladyslav",
+
+  "code": {
+    "side-panel": {
+      "explorer": {
+        "header": "EXPLORER"
+      }
+    },
+    "notifications": {
+      "header": "NOTIFICATIONS",
+      "info": "Remember to drink water everyday!"
+    }
+  }
 }

@@ -28,6 +28,7 @@
 
     p {
       grid-area: text;
+      padding: 0 sizes.$padding-s;
       font-size: sizes.$text-size-s;
     }
 
@@ -43,7 +44,7 @@
       cursor: pointer;
 
       svg {
-        fill: map.get(palette.$code, "notifications-front");
+        fill: map.get(palette.$code, "inactive");
 
         rect {
           width: 80px;
