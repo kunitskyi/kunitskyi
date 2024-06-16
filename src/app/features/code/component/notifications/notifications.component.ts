@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
@@ -8,4 +8,10 @@ import { TranslocoPipe } from '@jsverse/transloco';
   templateUrl: './notifications.component.html',
   styleUrl: './notifications.component.scss',
 })
-export class NotificationsComponent {}
+export class NotificationsComponent {
+  @Output() private hideNotificationsEvent = new EventEmitter<void>();
+
+  protected hideNotifications() {
+    this.hideNotificationsEvent.emit();
+  }
+}

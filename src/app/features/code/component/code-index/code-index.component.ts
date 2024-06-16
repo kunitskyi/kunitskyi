@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {
   EditorComponent,
+  NotificationsComponent,
   SidePanelComponent,
   SidebarComponent,
   StateBarComponent,
@@ -17,7 +18,14 @@ import {
     SidePanelComponent,
     EditorComponent,
     WorkbenchComponent,
+    NotificationsComponent,
     StateBarComponent,
   ],
 })
-export class CodeIndexComponent {}
+export class CodeIndexComponent {
+  protected isNotificationShown = false;
+
+  protected toggleNotifications() {
+    this.isNotificationShown = !this.isNotificationShown;
+  }
+}

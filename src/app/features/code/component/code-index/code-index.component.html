@@ -2,4 +2,11 @@
 <kun-side-panel></kun-side-panel>
 <kun-editor></kun-editor>
 <kun-workbench></kun-workbench>
-<kun-state-bar></kun-state-bar>
+@if (isNotificationShown) {
+  <kun-notifications
+    (hideNotificationsEvent)="toggleNotifications()"
+  ></kun-notifications>
+}
+<kun-state-bar
+  (toggleNotificationEvent)="toggleNotifications()"
+></kun-state-bar>

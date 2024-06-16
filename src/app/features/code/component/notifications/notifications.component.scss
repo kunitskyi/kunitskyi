@@ -27,83 +27,80 @@
     background-color: map.get(palette.$code, "foreground");
 
     p {
-    grid-area: text;
+      grid-area: text;
       font-size: sizes.$text-size-s;
     }
 
     button {
-        grid-area: icon;
-        border: 0;
-        border-radius: sizes.$border-radius-s;
-        padding: 0;
-        height: 100%;
-        width: 100%;
-        display: block;
-        background-color: transparent;
-        cursor: pointer;
+      grid-area: icon;
+      border: 0;
+      border-radius: sizes.$border-radius-s;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      display: block;
+      background-color: transparent;
+      cursor: pointer;
 
-        svg {
-            fill: map.get(palette.$code, "notifications-front");
+      svg {
+        fill: map.get(palette.$code, "notifications-front");
 
-          rect {
-            width: 80px;
-            height: 10px;
-            transform-origin: 50px 50px;
-    
-            &.First {
-              transform: rotate(45deg);
-            }
-    
-            &.Second {
-              transform: rotate(-45deg);
-            }
+        rect {
+          width: 80px;
+          height: 10px;
+          transform-origin: 50px 50px;
+
+          &.First {
+            transform: rotate(45deg);
+          }
+
+          &.Second {
+            transform: rotate(-45deg);
           }
         }
+      }
 
-        &:hover {
-            background-color:  map.get(palette.$code, "notifications-active-bg");
-        }
+      &:hover {
+        background-color: map.get(palette.$code, "notifications-active-bg");
+      }
     }
-
   }
 
   div.Notifications {
     box-sizing: border-box;
     padding: sizes.$padding-s;
 
-
     div.Info {
-        display: grid;
-        grid-template-areas: "icon text";
-        grid-template-columns: math.div(sizes.$magic-constant, 4) 1fr;
-        grid-template-rows: 1fr;
-        align-items: center;
-        gap: sizes.$padding-s;
+      display: grid;
+      grid-template-areas: "icon text";
+      grid-template-columns: math.div(sizes.$magic-constant, 4) 1fr;
+      grid-template-rows: 1fr;
+      align-items: center;
+      gap: sizes.$padding-s;
 
-        svg {
-            grid-area: icon;
-            fill: map.get(palette.$code, "info");
-            stroke: map.get(palette.$code, "info");
+      svg {
+        grid-area: icon;
+        fill: map.get(palette.$code, "info");
+        stroke: map.get(palette.$code, "info");
 
-            circle {
-            &.Shell {
-                stroke-width: 10px;
-                fill: transparent;
-              }
-            }
-      
-              rect {
-                width: 30px;
-                height: 10px;
-                transform-origin: 50px 50px;
-                transform: rotate(90deg);
-              }
+        circle {
+          &.Shell {
+            stroke-width: 10px;
+            fill: transparent;
+          }
         }
-    
-        p {
-            grid-area: text;
+
+        rect {
+          width: 30px;
+          height: 10px;
+          transform-origin: 50px 50px;
+          transform: rotate(90deg);
         }
+      }
+
+      p {
+        grid-area: text;
+      }
     }
-
   }
 }

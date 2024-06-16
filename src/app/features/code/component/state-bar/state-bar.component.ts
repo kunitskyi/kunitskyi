@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
@@ -8,4 +8,10 @@ import { TranslocoPipe } from '@jsverse/transloco';
   templateUrl: './state-bar.component.html',
   styleUrl: './state-bar.component.scss',
 })
-export class StateBarComponent {}
+export class StateBarComponent {
+  @Output() private toggleNotificationEvent = new EventEmitter<MouseEvent>();
+
+  protected toggleNotifications(e: MouseEvent) {
+    this.toggleNotificationEvent.emit(e);
+  }
+}
