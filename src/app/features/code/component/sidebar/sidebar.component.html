@@ -1,5 +1,9 @@
 <div class="Buttons">
-  <button class="Explorer" [class.Active]="false">
+  <button
+    class="Explorer"
+    [class.Active]="isExplorerActive"
+    (click)="toggleExplorer()"
+  >
     <svg class="FolderIcon" viewBox="0 0  1000 1000">
       <rect class="Top" x="212.5" y="250" rx="50" stroke-width="25" />
       <rect class="TopHelper" x="212.5" y="250" rx="50" stroke-width="25" />

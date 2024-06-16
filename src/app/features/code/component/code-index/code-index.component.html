@@ -1,5 +1,12 @@
-<kun-sidebar></kun-sidebar>
-<kun-side-panel></kun-side-panel>
+<kun-sidebar
+  [isSidePanelShown]="isSidePanelShown"
+  (showSidePanelEvent)="showSidePanel($event)"
+></kun-sidebar>
+@if (isSidePanelShown) {
+  <kun-side-panel
+    (resizeXEvent)="changeSidePanelWidth($event)"
+  ></kun-side-panel>
+}
 <kun-editor></kun-editor>
 <kun-workbench></kun-workbench>
 @if (isNotificationShown) {

@@ -1,1 +1,9 @@
-<p>side-panel works!</p>
+<div
+  class="ResizeTrigger"
+  [class.Active]="isResizeActive"
+  (mousedown)="resizeTriggered()"
+  (touchstart)="resizeTriggered()"
+></div>
+<div class="Container">
+  <p>{{ "code.side-panel.explorer.header" | transloco }}</p>
+</div>

@@ -3,11 +3,14 @@
 @use "sizes";
 
 :host {
+  --side-panel-width: #{sizes.$magic-constant * 4};
+  --side-panel-computed-width: var(--side-panel-width);
+
   display: grid;
   height: 100%;
   width: 100%;
   gap: 0px;
-  grid-template-columns: 54px 200px calc(100% - 254px);
+  grid-template-columns: sizes.$magic-constant min(var(--side-panel-computed-width), 70%) calc(100% - (min(var(--side-panel-computed-width), 70%) + sizes.$magic-constant));
   grid-template-rows: 2fr 1fr 27px;
   grid-template-areas:
     "sidebar side-panel editor"

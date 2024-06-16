@@ -1,0 +1,28 @@
+@use "sass:map";
+@use "palette";
+@use "sizes";
+
+:host {
+  position: relative;
+
+  div.ResizeTrigger {
+    position: absolute;
+    right: -3px;
+    width: 6px;
+    height: 100%;
+    transition: background-color .25s;
+    cursor: ew-resize;
+  
+    &.Active, &:hover {
+      background-color: map.get(palette.$code, "accent");
+    }
+  }
+
+  div.Container {
+    p {
+      margin: sizes.$margin-s;
+      font-size: sizes.$text-size-s;
+      color: map.get(palette.$code, "active");
+    }
+  }
+}
