@@ -10,7 +10,12 @@
   height: 100%;
   width: 100%;
   gap: 0px;
-  grid-template-columns: sizes.$magic-constant min(var(--side-panel-computed-width), 70%) calc(100% - (min(var(--side-panel-computed-width), 70%) + sizes.$magic-constant));
+  grid-template-columns:
+    sizes.$magic-constant min(var(--side-panel-computed-width), 70%)
+    calc(
+      100% -
+        (min(var(--side-panel-computed-width), 70%) + sizes.$magic-constant)
+    );
   grid-template-rows: 2fr 1fr 27px;
   grid-template-areas:
     "sidebar side-panel editor"

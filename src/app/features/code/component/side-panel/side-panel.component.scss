@@ -10,15 +10,18 @@
     right: -3px;
     width: 6px;
     height: 100%;
-    transition: background-color .25s;
+    transition: background-color 0.25s;
     cursor: ew-resize;
-  
-    &.Active, &:hover {
+
+    &.Active,
+    &:hover {
       background-color: map.get(palette.$code, "accent");
     }
   }
 
   div.Container {
+    overflow-x: hidden;
+
     p {
       margin: sizes.$margin-s;
       font-size: sizes.$text-size-s;
