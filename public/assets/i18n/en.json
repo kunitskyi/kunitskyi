@@ -5,7 +5,11 @@
   "code": {
     "side-panel": {
       "explorer": {
-        "header": "EXPLORER"
+        "header": "EXPLORER",
+        "workspace": {
+          "name": "WORKSPACE",
+          "title": "KUNITSKYI ({{ code.side-panel.explorer.workspace.name }})"
+        }
       }
     },
     "notifications": {

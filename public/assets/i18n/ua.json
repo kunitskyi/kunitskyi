@@ -5,7 +5,11 @@
   "code": {
     "side-panel": {
       "explorer": {
-        "header": "ДОСЛІДНИК"
+        "header": "ДОСЛІДНИК",
+        "workspace": {
+          "name": "РОБОЧИЙ ПРОСТІР",
+          "title": "КУНІЦЬКИЙ ({{ code.side-panel.explorer.workspace.name }})"
+        }
       }
     },
     "notifications": {

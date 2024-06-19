@@ -62,7 +62,7 @@
       }
 
       &:hover {
-        background-color: map.get(palette.$code, "notifications-active-bg");
+        background-color: map.get(palette.$code, "active-bg");
       }
     }
   }
