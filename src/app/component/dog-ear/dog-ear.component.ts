@@ -11,7 +11,8 @@ import {
   RendererStyleFlags2,
   ViewChild,
 } from '@angular/core';
-import { FeatureView } from '@app/types';
+import { FeatureView, Point } from '@app/types';
+import { SimpleLine } from '@app/types/line';
 import { Subject, Subscription } from 'rxjs';
 
 @Component({
@@ -44,11 +45,17 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
   @Input({ required: true }) public isViewChangeTriggered = false;
 
   private iconSize!: number;
-  private earDivisionLine!: {
-    x: number;
-    y: number;
+  private earDivisionLine: SimpleLine = {
+    first: {
+      x: 0,
+      y: 0,
+    },
+    last: {
+      x: 0,
+      y: 0,
+    },
   };
-  private relativeMousePosition = {
+  private relativeMousePosition: Point = {
     x: 0,
     y: 0,
   };
@@ -65,10 +72,9 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
     this.iconSize = Number(
       getComputedStyle(dogEarRef.nativeElement).getPropertyValue('--icon-size'),
     );
-    this.earDivisionLine = {
-      x: this.iconSize,
-      y: this.iconSize,
-    };
+    this.earDivisionLine.first.x = this.iconSize;
+    this.earDivisionLine.last.y = this.iconSize;
+
     this.hoverObservable = new Subject<MouseEvent>();
   }
 
@@ -79,19 +85,19 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
           ? e.layerX
           : this.earButton.nativeElement.offsetHeight - e.layerX; // invert X pos for FeatureView.Code
       this.relativeMousePosition.y = e.layerY;
-      this.earDivisionLine.x =
+      this.earDivisionLine.first.x =
         this.featureView === FeatureView.Page
           ? e.layerX
           : this.relativeMousePosition.x; // use invert X pos for FeatureView.Code
-      this.earDivisionLine.y = e.layerY;
+      this.earDivisionLine.last.y = e.layerY;
 
       const relationship: number =
         this.relativeMousePosition.x / this.relativeMousePosition.y;
 
       if (relationship > 2) {
-        this.earDivisionLine.y = this.earDivisionLine.x / 2;
+        this.earDivisionLine.last.y = this.earDivisionLine.first.x / 2;
       } else if (relationship < 0.5) {
-        this.earDivisionLine.x = this.earDivisionLine.y / 2;
+        this.earDivisionLine.first.x = this.earDivisionLine.last.y / 2;
       }
 
       this.renderer.setStyle(
@@ -99,9 +105,9 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
         '--earBackground-computed-path',
         `polygon(
           0 0,
-          ${this.earDivisionLine.x}px 0,
-          0 ${this.earDivisionLine.y}px,
-          0 ${this.earDivisionLine.y}px
+          ${this.earDivisionLine.first.x}px ${this.earDivisionLine.first.y}px,
+          ${this.earDivisionLine.last.x}px ${this.earDivisionLine.last.y}px,
+          ${this.earDivisionLine.last.x}px ${this.earDivisionLine.last.y}px
         )`,
         RendererStyleFlags2.DashCase,
       );
@@ -110,10 +116,10 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
         this.dogEarRef.nativeElement,
         '--earTip-computed-path',
         `polygon(
-          ${this.earDivisionLine.x}px 0,
+          ${this.earDivisionLine.first.x}px ${this.earDivisionLine.first.y}px,
           ${this.relativeMousePosition.x}px ${this.relativeMousePosition.y}px,
-          0 ${this.earDivisionLine.y}px,
-          0 ${this.earDivisionLine.y}px
+          ${this.earDivisionLine.last.x}px ${this.earDivisionLine.last.y}px,
+          ${this.earDivisionLine.last.x}px ${this.earDivisionLine.last.y}px
         )`,
         RendererStyleFlags2.DashCase,
       );
@@ -122,11 +128,11 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
         this.dogEarRef.nativeElement,
         '--content-computed-path',
         `polygon(
-          ${this.earDivisionLine.x}px 0,
+          ${this.earDivisionLine.first.x}px ${this.earDivisionLine.first.y}px,
           100% 0,
           100% 100%,
           0 100%,
-          0 ${this.earDivisionLine.y}px
+          ${this.earDivisionLine.last.x}px ${this.earDivisionLine.last.y}px
         )`,
         RendererStyleFlags2.DashCase,
       );
@@ -139,6 +145,10 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
 
   startViewChange(e: MouseEvent): void {
     const timeInMS = 1000;
+    const animateOptions = {
+      fill: 'forwards',
+      duration: timeInMS,
+    };
 
     const anglePointPosition =
       e.layerX === 0 && e.layerY === 0 // in case if button pressed from keyboard
@@ -154,9 +164,9 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
           opacity: 1,
           clipPath: `polygon(
             0 0,
-            ${this.earDivisionLine.x}px 0,
-            0 ${this.earDivisionLine.y}px,
-            0 ${this.earDivisionLine.y}px
+            ${this.earDivisionLine.first.x}px ${this.earDivisionLine.first.y}px,
+            ${this.earDivisionLine.last.x}px ${this.earDivisionLine.last.y}px,
+            ${this.earDivisionLine.last.x}px ${this.earDivisionLine.last.y}px
           )`,
         },
         {
@@ -177,20 +187,17 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
           )`,
         },
       ],
-      {
-        fill: 'forwards',
-        duration: timeInMS,
-      },
+      animateOptions,
     );
 
     this.earTipRef.nativeElement.animate(
       [
         {
           clipPath: `polygon(
-            0 ${this.earDivisionLine.y}px,
-            ${this.earDivisionLine.x}px 0,
+            ${this.earDivisionLine.last.x}px ${this.earDivisionLine.last.y}px,
+            ${this.earDivisionLine.first.x}px ${this.earDivisionLine.first.y}px,
             ${anglePointPosition.x}px ${anglePointPosition.y}px,
-            0 ${this.earDivisionLine.y}px
+            ${this.earDivisionLine.last.x}px ${this.earDivisionLine.last.y}px
           )`,
         },
         {
@@ -210,21 +217,18 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
           )`,
         },
       ],
-      {
-        fill: 'forwards',
-        duration: timeInMS,
-      },
+      animateOptions,
     );
 
     this.contentRef.nativeElement.animate(
       [
         {
           clipPath: `polygon(
-            ${this.earDivisionLine.x}px 0,
+            ${this.earDivisionLine.first.x}px ${this.earDivisionLine.first.y}px,
             100% 0,
             100% 100%,
             0 100%,
-            0 ${this.earDivisionLine.y}px
+            ${this.earDivisionLine.last.x}px ${this.earDivisionLine.last.y}px
           )`,
         },
         {
@@ -246,10 +250,7 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
           )`,
         },
       ],
-      {
-        fill: 'forwards',
-        duration: timeInMS,
-      },
+      animateOptions,
     );
 
     setTimeout(() => {
