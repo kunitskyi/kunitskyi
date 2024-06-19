@@ -8,8 +8,6 @@ import { Point } from '@app/types';
     '[class.Active]': 'isResizeActive',
     '(mousedown)': 'resizeTriggered()',
     '(touchstart)': 'resizeTriggered()',
-    '(mouseover)': 'isResizeActive=true',
-    '(mouseout)': 'isResizeActive=false',
   },
   standalone: true,
 })
@@ -28,6 +26,8 @@ export class ResizeDirective implements OnDestroy {
 
   protected resizeTriggered() {
     this.disableResizeTrigger();
+
+    this.isResizeActive = true;
     this.positionSubscription = merge(
       fromEvent<MouseEvent>(document.body, 'mousemove'),
       fromEvent<TouchEvent>(document.body, 'touchmove'),
@@ -66,6 +66,7 @@ export class ResizeDirective implements OnDestroy {
   }
 
   private disableResizeTrigger() {
+    this.isResizeActive = false;
     this.positionSubscription?.unsubscribe();
   }
 }

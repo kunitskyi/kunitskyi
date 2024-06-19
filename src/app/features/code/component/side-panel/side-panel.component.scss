@@ -15,7 +15,8 @@
     transition: background-color 0.25s;
     cursor: ew-resize;
 
-    &.Active {
+    &.Active,
+    &:hover {
       background-color: map.get(palette.$code, "accent");
     }
   }

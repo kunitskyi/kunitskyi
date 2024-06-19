@@ -29,6 +29,8 @@
     span {
       grid-area: text;
       text-align: left;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     &:hover {
