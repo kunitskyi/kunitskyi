@@ -1,0 +1,38 @@
+@use "sass:math";
+@use "sass:map";
+@use "palette";
+@use "sizes";
+
+:host {
+  button {
+    display: grid;
+    border: 0;
+    width: 100%;
+    height: math.div(sizes.$magic-constant, 2);
+    grid-template-areas: "icon text";
+    grid-template-columns: math.div(sizes.$magic-constant, 2) 1fr;
+    grid-template-rows: math.div(sizes.$magic-constant, 2);
+    align-items: center;
+    font-weight: 500;
+    color: map.get(palette.$code, "active");
+    background-color: transparent;
+    cursor: pointer;
+    overflow: hidden;
+
+    img {
+      box-sizing: border-box;
+      max-height: 100%;
+      padding: sizes.$padding-s;
+      grid-area: icon;
+    }
+
+    span {
+      grid-area: text;
+      text-align: left;
+    }
+
+    &:hover {
+      background-color: map.get(palette.$code, "active-bg");
+    }
+  }
+}

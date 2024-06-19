@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'kun-files',
@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
   templateUrl: './files.component.html',
   styleUrl: './files.component.scss',
 })
-export class FilesComponent {}
+export class FilesComponent {
+  @Input({ required: true }) imgPath!: string;
+  @Input({ required: true }) name!: string;
+}
