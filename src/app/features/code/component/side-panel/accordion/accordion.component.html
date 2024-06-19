@@ -1,1 +1,10 @@
-<p>accordion works!</p>
+<button (click)="isOpen = !isOpen">
+  <svg viewBox="0 0 100 100">
+    <rect class="First" rx="5" x="45" y="55" />
+    <rect class="Second" rx="5" x="45" y="55" />
+  </svg>
+  <span>{{ text }}</span>
+</button>
+@if (isOpen) {
+  <div class="List"><ng-content></ng-content></div>
+}

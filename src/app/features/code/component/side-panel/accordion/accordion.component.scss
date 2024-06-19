@@ -1,0 +1,65 @@
+@use "sass:math";
+@use "sass:map";
+@use "palette";
+@use "sizes";
+
+:host {
+  display: block;
+  width: 100%;
+
+  button {
+    display: grid;
+    align-items: center;
+    border: 0;
+    padding: 0;
+    width: 100%;
+    height: math.div(sizes.$magic-constant, 2);
+    grid-template-areas: "icon text";
+    grid-template-columns: math.div(sizes.$magic-constant, 2) auto;
+    grid-template-rows: math.div(sizes.$magic-constant, 2);
+    background-color: map.get(palette.$code, "foreground");
+    cursor: pointer;
+
+    svg {
+      transform: rotate(-90deg);
+      fill: map.get(palette.$code, "inactive");
+
+      rect {
+        height: 10px;
+        width: 40px;
+
+        transform-origin: 50px 60px;
+
+        &.First {
+          transform: rotate(-45deg);
+        }
+
+        &.Second {
+          transform: rotate(-135deg);
+        }
+      }
+    }
+
+    span {
+      box-sizing: border-box;
+      width: 100%;
+      max-height: 100%;
+      padding: sizes.$padding-s;
+      text-align: left;
+      font-size: sizes.$text-size-s;
+      font-weight: bolder;
+      color: map.get(palette.$code, "active");
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+
+  &.Open {
+    button {
+      svg {
+        transform: rotate(0deg);
+      }
+    }
+  }
+}
