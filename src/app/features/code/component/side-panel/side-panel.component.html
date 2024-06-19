@@ -1,9 +1,4 @@
-<div
-  class="ResizeTrigger"
-  [class.Active]="isResizeActive"
-  (mousedown)="resizeTriggered()"
-  (touchstart)="resizeTriggered()"
-></div>
+<div kunResize class="ResizeTrigger" (resizeEvent)="resize($event)"></div>
 <div class="Container">
   <p>{{ "code.side-panel.explorer.header" | transloco }}</p>
   <kun-accordion

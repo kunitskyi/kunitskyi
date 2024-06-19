@@ -4,6 +4,7 @@ import {
   ElementRef,
   Renderer2,
   RendererStyleFlags2,
+  ViewChild,
 } from '@angular/core';
 import {
   EditorComponent,
@@ -13,6 +14,7 @@ import {
   StateBarComponent,
   WorkbenchComponent,
 } from '@app-code/component';
+import { Point } from '@app/types';
 
 @Component({
   selector: 'kun-code-index',
@@ -29,6 +31,9 @@ import {
   ],
 })
 export class CodeIndexComponent implements AfterViewInit {
+  @ViewChild('sidePanel', { read: ElementRef })
+  private sidePanelRef!: ElementRef;
+
   protected isNotificationShown = false;
   protected isSidePanelShown = true;
   protected minSidePanelWidth!: number;
@@ -51,21 +56,17 @@ export class CodeIndexComponent implements AfterViewInit {
     this.isNotificationShown = !this.isNotificationShown;
   }
 
-  protected changeSidePanelWidth(width: number) {
-    getComputedStyle(this.elementRef.nativeElement).getPropertyValue(
-      '--side-panel-width',
-    );
-
+  protected changeSidePanelWidth(point: Point) {
+    const width = point.x - this.sidePanelRef.nativeElement.offsetLeft;
     if (width >= this.minSidePanelWidth / 2) {
+      // don't hide SidePanel if user cross less then half min-width
       this.lastSidePanelSuccessfullyComputedWidth =
         width > this.minSidePanelWidth
           ? `${width}px`
           : `${this.minSidePanelWidth}px`;
-      this.setSidePanelWidth(`${this.lastSidePanelSuccessfullyComputedWidth}`);
-    } else {
-      this.isSidePanelShown = false;
-      this.setSidePanelWidth(`0px`);
-    }
+      // if width less then min then set min
+      this.showSidePanel(true);
+    } else this.showSidePanel(false);
   }
 
   protected showSidePanel(e: boolean) {

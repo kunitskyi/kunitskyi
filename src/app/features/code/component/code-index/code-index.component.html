@@ -4,7 +4,9 @@
 ></kun-sidebar>
 @if (isSidePanelShown) {
   <kun-side-panel
-    (resizeXEvent)="changeSidePanelWidth($event)"
+    #sidePanel
+    (selectstart)="(false)"
+    (resizeEvent)="changeSidePanelWidth($event)"
   ></kun-side-panel>
 }
 <kun-editor></kun-editor>
