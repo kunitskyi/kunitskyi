@@ -1,9 +1,11 @@
+@use "sass:math";
 @use "sass:map";
 @use "palette";
 @use "sizes";
 
 :host {
   position: relative;
+  cursor: default;
 
   div.ResizeTrigger {
     position: absolute;
@@ -20,12 +22,18 @@
   }
 
   div.Container {
+    height: 100%;
     overflow-x: hidden;
 
     p {
-      margin: sizes.$margin-s;
+      box-sizing: border-box;
+      line-height: math.div(sizes.$magic-constant, 2);
+      height: math.div(sizes.$magic-constant, 2);
+      margin: 0 sizes.$margin-s;
       font-size: sizes.$text-size-s;
       color: map.get(palette.$code, "active");
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }

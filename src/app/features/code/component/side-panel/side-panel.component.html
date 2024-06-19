@@ -6,4 +6,16 @@
 ></div>
 <div class="Container">
   <p>{{ "code.side-panel.explorer.header" | transloco }}</p>
+  <kun-accordion
+    [text]="'code.side-panel.explorer.workspace.title' | transloco"
+  >
+    <kun-files
+      [imgPath]="'/assets/js_64x64.png'"
+      [name]="'profile.js'"
+    ></kun-files>
+    <kun-files
+      [imgPath]="'/assets/php_64x64.png'"
+      [name]="'profile.php'"
+    ></kun-files>
+  </kun-accordion>
 </div>
