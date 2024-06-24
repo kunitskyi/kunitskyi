@@ -1,11 +1,19 @@
-import { Directive, EventEmitter, OnDestroy, Output } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  Renderer2,
+} from '@angular/core';
 import { merge, fromEvent, Subscription, map } from 'rxjs';
 import { Point } from '@app/types';
 
 @Directive({
   selector: '[kunResize]',
   host: {
-    '[class.Active]': 'isResizeActive',
     '(document:mouseup)': 'disableResizeTrigger()',
     '(document:touchend)': 'disableResizeTrigger()',
     '(mousedown)': 'resizeTriggered()',
@@ -13,23 +21,75 @@ import { Point } from '@app/types';
   },
   standalone: true,
 })
-export class ResizeDirective implements OnDestroy {
-  @Output() resizeEvent = new EventEmitter<Point>();
+export class ResizeDirective implements OnInit, OnDestroy {
+  @Output() private resizeEvent = new EventEmitter<Point>();
+  @Input({ required: true }) public resizeType!:
+    | 'top'
+    | 'right'
+    | 'bottom'
+    | 'left';
 
   private positionSubscription!: Subscription;
-  private _isResizeActive = false;
-  protected get isResizeActive() {
-    return this._isResizeActive;
+  private triggerRef!: Element;
+
+  private isActive = false;
+  private isHovered = false;
+
+  constructor(
+    private renderer: Renderer2,
+    elementRef: ElementRef,
+  ) {
+    this.triggerRef = renderer.createElement('div');
+
+    renderer.appendChild(elementRef.nativeElement, this.triggerRef);
+    renderer.listen(this.triggerRef, 'mouseover', () => {
+      this.hover(true);
+    });
+    renderer.listen(this.triggerRef, 'mouseleave', () => {
+      this.hover(false);
+    });
   }
 
-  protected set isResizeActive(value: boolean) {
-    this._isResizeActive = value;
+  public ngOnInit(): void {
+    let triggerStyle: Record<string, string> = {
+      'z-index': '95',
+      position: 'absolute',
+      transition: 'background-color 0.25s',
+      // 'background-color': 'transparent',
+    };
+    triggerStyle[this.resizeType] = 'calc(-1 * (var(--g-resize-size) / 2))';
+
+    if (this.resizeType === 'top' || this.resizeType === 'bottom') {
+      triggerStyle = {
+        ...triggerStyle,
+        width: '100%',
+        height: 'var(--g-resize-size)',
+        cursor: 'ns-resize',
+      };
+    } else if (this.resizeType === 'right' || this.resizeType === 'left') {
+      triggerStyle = {
+        ...triggerStyle,
+        width: 'var(--g-resize-size)',
+        height: '100%',
+        cursor: 'ew-resize',
+      };
+    }
+
+    for (const key in triggerStyle) {
+      this.renderer.setStyle(this.triggerRef, key, triggerStyle[key]);
+    }
   }
 
-  protected resizeTriggered() {
+  public ngOnDestroy(): void {
+    this.disableResizeTrigger();
+  }
+
+  protected resizeTriggered(): void {
     this.disableResizeTrigger();
 
-    this.isResizeActive = true;
+    this.isActive = true;
+    this.updateBackground();
+
     this.positionSubscription = merge(
       fromEvent<MouseEvent>(document.body, 'mousemove'),
       fromEvent<TouchEvent>(document.body, 'touchmove'),
@@ -53,12 +113,24 @@ export class ResizeDirective implements OnDestroy {
       .subscribe();
   }
 
-  public ngOnDestroy(): void {
-    this.disableResizeTrigger();
+  private disableResizeTrigger(): void {
+    this.isActive = false;
+    this.updateBackground();
+    this.positionSubscription?.unsubscribe();
   }
 
-  private disableResizeTrigger() {
-    this.isResizeActive = false;
-    this.positionSubscription?.unsubscribe();
+  private hover(value: boolean): void {
+    this.isHovered = value;
+    this.updateBackground();
+  }
+
+  private updateBackground(): void {
+    const backgroundColor =
+      this.isActive || this.isHovered ? 'var(--g-code-accent)' : 'transparent';
+    this.renderer.setStyle(
+      this.triggerRef,
+      'background-color',
+      backgroundColor,
+    );
   }
 }

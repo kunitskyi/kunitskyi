@@ -4,6 +4,9 @@
 @use "sizes";
 
 :root {
+  --g-resize-size: #{sizes.$resize};
+  --g-code-accent: #{map.get(palette.$code, "accent")};
+
   --color-background: #{map.get(palette.$code, "background")};
   --color-ground: #{map.get(palette.$code, "ground")};
   --color-foreground: #{map.get(palette.$code, "foreground")};

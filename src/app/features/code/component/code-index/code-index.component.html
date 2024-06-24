@@ -5,6 +5,8 @@
 @if (isSidePanelShown) {
   <kun-side-panel
     #sidePanel
+    kunResize
+    resizeType="right"
     (selectstart)="(false)"
     (resizeEvent)="changeSidePanelWidth($event)"
   ></kun-side-panel>
@@ -13,6 +15,8 @@
 @if (true) {
   <kun-workbench
     #workbench
+    kunResize
+    resizeType="top"
     (resizeEvent)="changeWorkbenchHeight($event)"
   ></kun-workbench>
 }

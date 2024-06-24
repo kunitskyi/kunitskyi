@@ -18,9 +18,9 @@
       100% -
         (min(var(--side-panel-computed-width), 70%) + sizes.$magic-constant)
     );
-  grid-template-rows:auto max(var(
-      --workbench-computed-height
-    ), 0px) 27px;
+  grid-template-rows:
+    auto max(var(--workbench-computed-height), 0px)
+    27px;
   grid-template-areas:
     "sidebar side-panel editor"
     "sidebar side-panel workbench"

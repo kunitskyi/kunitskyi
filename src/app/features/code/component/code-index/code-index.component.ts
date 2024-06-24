@@ -15,6 +15,7 @@ import {
   WorkbenchComponent,
 } from '@app-code/component';
 import { Point } from '@app/types';
+import { ResizeDirective } from '../../directive';
 
 @Component({
   selector: 'kun-code-index',
@@ -28,6 +29,7 @@ import { Point } from '@app/types';
     WorkbenchComponent,
     NotificationsComponent,
     StateBarComponent,
+    ResizeDirective,
   ],
 })
 export class CodeIndexComponent implements AfterViewInit {

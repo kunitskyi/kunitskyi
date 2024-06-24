@@ -5,36 +5,17 @@
 
 :host {
   position: relative;
+  height: 100%;
   cursor: default;
 
-  div.ResizeTrigger {
-    z-index: 95;
-    position: absolute;
-    right: -1 * math.div(sizes.$resize, 2);
-    width: sizes.$resize;
-    height: 100%;
-    transition: background-color 0.25s;
-    cursor: ew-resize;
-
-    &.Active,
-    &:hover {
-      background-color: map.get(palette.$code, "accent");
-    }
-  }
-
-  div.Container {
-    height: 100%;
-    overflow-x: hidden;
-
-    p {
-      box-sizing: border-box;
-      line-height: math.div(sizes.$magic-constant, 2);
-      height: math.div(sizes.$magic-constant, 2);
-      margin: 0 sizes.$margin-s;
-      font-size: sizes.$text-size-s;
-      color: map.get(palette.$code, "active");
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+  p {
+    box-sizing: border-box;
+    line-height: math.div(sizes.$magic-constant, 2);
+    height: math.div(sizes.$magic-constant, 2);
+    margin: 0 sizes.$margin-s;
+    font-size: sizes.$text-size-s;
+    color: map.get(palette.$code, "active");
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }

@@ -11,19 +11,4 @@
   background-color: map.get(palette.$code, "foreground");
   border-top: sizes.$border-s solid map.get(palette.$code, "accent");
   cursor: default;
-
-  div.ResizeTrigger {
-    z-index: 95;
-    position: absolute;
-    top: -1 * math.div(sizes.$resize, 2);
-    width: 100%;
-    height: sizes.$resize;
-    transition: background-color 0.25s;
-    cursor: ns-resize;
-
-    &.Active,
-    &:hover {
-      background-color: map.get(palette.$code, "accent");
-    }
-  }
 }
