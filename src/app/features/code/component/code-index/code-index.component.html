@@ -10,7 +10,12 @@
   ></kun-side-panel>
 }
 <kun-editor></kun-editor>
-<kun-workbench></kun-workbench>
+@if (true) {
+  <kun-workbench
+    #workbench
+    (resizeEvent)="changeWorkbenchHeight($event)"
+  ></kun-workbench>
+}
 @if (isNotificationShown) {
   <kun-notifications
     (hideNotificationsEvent)="toggleNotifications()"

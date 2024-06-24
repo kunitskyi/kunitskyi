@@ -5,6 +5,8 @@
 :host {
   --side-panel-width: #{sizes.$magic-constant * 4};
   --side-panel-computed-width: var(--side-panel-width);
+  --workbench-height: #{sizes.$magic-constant * 4};
+  --workbench-computed-height: var(--workbench-height);
 
   display: grid;
   height: 100%;
@@ -16,7 +18,9 @@
       100% -
         (min(var(--side-panel-computed-width), 70%) + sizes.$magic-constant)
     );
-  grid-template-rows: 2fr 1fr 27px;
+  grid-template-rows:auto max(var(
+      --workbench-computed-height
+    ), 0px) 27px;
   grid-template-areas:
     "sidebar side-panel editor"
     "sidebar side-panel workbench"

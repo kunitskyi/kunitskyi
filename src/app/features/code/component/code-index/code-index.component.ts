@@ -33,10 +33,13 @@ import { Point } from '@app/types';
 export class CodeIndexComponent implements AfterViewInit {
   @ViewChild('sidePanel', { read: ElementRef })
   private sidePanelRef!: ElementRef;
+  @ViewChild('workbench', { read: ElementRef })
+  private workbenchRef!: ElementRef;
 
   protected isNotificationShown = false;
   protected isSidePanelShown = true;
   protected minSidePanelWidth!: number;
+  protected minWorkbenchHeight!: number;
   protected lastSidePanelSuccessfullyComputedWidth = `var(--side-panel-width)`;
 
   constructor(
@@ -48,6 +51,11 @@ export class CodeIndexComponent implements AfterViewInit {
     this.minSidePanelWidth = parseInt(
       getComputedStyle(this.elementRef.nativeElement).getPropertyValue(
         '--side-panel-width',
+      ),
+    );
+    this.minWorkbenchHeight = parseInt(
+      getComputedStyle(this.elementRef.nativeElement).getPropertyValue(
+        '--workbench-height',
       ),
     );
   }
@@ -64,7 +72,7 @@ export class CodeIndexComponent implements AfterViewInit {
         width > this.minSidePanelWidth
           ? `${width}px`
           : `${this.minSidePanelWidth}px`;
-      // if width less then min then set min
+      // if width less then min then set kmin
       this.showSidePanel(true);
     } else this.showSidePanel(false);
   }
@@ -84,6 +92,20 @@ export class CodeIndexComponent implements AfterViewInit {
       this.elementRef.nativeElement,
       '--side-panel-computed-width',
       `${value}`,
+      RendererStyleFlags2.DashCase,
+    );
+  }
+
+  protected changeWorkbenchHeight(point: Point) {
+    const height =
+      this.workbenchRef.nativeElement.offsetHeight +
+      this.workbenchRef.nativeElement.offsetTop -
+      point.y;
+
+    this.renderer.setStyle(
+      this.elementRef.nativeElement,
+      '--workbench-computed-height',
+      `${height}px`,
       RendererStyleFlags2.DashCase,
     );
   }
