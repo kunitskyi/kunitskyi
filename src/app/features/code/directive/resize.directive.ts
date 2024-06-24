@@ -6,6 +6,8 @@ import { Point } from '@app/types';
   selector: '[kunResize]',
   host: {
     '[class.Active]': 'isResizeActive',
+    '(document:mouseup)': 'disableResizeTrigger()',
+    '(document:touchend)': 'disableResizeTrigger()',
     '(mousedown)': 'resizeTriggered()',
     '(touchstart)': 'resizeTriggered()',
   },
@@ -49,16 +51,6 @@ export class ResizeDirective implements OnDestroy {
         }),
       )
       .subscribe();
-
-    ['mouseup', 'touchend'].forEach((event_name) => {
-      document.addEventListener(
-        event_name,
-        () => {
-          this.disableResizeTrigger();
-        },
-        { once: true },
-      );
-    });
   }
 
   public ngOnDestroy(): void {
