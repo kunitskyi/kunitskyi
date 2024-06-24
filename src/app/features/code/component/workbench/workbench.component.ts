@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ResizeDirective } from '../../directive';
 
 @Component({
@@ -8,4 +8,6 @@ import { ResizeDirective } from '../../directive';
   templateUrl: './workbench.component.html',
   styleUrl: './workbench.component.scss',
 })
-export class WorkbenchComponent {}
+export class WorkbenchComponent {
+  @Input() show = true;
+}

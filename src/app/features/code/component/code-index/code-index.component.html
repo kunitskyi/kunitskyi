@@ -2,24 +2,22 @@
   [isSidePanelShown]="isSidePanelShown"
   (showSidePanelEvent)="showSidePanel($event)"
 ></kun-sidebar>
-@if (isSidePanelShown) {
-  <kun-side-panel
-    #sidePanel
-    kunResize
-    resizeType="right"
-    (selectstart)="(false)"
-    (resizeEvent)="changeSidePanelWidth($event)"
-  ></kun-side-panel>
-}
+<kun-side-panel
+  #sidePanel
+  [show]="isSidePanelShown"
+  kunResize
+  resizeType="right"
+  (resizeEvent)="changeSidePanelWidth($event)"
+  (selectstart)="(false)"
+></kun-side-panel>
 <kun-editor></kun-editor>
-@if (true) {
-  <kun-workbench
-    #workbench
-    kunResize
-    resizeType="top"
-    (resizeEvent)="changeWorkbenchHeight($event)"
-  ></kun-workbench>
-}
+<kun-workbench
+  #workbench
+  [show]="true"
+  kunResize
+  resizeType="top"
+  (resizeEvent)="changeWorkbenchHeight($event)"
+></kun-workbench>
 @if (isNotificationShown) {
   <kun-notifications
     (hideNotificationsEvent)="toggleNotifications()"

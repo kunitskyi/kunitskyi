@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { AccordionComponent, FilesComponent } from './index';
 
@@ -9,4 +9,6 @@ import { AccordionComponent, FilesComponent } from './index';
   templateUrl: './side-panel.component.html',
   styleUrl: './side-panel.component.scss',
 })
-export class SidePanelComponent {}
+export class SidePanelComponent {
+  @Input() show = true;
+}

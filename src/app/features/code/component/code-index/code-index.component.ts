@@ -68,34 +68,33 @@ export class CodeIndexComponent implements AfterViewInit {
 
   protected changeSidePanelWidth(point: Point) {
     const width = point.x - this.sidePanelRef.nativeElement.offsetLeft;
-    if (width >= this.minSidePanelWidth / 2) {
-      // don't hide SidePanel if user cross less then half min-width
+    const breakpoint = this.minSidePanelWidth / 2;
+    if (width >= breakpoint) {
       this.lastSidePanelSuccessfullyComputedWidth =
         width > this.minSidePanelWidth
           ? `${width}px`
           : `${this.minSidePanelWidth}px`;
-      // if width less then min then set kmin
       this.showSidePanel(true);
     } else this.showSidePanel(false);
   }
 
   protected showSidePanel(e: boolean) {
+    const setSidePanelWidth = (value: string) => {
+      this.renderer.setStyle(
+        this.elementRef.nativeElement,
+        '--side-panel-computed-width',
+        `${value}`,
+        RendererStyleFlags2.DashCase,
+      );
+    };
+
     if (e) {
       this.isSidePanelShown = true;
-      this.setSidePanelWidth(`${this.lastSidePanelSuccessfullyComputedWidth}`);
+      setSidePanelWidth(`${this.lastSidePanelSuccessfullyComputedWidth}`);
     } else {
       this.isSidePanelShown = false;
-      this.setSidePanelWidth(`0px`);
+      setSidePanelWidth(`0px`);
     }
-  }
-
-  private setSidePanelWidth(value: string) {
-    this.renderer.setStyle(
-      this.elementRef.nativeElement,
-      '--side-panel-computed-width',
-      `${value}`,
-      RendererStyleFlags2.DashCase,
-    );
   }
 
   protected changeWorkbenchHeight(point: Point) {
