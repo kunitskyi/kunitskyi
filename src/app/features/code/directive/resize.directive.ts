@@ -16,8 +16,6 @@ import { Point } from '@app/types';
   host: {
     '(document:mouseup)': 'disableResizeTrigger()',
     '(document:touchend)': 'disableResizeTrigger()',
-    '(mousedown)': 'resizeTriggered()',
-    '(touchstart)': 'resizeTriggered()',
   },
   standalone: true,
 })
@@ -32,8 +30,22 @@ export class ResizeDirective implements OnInit, OnDestroy {
   private positionSubscription!: Subscription;
   private triggerRef!: Element;
 
-  private isActive = false;
-  private isHovered = false;
+  private _isActive = false;
+  private get isActive() {
+    return this._isActive;
+  }
+  private set isActive(value: boolean) {
+    this._isActive = value;
+    this.updateBackground();
+  }
+  private _isHovered = false;
+  private get isHovered() {
+    return this._isHovered;
+  }
+  private set isHovered(value: boolean) {
+    this._isHovered = value;
+    this.updateBackground();
+  }
 
   constructor(
     private renderer: Renderer2,
@@ -42,6 +54,13 @@ export class ResizeDirective implements OnInit, OnDestroy {
     this.triggerRef = renderer.createElement('div');
 
     renderer.appendChild(elementRef.nativeElement, this.triggerRef);
+
+    renderer.listen(this.triggerRef, 'mousedown', () => {
+      this.resizeTriggered();
+    });
+    renderer.listen(this.triggerRef, 'touchstart', () => {
+      this.resizeTriggered();
+    });
     renderer.listen(this.triggerRef, 'mouseover', () => {
       this.hover(true);
     });
@@ -55,7 +74,6 @@ export class ResizeDirective implements OnInit, OnDestroy {
       'z-index': '95',
       position: 'absolute',
       transition: 'background-color 0.25s',
-      // 'background-color': 'transparent',
     };
     triggerStyle[this.resizeType] = 'calc(-1 * (var(--g-resize-size) / 2))';
 
@@ -88,7 +106,6 @@ export class ResizeDirective implements OnInit, OnDestroy {
     this.disableResizeTrigger();
 
     this.isActive = true;
-    this.updateBackground();
 
     this.positionSubscription = merge(
       fromEvent<MouseEvent>(document.body, 'mousemove'),
@@ -115,13 +132,11 @@ export class ResizeDirective implements OnInit, OnDestroy {
 
   private disableResizeTrigger(): void {
     this.isActive = false;
-    this.updateBackground();
     this.positionSubscription?.unsubscribe();
   }
 
   private hover(value: boolean): void {
     this.isHovered = value;
-    this.updateBackground();
   }
 
   private updateBackground(): void {
