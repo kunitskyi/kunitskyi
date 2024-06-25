@@ -57,3 +57,5 @@ jobs:
           destination-repository-name: 'kunitskyi.github.io'
           user-email: the.kunitskyi@gmail.com
           target-branch: angular
+          target-directory: ./browser
+          commit-message: $ORIGIN_REPOSITORY_URL@commit
