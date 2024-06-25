@@ -50,10 +50,9 @@ jobs:
       - name: Deploy Build on GitHub Pages
         uses: cpina/github-action-push-to-another-repository@main
         env:
-          SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source-directory: ${{ github.workspace }}/dist/kunitskyi/browser
+          source-directory: ./dist/kunitskyi/browser
           destination-github-username: 'kunitskyi'
           destination-repository-name: 'kunitskyi.github.io'
           user-email: the.kunitskyi@gmail.com
