@@ -23,6 +23,7 @@
 
     &.Code {
       min-width: sizes.$code-min-width;
+      min-height: sizes.$code-min-height;
       overflow: hidden;
     }
   }

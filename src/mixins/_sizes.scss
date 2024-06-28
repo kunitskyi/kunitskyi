@@ -16,6 +16,7 @@ $text-size: 1rem;
 $text-size-s: $text-size * 0.7;
 
 $code-min-width: 390px;
+$code-min-height: $magic-constant * 5;
 
 $code: (
   tabs-height: $magic-constant,

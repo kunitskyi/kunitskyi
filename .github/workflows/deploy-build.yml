@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         node-version: [20]
-    
+
     steps:
       - name: Checkout the source code
         uses: actions/checkout@v3
@@ -20,7 +20,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+          cache: "npm"
           cache-dependency-path: package-lock.json
 
       - name: Cache node modules
@@ -54,8 +54,8 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
           source-directory: ./dist/kunitskyi/browser
-          destination-github-username: 'kunitskyi'
-          destination-repository-name: 'kunitskyi.github.io'
+          destination-github-username: "kunitskyi"
+          destination-repository-name: "kunitskyi.github.io"
           user-email: the.kunitskyi@gmail.com
           target-branch: angular
           target-directory: ./docs

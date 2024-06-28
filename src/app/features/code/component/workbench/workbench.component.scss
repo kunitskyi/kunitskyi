@@ -9,6 +9,5 @@
   width: 100%;
   height: 100%;
   background-color: map.get(palette.$code, "foreground");
-  border-top: sizes.$border-s solid map.get(palette.$code, "accent");
   cursor: default;
 }

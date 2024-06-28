@@ -4,6 +4,7 @@
 @use "sizes";
 
 :root {
+  --g-constant: #{sizes.$magic-constant};
   --g-resize-size: #{sizes.$resize};
   --g-code-accent: #{map.get(palette.$code, "accent")};
 
