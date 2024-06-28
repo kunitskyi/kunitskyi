@@ -1,3 +1,4 @@
+@use "sass:math";
 @use "sass:map";
 @use "palette";
 @use "sizes";
@@ -5,8 +6,21 @@
 :host {
   --side-panel-width: #{sizes.$magic-constant * 4};
   --side-panel-computed-width: var(--side-panel-width);
-  --workbench-height: #{sizes.$magic-constant * 4};
+  --workbench-height: #{sizes.$magic-constant * 3};
   --workbench-computed-height: var(--workbench-height);
+
+  --enable-editor-row: auto
+    min(
+      var(--workbench-computed-height),
+      calc(
+        100% - #{sizes.$magic-constant * 3} - #{math.div(
+            sizes.$magic-constant,
+            2
+          )}
+      )
+    );
+  --disable-editor-row: 0 auto;
+  --two-rows: var(--enable-editor-row);
 
   display: grid;
   height: 100%;
@@ -14,15 +28,9 @@
   gap: 0px;
   grid-template-columns:
     sizes.$magic-constant
-    min(var(--side-panel-computed-width), 70%)
-    calc(
-      100% -
-        (min(var(--side-panel-computed-width), 70%) + sizes.$magic-constant)
-    );
-  grid-template-rows:
-    auto
-    max(var(--workbench-computed-height), 0px)
-    27px;
+    min(var(--side-panel-computed-width), calc(70% - #{sizes.$magic-constant}))
+    auto;
+  grid-template-rows: var(--two-rows) math.div(sizes.$magic-constant, 2);
   grid-template-areas:
     "sidebar side-panel editor"
     "sidebar side-panel workbench"
@@ -44,6 +52,10 @@
 
   kun-workbench {
     grid-area: workbench;
+
+    &.ActiveBorder {
+      border-top: sizes.$border-s solid map.get(palette.$code, "accent");
+    }
   }
 
   kun-state-bar {

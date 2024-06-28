@@ -38,11 +38,36 @@ export class CodeIndexComponent implements AfterViewInit {
   @ViewChild('workbench', { read: ElementRef })
   private workbenchRef!: ElementRef;
 
-  protected isNotificationShown = false;
-  protected isSidePanelShown = true;
-  protected minSidePanelWidth!: number;
-  protected minWorkbenchHeight!: number;
-  protected lastSidePanelSuccessfullyComputedWidth = `var(--side-panel-width)`;
+  protected isShown = {
+    notifications: false,
+    sidePanel: true,
+    editor: true,
+    workbench: true,
+  };
+
+  private viewSizes = {
+    sidePanel: {
+      width: {
+        current: 0,
+        min: 0,
+        breakpoint: 0,
+      },
+    },
+    workbench: {
+      height: {
+        current: 0,
+        min: 0,
+        breakpoint: 0,
+      },
+    },
+    editor: {
+      height: {
+        breakpoint: 0,
+      },
+    },
+  };
+
+  private triggerConstant = 0;
 
   constructor(
     private renderer: Renderer2,
@@ -50,63 +75,98 @@ export class CodeIndexComponent implements AfterViewInit {
   ) {}
 
   ngAfterViewInit(): void {
-    this.minSidePanelWidth = parseInt(
+    this.triggerConstant = parseInt(
+      getComputedStyle(this.elementRef.nativeElement).getPropertyValue(
+        '--g-constant',
+      ),
+    );
+
+    this.viewSizes.sidePanel.width.min = parseInt(
       getComputedStyle(this.elementRef.nativeElement).getPropertyValue(
         '--side-panel-width',
       ),
     );
-    this.minWorkbenchHeight = parseInt(
+
+    this.viewSizes.workbench.height.min = parseInt(
       getComputedStyle(this.elementRef.nativeElement).getPropertyValue(
         '--workbench-height',
       ),
     );
+
+    this.viewSizes.sidePanel.width.breakpoint =
+      this.viewSizes.sidePanel.width.min - this.triggerConstant;
+
+    this.viewSizes.workbench.height.breakpoint =
+      this.viewSizes.workbench.height.min - this.triggerConstant;
+
+    this.viewSizes.editor.height.breakpoint = this.triggerConstant;
   }
 
   protected toggleNotifications() {
-    this.isNotificationShown = !this.isNotificationShown;
+    this.isShown.notifications = !this.isShown.notifications;
   }
 
   protected changeSidePanelWidth(point: Point) {
-    const width = point.x - this.sidePanelRef.nativeElement.offsetLeft;
-    const breakpoint = this.minSidePanelWidth / 2;
-    if (width >= breakpoint) {
-      this.lastSidePanelSuccessfullyComputedWidth =
-        width > this.minSidePanelWidth
-          ? `${width}px`
-          : `${this.minSidePanelWidth}px`;
-      this.showSidePanel(true);
-    } else this.showSidePanel(false);
-  }
+    this.viewSizes.sidePanel.width.current =
+      point.x - this.sidePanelRef.nativeElement.offsetLeft;
+    const width = this.viewSizes.sidePanel.width.current;
 
-  protected showSidePanel(e: boolean) {
-    const setSidePanelWidth = (value: string) => {
-      this.renderer.setStyle(
-        this.elementRef.nativeElement,
-        '--side-panel-computed-width',
-        `${value}`,
-        RendererStyleFlags2.DashCase,
-      );
-    };
-
-    if (e) {
-      this.isSidePanelShown = true;
-      setSidePanelWidth(`${this.lastSidePanelSuccessfullyComputedWidth}`);
-    } else {
-      this.isSidePanelShown = false;
-      setSidePanelWidth(`0px`);
-    }
+    this.toggleSidePanel(width >= this.viewSizes.sidePanel.width.breakpoint);
   }
 
   protected changeWorkbenchHeight(point: Point) {
-    const height =
+    this.viewSizes.workbench.height.current =
       this.workbenchRef.nativeElement.offsetHeight +
       this.workbenchRef.nativeElement.offsetTop -
       point.y;
+    const height = this.viewSizes.workbench.height.current;
+
+    this.toggleWorkbench(height >= this.viewSizes.workbench.height.breakpoint);
+
+    this.toggleEditor(this.viewSizes.editor.height.breakpoint < point.y);
+  }
+
+  protected toggleSidePanel(value: boolean) {
+    this.isShown.sidePanel = value;
+
+    const width =
+      this.viewSizes.sidePanel.width.current >=
+      this.viewSizes.sidePanel.width.min
+        ? this.viewSizes.sidePanel.width.current
+        : this.viewSizes.sidePanel.width.min;
+
+    this.renderer.setStyle(
+      this.elementRef.nativeElement,
+      '--side-panel-computed-width',
+      `${this.isShown.sidePanel ? width : 0}px`,
+      RendererStyleFlags2.DashCase,
+    );
+  }
+
+  protected toggleWorkbench(value: boolean) {
+    this.isShown.workbench = value;
+
+    const height =
+      this.viewSizes.workbench.height.current >=
+      this.viewSizes.workbench.height.min
+        ? this.viewSizes.workbench.height.current
+        : this.viewSizes.workbench.height.min;
 
     this.renderer.setStyle(
       this.elementRef.nativeElement,
       '--workbench-computed-height',
-      `${height}px`,
+      `${this.isShown.workbench ? height : 0}px`,
+      RendererStyleFlags2.DashCase,
+    );
+  }
+
+  private toggleEditor(value: boolean) {
+    this.isShown.editor = value;
+
+    this.renderer.setStyle(
+      this.elementRef.nativeElement,
+      '--two-rows',
+      `${this.isShown.editor ? 'var(--enable-editor-row)' : 'var(--disable-editor-row)'}`,
       RendererStyleFlags2.DashCase,
     );
   }
