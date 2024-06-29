@@ -1,7 +1,7 @@
 @if (isViewChangeTriggered || view === FeatureView.Page) {
   <kun-dog-ear
     [class.Active]="view === FeatureView.Page"
-    [featureView]="FeatureView.Page"
+    [view]="FeatureView.Page"
     [isViewChangeTriggered]="isViewChangeTriggered"
     (startChangeViewEvent)="startChangeView($event)"
     (changeViewEvent)="changeView($event)"
@@ -13,7 +13,7 @@
 @if (isViewChangeTriggered || view === FeatureView.Code) {
   <kun-dog-ear
     [class.Active]="view === FeatureView.Code"
-    [featureView]="FeatureView.Code"
+    [view]="FeatureView.Code"
     [isViewChangeTriggered]="isViewChangeTriggered"
     (startChangeViewEvent)="startChangeView($event)"
     (changeViewEvent)="changeView($event)"

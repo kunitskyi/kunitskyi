@@ -4,7 +4,7 @@
 ></kun-sidebar>
 <kun-side-panel
   #sidePanel
-  [show]="isShown.sidePanel"
+  [isShown]="isShown.sidePanel"
   kunResize
   resizeType="right"
   (resizeEvent)="changeSidePanelWidth($event)"
@@ -16,7 +16,7 @@
 <kun-workbench
   [class.ActiveBorder]="isShown.workbench && isShown.editor"
   #workbench
-  [show]="isShown.workbench"
+  [isShown]="isShown.workbench"
   kunResize
   resizeType="top"
   (resizeEvent)="changeWorkbenchHeight($event)"

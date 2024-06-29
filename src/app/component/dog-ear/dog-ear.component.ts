@@ -23,26 +23,25 @@ import { Subject, Subscription } from 'rxjs';
   styleUrl: './dog-ear.component.scss',
 })
 export class DogEarComponent implements AfterViewInit, OnDestroy {
-  @HostBinding('class.StartEndAnimation') get isStartEndAnimation(): boolean {
-    return !this.isViewChangeTriggered;
-  }
-  @HostBinding('class.Page') get isPageView(): boolean {
-    return this.featureView === FeatureView.Page;
-  }
-  @HostBinding('class.Code') get isCodeView(): boolean {
-    return this.featureView === FeatureView.Code;
+  @HostBinding('class') private get getClasses() {
+    return {
+      StartEndAnimation: !this.isViewChangeTriggered,
+      Page: this.isPageView,
+      Code: this.isCodeView,
+    };
   }
 
-  @Output() private startChangeViewEvent = new EventEmitter<boolean>();
+  @Output()
+  private startChangeViewEvent = new EventEmitter<boolean>();
   @Output() private changeViewEvent = new EventEmitter<FeatureView>();
+
+  @Input({ required: true }) public view!: FeatureView;
+  @Input({ required: true }) public isViewChangeTriggered = false;
 
   @ViewChild('earButton') private earButton!: ElementRef;
   @ViewChild('earBackground') private earBackgroundRef!: ElementRef;
   @ViewChild('earTip') private earTipRef!: ElementRef;
   @ViewChild('content') private contentRef!: ElementRef;
-
-  @Input({ required: true }) public featureView!: FeatureView;
-  @Input({ required: true }) public isViewChangeTriggered = false;
 
   private iconSize!: number;
   private earDivisionLine: SimpleLine = {
@@ -61,15 +60,22 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
   };
   protected hoverObservable!: Subject<MouseEvent>;
   private hoverSubscription!: Subscription;
+
   protected get FeatureView() {
     return FeatureView;
+  }
+  protected get isPageView() {
+    return this.view === FeatureView.Page;
+  }
+  protected get isCodeView() {
+    return this.view === FeatureView.Code;
   }
 
   constructor(
     private renderer: Renderer2,
     private dogEarRef: ElementRef,
   ) {
-    this.iconSize = Number(
+    this.iconSize = parseInt(
       getComputedStyle(dogEarRef.nativeElement).getPropertyValue('--icon-size'),
     );
     this.earDivisionLine.first.x = this.iconSize;
@@ -81,12 +87,12 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     this.hoverSubscription = this.hoverObservable.subscribe((e: MouseEvent) => {
       this.relativeMousePosition.x =
-        this.featureView === FeatureView.Page
+        this.view === FeatureView.Page
           ? e.layerX
           : this.earButton.nativeElement.offsetHeight - e.layerX; // invert X pos for FeatureView.Code
       this.relativeMousePosition.y = e.layerY;
       this.earDivisionLine.first.x =
-        this.featureView === FeatureView.Page
+        this.view === FeatureView.Page
           ? e.layerX
           : this.relativeMousePosition.x; // use invert X pos for FeatureView.Code
       this.earDivisionLine.last.y = e.layerY;
@@ -255,9 +261,7 @@ export class DogEarComponent implements AfterViewInit, OnDestroy {
 
     setTimeout(() => {
       this.changeViewEvent.emit(
-        this.featureView !== FeatureView.Page
-          ? FeatureView.Page
-          : FeatureView.Code,
+        this.view !== FeatureView.Page ? FeatureView.Page : FeatureView.Code,
       );
     }, timeInMS);
   }

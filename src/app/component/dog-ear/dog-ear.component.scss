@@ -4,7 +4,7 @@
 @use "sizes";
 
 :host {
-  --icon-size: #{sizes.$magic-constant};
+  --icon-size: var(--g-constant);
   --full-size-component: calc(var(--icon-size) * 2);
   --earTip-start-path: polygon(
     var(--icon-size) 0,

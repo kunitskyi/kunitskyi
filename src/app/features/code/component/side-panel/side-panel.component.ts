@@ -10,5 +10,5 @@ import { AccordionComponent, FilesComponent } from './index';
   styleUrl: './side-panel.component.scss',
 })
 export class SidePanelComponent {
-  @Input() show = true;
+  @Input() isShown = true;
 }

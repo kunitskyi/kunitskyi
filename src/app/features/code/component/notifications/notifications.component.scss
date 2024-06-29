@@ -10,7 +10,7 @@
   display: block;
   border-radius: sizes.$border-radius-s;
   box-sizing: border-box;
-  box-shadow: 0px 0px 20px 10px map.get(palette.$code, "background");
+  box-shadow: sizes.$shadow-m map.get(palette.$code, "background");
   width: sizes.$magic-constant * 5;
   color: map.get(palette.$code, "active");
   background-color: map.get(palette.$code, "background");
