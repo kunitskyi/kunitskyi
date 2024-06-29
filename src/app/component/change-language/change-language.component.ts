@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input } from '@angular/core';
+import { Component, HostBinding, HostListener, Input } from '@angular/core';
 import { LanguageHelper } from '@app/helper';
 import { FeatureView } from '@app/types';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
@@ -11,15 +11,16 @@ import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
   styleUrl: './change-language.component.scss',
 })
 export class ChangeLanguageComponent {
-  @HostBinding('class.Page') get isPageView(): boolean {
-    return this.featureView === FeatureView.Page;
+  @HostListener('selectstart') onSelectstart = false;
+  @HostBinding('class') private get getClasses() {
+    return {
+      Page: this.view === FeatureView.Page,
+      Code: this.view === FeatureView.Code,
+    };
   }
 
-  @HostBinding('class.Code') get isCodeView(): boolean {
-    return this.featureView === FeatureView.Code;
-  }
+  @Input({ required: true }) view!: FeatureView;
 
-  @Input({ required: true }) featureView!: FeatureView;
   protected get FeatureView() {
     return FeatureView;
   }

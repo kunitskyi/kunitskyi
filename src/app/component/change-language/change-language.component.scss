@@ -15,10 +15,11 @@
     --text-hover-color: #{map.get(palette.$code, "active")};
   }
 
-  &.View {
-    --background-color: #{map.get(palette.$code, "sidebar-bg")};
-    --text-color: #{map.get(palette.$code, "inactive")};
-    --text-hover-color: #{map.get(palette.$code, "active")};
+  &.Page {
+    --background-color: #{map.get(palette.$page, "accent")};
+    --background-hover-color: #{map.get(palette.$page, "accent")};
+    --text-color: #{map.get(palette.$page, "background")};
+    --text-hover-color: #{map.get(palette.$page, "primary")};
   }
 
   button {
