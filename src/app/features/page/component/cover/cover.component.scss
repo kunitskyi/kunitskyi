@@ -6,4 +6,13 @@
   display: block;
   min-height: 100vh;
   background-color: map.get(palette.$page, "primary");
+
+  kun-change-language {
+    width: var(--g-constant);
+    height: var(--g-constant);
+    border-radius: sizes.$border-radius-s;
+    margin: sizes.$margin-m;
+    float: right;
+    overflow: hidden;
+  }
 }
