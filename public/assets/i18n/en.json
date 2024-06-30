@@ -47,7 +47,12 @@
       }
     },
     "linkHub": {
-      "header": "Link Hub"
+      "header": "Link Hub",
+      "link": {
+        "alt": {
+          "img": "image"
+        }
+      }
     },
     "emailMe": "E-mail Me"
   }
