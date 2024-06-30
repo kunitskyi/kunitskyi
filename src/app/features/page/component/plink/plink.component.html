@@ -1,1 +1,9 @@
-<p>plink works!</p>
+<a href="{{ linkData.href }}">
+  <img
+    src="{{ linkData.icon }}"
+    alt="{{ linkData.text }} {{ 'page.linkHub.link.alt.img' | transloco }}"
+  />
+  <span>
+    {{ linkData.text }}
+  </span>
+</a>
