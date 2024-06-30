@@ -7,6 +7,7 @@
   box-sizing: border-box;
   width: 100%;
   height: 100%;
+  user-select: none;
 
   &.Code {
     --background-color: #{map.get(palette.$code, "sidebar-bg")};
