@@ -7,9 +7,9 @@
   --cover-min-size: max(100vh, calc((6 * var(--last-name-font-size))));
   --last-name-font-size: calc(var(--g-constant) * 2);
   --change-language-size: var(--g-constant);
-  --change-language-margin: #{sizes.$margin-m};
+  --tools-margin: #{sizes.$margin-m};
   --change-language-full-size: calc(
-    var(--change-language-size) + var(--change-language-margin)
+    var(--change-language-size) + var(--tools-margin)
   );
 
   display: block;
@@ -18,15 +18,50 @@
   user-select: none;
   overflow: hidden;
 
-  kun-change-language {
+  div.Tools {
     position: absolute;
-    top: var(--change-language-margin);
-    right: var(--change-language-margin);
-    width: var(--change-language-size);
+    display: grid;
+    top: var(--tools-margin);
+    right: var(--tools-margin);
     height: var(--change-language-size);
-    border-radius: sizes.$border-radius-s;
-    overflow: hidden;
+    width: sizes.$magic-constant * 3 + sizes.$margin-m * 2;
+    grid-template-areas: "certs terminal language";
+    justify-content: space-between;
     z-index: 85;
+
+    button, kun-change-language {
+      height: 100%;
+      width: var(--change-language-size);
+      border-radius: sizes.$border-radius-s;
+      overflow: hidden;
+    }
+
+    button {
+      padding: 0;
+      border: none;
+      background-color: map.get(palette.$page, "primary");;
+      cursor: pointer;
+
+      svg {
+        width: 100%;
+        height: 100%;
+        fill: map.get(palette.$page, "helper");
+        stroke: map.get(palette.$page, "helper");
+        transition: all .5s;
+
+        rect.Slash {
+          transform-origin: 50px 55px;
+          transform: rotate(-60deg);
+        }
+      }
+
+      &:hover {
+        svg {
+          fill: map.get(palette.$page, "accent");
+          stroke: map.get(palette.$page, "accent");
+        }
+      }
+    }
   }
 
   h1.LastName {
@@ -41,10 +76,12 @@
     transform: rotate(90deg);
     overflow: hidden;
     text-overflow: ellipsis;
+    z-index: 25;
     cursor: default;
   }
 
   div.ContentBlock {
+    position: relative;
     display: grid;
     min-height: calc(var(--cover-min-size) - var(--change-language-full-size));
     padding-top: var(--change-language-full-size);
@@ -53,6 +90,7 @@
     grid-column: 1;
     align-items: center;
     justify-items: center;
+    z-index: 40;
 
     div.Info {
       width: 70%;
@@ -68,10 +106,11 @@
       }
 
       div.Bio {
+        font-size: 1.1rem;
         ul {
           li {
             padding: sizes.$margin-s;
-            color: map.get(palette.$page, "helper");
+            color: map.get(palette.$page, "accent");
 
             span {
               color: map.get(palette.$page, "accent");
@@ -119,5 +158,19 @@
         }
       }
     }
+  }
+
+  div.DecorativeBar {
+    position: absolute;
+    top: 40%;
+    left: -50%;
+    display: block;
+    background-color: map.get(palette.$page, "helper");;
+    height: 20vh;
+    width: 200%;
+    transform-origin: 50% 50%;
+    transform: rotate(10deg);
+    z-index: 20;
+    overflow: hidden;
   }
 }

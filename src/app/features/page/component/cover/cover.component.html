@@ -1,4 +1,42 @@
-<kun-change-language [view]="pageView"></kun-change-language>
+<div class="Tools">
+  <button>
+    <svg class="Certificate" viewBox="0 0 100 100">
+      <rect
+        class="Border"
+        rx="5"
+        stroke-width="5"
+        x="10"
+        y="20"
+        height="60"
+        width="80"
+        fill="none"
+      />
+      <g class="Text">
+        <rect rx="5" x="30" y="35" height="5" width="40" />
+        <rect rx="5" x="20" y="50" height="5" width="20" />
+        <rect rx="5" x="50" y="50" height="5" width="15" />
+      </g>
+      <circle r="10" cx="75" cy="65" />
+    </svg>
+  </button>
+  <button>
+    <svg class="Terminal" viewBox="0 0 100 100">
+      <rect
+        class="Border"
+        rx="5"
+        stroke-width="5"
+        x="10"
+        y="20"
+        height="60"
+        width="80"
+        fill="none"
+      />
+      <rect class="Top" x="10" y="20" height="10" width="80" />
+      <rect class="Slash" rx="5" x="30" y="50" height="5" width="40" />
+    </svg>
+  </button>
+  <kun-change-language [view]="pageView"></kun-change-language>
+</div>
 <h1 class="LastName">{{ "page.cover.lastName" | transloco }}</h1>
 <div class="ContentBlock">
   <div class="Info">
@@ -34,3 +72,4 @@
     </div>
   </div>
 </div>
+<div class="DecorativeBar"></div>
