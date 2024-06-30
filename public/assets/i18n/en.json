@@ -45,6 +45,10 @@
         "text": "I am just a guy who likes to code and create interesting things. I have a degree in CS and hope it will help me through the road of life.",
         "signature": "- Kunitskyi Vladyslav"
       }
-    }
+    },
+    "linkHub": {
+      "header": "Link Hub"
+    },
+    "emailMe": "E-mail Me"
   }
 }

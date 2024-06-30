@@ -6,5 +6,34 @@
   display: block;
   height: 100%;
   width: 100%;
+  padding-bottom: 1px;
   background-color: map.get(palette.$page, "background");
+  user-select: none;
+
+  h2 {
+    margin: sizes.$margin-m;
+    text-align: center;
+    font-size: 3rem;
+    color: map.get(palette.$page, "accent");
+  }
+
+  button#EmailMe {
+    display: block;
+    margin: sizes.$margin-m auto;
+    border: 0;
+    border-radius: sizes.$magic-constant;
+    height: sizes.$magic-constant * 2;
+    width: 70%;
+    max-width: sizes.$magic-constant * 10;
+    font-size: 2rem;
+    font-weight: balder;
+    color: map.get(palette.$page, "primary");
+    background-color: map.get(palette.$page, "accent");
+    transition: all 0.5s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: map.get(palette.$page, "helper");
+    }
+  }
 }

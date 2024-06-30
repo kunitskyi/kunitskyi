@@ -29,7 +29,8 @@
     justify-content: space-between;
     z-index: 85;
 
-    button, kun-change-language {
+    button,
+    kun-change-language {
       height: 100%;
       width: var(--change-language-size);
       border-radius: sizes.$border-radius-s;
@@ -39,7 +40,7 @@
     button {
       padding: 0;
       border: none;
-      background-color: map.get(palette.$page, "primary");;
+      background-color: map.get(palette.$page, "primary");
       cursor: pointer;
 
       svg {
@@ -47,7 +48,7 @@
         height: 100%;
         fill: map.get(palette.$page, "helper");
         stroke: map.get(palette.$page, "helper");
-        transition: all .5s;
+        transition: all 0.5s;
 
         rect.Slash {
           transform-origin: 50px 55px;
@@ -165,7 +166,7 @@
     top: 40%;
     left: -50%;
     display: block;
-    background-color: map.get(palette.$page, "helper");;
+    background-color: map.get(palette.$page, "helper");
     height: 20vh;
     width: 200%;
     transform-origin: 50% 50%;
