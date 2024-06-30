@@ -1,1 +1,36 @@
 <kun-change-language [view]="pageView"></kun-change-language>
+<h1 class="LastName">{{ "page.cover.lastName" | transloco }}</h1>
+<div class="ContentBlock">
+  <div class="Info">
+    <h2>// {{ "page.cover.firstName" | transloco }}</h2>
+    <div class="Bio">
+      <ul>
+        <li>
+          <span class="PointDescription">
+            {{ "page.cover.bio.sex.description" | transloco }}</span
+          >
+        </li>
+        <li>
+          <span class="PointDescription">
+            ≈{{ age }} {{ "page.cover.bio.age.description" | transloco }}</span
+          >
+        </li>
+        <li>
+          <span class="PointDescription">
+            {{ "page.cover.bio.location.description" | transloco }}</span
+          >
+        </li>
+        <li>
+          <span class="PointDescription">
+            {{ "page.cover.bio.languages.description" | transloco }}</span
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="Message">
+      <h3 class="Welcome">{{ "page.cover.message.welcome" | transloco }}</h3>
+      <p class="Text">{{ "page.cover.message.text" | transloco }}</p>
+      <p class="Signature">{{ "page.cover.message.signature" | transloco }}</p>
+    </div>
+  </div>
+</div>

@@ -1,18 +1,123 @@
+@use "sass:math";
 @use "sass:map";
 @use "palette";
 @use "sizes";
 
 :host {
+  --cover-min-size: max(100vh, calc((6 * var(--last-name-font-size))));
+  --last-name-font-size: calc(var(--g-constant) * 2);
+  --change-language-size: var(--g-constant);
+  --change-language-margin: #{sizes.$margin-m};
+  --change-language-full-size: calc(
+    var(--change-language-size) + var(--change-language-margin)
+  );
+
   display: block;
-  min-height: 100vh;
+  min-height: var(--cover-min-size);
   background-color: map.get(palette.$page, "primary");
+  user-select: none;
+  overflow: hidden;
 
   kun-change-language {
-    width: var(--g-constant);
-    height: var(--g-constant);
+    position: absolute;
+    top: var(--change-language-margin);
+    right: var(--change-language-margin);
+    width: var(--change-language-size);
+    height: var(--change-language-size);
     border-radius: sizes.$border-radius-s;
-    margin: sizes.$margin-m;
-    float: right;
     overflow: hidden;
+    z-index: 85;
+  }
+
+  h1.LastName {
+    position: absolute;
+    display: inline-block;
+    top: var(--change-language-full-size);
+    line-height: 100%;
+    font-size: var(--last-name-font-size);
+    color: map.get(palette.$page, "accent");
+    transform-origin: calc(var(--last-name-font-size) / 2)
+      calc(var(--last-name-font-size) / 2);
+    transform: rotate(90deg);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: default;
+  }
+
+  div.ContentBlock {
+    display: grid;
+    min-height: calc(var(--cover-min-size) - var(--change-language-full-size));
+    padding-top: var(--change-language-full-size);
+    padding-left: var(--last-name-font-size);
+    grid-row: 1;
+    grid-column: 1;
+    align-items: center;
+    justify-items: center;
+
+    div.Info {
+      width: 70%;
+      max-width: sizes.$magic-constant * 15;
+      border: sizes.$border-m solid map.get(palette.$page, "accent");
+      border-radius: 0 0 sizes.$border-radius-s sizes.$border-radius-s;
+
+      h2 {
+        padding: sizes.$margin-m 0;
+        text-align: center;
+        color: map.get(palette.$page, "accent");
+        border-bottom: sizes.$border-m solid map.get(palette.$page, "accent");
+      }
+
+      div.Bio {
+        ul {
+          li {
+            padding: sizes.$margin-s;
+            color: map.get(palette.$page, "helper");
+
+            span {
+              color: map.get(palette.$page, "accent");
+
+              &.PointName {
+                display: none;
+              }
+              &.PointDescription {
+                font-weight: bolder;
+                font-style: italic;
+              }
+            }
+          }
+        }
+      }
+
+      div.Message {
+        padding: sizes.$margin-m;
+        font-weight: bold;
+        color: map.get(palette.$page, "primary");
+        background-color: map.get(palette.$page, "accent");
+
+        h3.Welcome {
+          margin: sizes.$margin-s;
+          text-align: center;
+        }
+
+        p {
+          margin: sizes.$margin-s;
+
+          &.Text {
+            font-weight: lighter;
+
+            &::before {
+              display: inline-block;
+              content: "";
+              width: math.div(sizes.$magic-constant, 2);
+            }
+          }
+
+          &.Signature {
+            text-align: right;
+            font-style: italic;
+          }
+        }
+      }
+    }
   }
 }
