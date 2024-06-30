@@ -34,7 +34,7 @@ export class PageIndexComponent {
     },
     {
       icon: '/assets/link-icon/telegram_64x64.png',
-      href: 'https://t.me/@Tom_Dragon',
+      href: 'https://t.me/Tom_Dragon',
       text: 'Telegram',
     },
   ];

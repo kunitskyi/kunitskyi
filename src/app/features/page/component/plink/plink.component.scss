@@ -3,6 +3,7 @@
 @use "sizes";
 
 :host {
+    margin: sizes.$margin-m;
     height: sizes.$magic-constant;
     border-radius: sizes.$magic-constant;
     overflow: hidden;
