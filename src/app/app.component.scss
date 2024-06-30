@@ -22,9 +22,15 @@
     }
 
     &.Code {
+      height: 100%;
       min-width: sizes.$code-min-width;
       min-height: sizes.$code-min-height;
       overflow: hidden;
+    }
+
+    &.Page {
+      min-width: sizes.$page-min-width;
+      overflow-x: hidden;
     }
   }
 }

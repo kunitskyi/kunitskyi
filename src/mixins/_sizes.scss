@@ -5,6 +5,7 @@ $resize: 6px;
 
 $border-radius-s: 5px;
 $border-s: 1px;
+$border-m: 5px;
 
 $padding-s: 6px;
 
@@ -19,6 +20,8 @@ $shadow-m: 0px 0px 20px 10px;
 
 $code-min-width: 390px;
 $code-min-height: $magic-constant * 5;
+
+$page-min-width: $magic-constant * 7;
 
 $code: (
   tabs-height: $magic-constant,
