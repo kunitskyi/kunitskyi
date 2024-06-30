@@ -11,6 +11,8 @@ import { TranslocoPipe } from '@jsverse/transloco';
 export class StateBarComponent {
   @Output() private toggleNotificationEvent = new EventEmitter<MouseEvent>();
 
+  protected currentYear = new Date().getFullYear();
+
   protected toggleNotifications(e: MouseEvent) {
     this.toggleNotificationEvent.emit(e);
   }

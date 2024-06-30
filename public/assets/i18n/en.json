@@ -3,18 +3,48 @@
   "author": "Kunitskyi Vladyslav",
 
   "code": {
-    "side-panel": {
+    "sidePanel": {
       "explorer": {
         "header": "EXPLORER",
         "workspace": {
           "name": "WORKSPACE",
-          "title": "KUNITSKYI ({{ code.side-panel.explorer.workspace.name }})"
+          "title": "KUNITSKYI ({{ code.sidePanel.explorer.workspace.name }})"
         }
       }
     },
     "notifications": {
       "header": "NOTIFICATIONS",
       "info": "Remember to drink water everyday!"
+    }
+  },
+
+  "page": {
+    "cover": {
+      "firstName": "Vladyslav",
+      "lastName": "Kunitskyi",
+      "bio": {
+        "sex": {
+          "name": "Sex",
+          "description": "Man (His/Him)"
+        },
+        "age": {
+          "name": "Age",
+          "description": "y.o."
+        },
+        "location": {
+          "name": "Location",
+          "description": "🇺🇦 Ukraine"
+        },
+        "languages": {
+          "name": "Languages",
+          "description": "english 🇬🇧 / 🇺🇦 ukrainian"
+        }
+      },
+      "message": {
+        "welcome": "Welcome everyone!",
+        "text": "I am just a guy who likes to code and create interesting things. I have a degree in CS and hope it will help me through the road of life.",
+        "signature": "- Kunitskyi Vladyslav"
+      }
     }
   }
 }

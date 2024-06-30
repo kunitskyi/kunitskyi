@@ -3,18 +3,48 @@
   "author": "Куніцький Владислав",
 
   "code": {
-    "side-panel": {
+    "sidePanel": {
       "explorer": {
         "header": "ДОСЛІДНИК",
         "workspace": {
           "name": "РОБОЧИЙ ПРОСТІР",
-          "title": "КУНІЦЬКИЙ ({{ code.side-panel.explorer.workspace.name }})"
+          "title": "КУНІЦЬКИЙ ({{ code.sidePanel.explorer.workspace.name }})"
         }
       }
     },
     "notifications": {
       "header": "ПОВІДОМЛЕННЯ",
       "info": "Не забувайте пити воду щодня!"
+    }
+  },
+
+  "page": {
+    "cover": {
+      "firstName": "Владислав",
+      "lastName": "Куніцький",
+      "bio": {
+        "sex": {
+          "name": "Стать",
+          "description": "Чоловік"
+        },
+        "age": {
+          "name": "Вік",
+          "description": "зими пережито"
+        },
+        "location": {
+          "name": "Локація",
+          "description": "🇺🇦 Україна"
+        },
+        "languages": {
+          "name": "Мови",
+          "description": "українська 🇺🇦 / 🇬🇧 англійська"
+        }
+      },
+      "message": {
+        "welcome": "Всіх вітаю!",
+        "text": "Я лише хлопець, який полюбляє кодити та створювати цікаві штуки. Маю освіту в напрямку \"Комп'ютерні Науки\" та надіюсь це допоможе мені в дорозі життя.",
+        "signature": "- Куніцький Владислав"
+      }
     }
   }
 }
