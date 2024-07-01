@@ -1,2 +1,2 @@
 export * from './hub-link.interface';
-export * from './modal.enum';
+export * from './block.enum';
