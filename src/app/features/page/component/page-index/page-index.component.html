@@ -1,10 +1,14 @@
-<kun-cover></kun-cover>
-<h2>{{ "page.linkHub.header" | transloco }}</h2>
-<div class="Links">
-  @for (link of links; track link.href) {
-    <kun-plink [linkData]="link"></kun-plink>
-  }
-</div>
-<button id="EmailMe" (click)="mailMe()">
-  {{ "page.emailMe" | transloco }}
-</button>
+<kun-cover (scrollToEvent)="scrollTo($event)"></kun-cover>
+<kun-certificates #certificates></kun-certificates>
+<kun-terminal #terminal></kun-terminal>
+<footer>
+  <h2>{{ "page.linkHub.header" | transloco }}</h2>
+  <div class="Links">
+    @for (link of links; track link.href) {
+      <kun-plink [linkData]="link"></kun-plink>
+    }
+  </div>
+  <button id="EmailMe" (click)="mailMe()">
+    {{ "page.emailMe" | transloco }}
+  </button>
+</footer>

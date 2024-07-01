@@ -10,37 +10,41 @@
   background-color: map.get(palette.$page, "background");
   user-select: none;
 
-  h2 {
-    margin: sizes.$margin-m;
-    text-align: center;
-    font-size: 3rem;
-    color: map.get(palette.$page, "accent");
-  }
+  footer {
+    border-top: sizes.$border-m solid map.get(palette.$page, "helper");
 
-  div.Links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin: sizes.$magic-constant;
-  }
+    h2 {
+      margin: sizes.$margin-m;
+      text-align: center;
+      font-size: 3rem;
+      color: map.get(palette.$page, "accent");
+    }
 
-  button#EmailMe {
-    display: block;
-    margin: sizes.$margin-m auto;
-    border: 0;
-    padding: 0 sizes.$magic-constant;
-    border-radius: sizes.$magic-constant;
-    height: sizes.$magic-constant;
-    font-size: 2rem;
-    font-style: italic;
-    font-weight: balder;
-    color: map.get(palette.$page, "primary");
-    background-color: map.get(palette.$page, "accent");
-    transition: all 0.5s;
-    cursor: pointer;
+    div.Links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin: sizes.$magic-constant;
+    }
 
-    &:hover {
-      background-color: map.get(palette.$page, "helper");
+    button#EmailMe {
+      display: block;
+      margin: sizes.$margin-m auto;
+      border: 0;
+      padding: 0 sizes.$magic-constant;
+      border-radius: sizes.$magic-constant;
+      height: sizes.$magic-constant;
+      font-size: 2rem;
+      font-style: italic;
+      font-weight: balder;
+      color: map.get(palette.$page, "primary");
+      background-color: map.get(palette.$page, "accent");
+      transition: all 0.5s;
+      cursor: pointer;
+
+      &:hover {
+        background-color: map.get(palette.$page, "helper");
+      }
     }
   }
 }

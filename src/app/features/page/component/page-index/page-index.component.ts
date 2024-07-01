@@ -1,16 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CoverComponent, PlinkComponent } from '@app-page/component';
-import { HubLink } from '@app-page/types';
+import { HubLink, PageBlock } from '@app-page/types';
 import { TranslocoPipe } from '@jsverse/transloco';
+import { CertificatesComponent } from '../certificates/certificates.component';
+import { TerminalComponent } from '@app/component/terminal/terminal.component';
 
 @Component({
   selector: 'kun-page-index',
   standalone: true,
-  imports: [CoverComponent, PlinkComponent, TranslocoPipe],
+  imports: [
+    CoverComponent,
+    CertificatesComponent,
+    TerminalComponent,
+    PlinkComponent,
+    TranslocoPipe,
+  ],
   templateUrl: './page-index.component.html',
   styleUrl: './page-index.component.scss',
 })
 export class PageIndexComponent {
+  @ViewChild('certificates', { read: ElementRef })
+  private certificatesRef!: ElementRef;
+
+  @ViewChild('terminal', { read: ElementRef })
+  private terminalRef!: ElementRef;
+
   protected links: HubLink[] = [
     {
       icon: '/assets/link-icon/github_64x64.webp',
@@ -38,6 +52,20 @@ export class PageIndexComponent {
       text: 'Telegram',
     },
   ];
+
+  protected scrollTo(value: PageBlock) {
+    let element;
+
+    if (value === PageBlock.Certificates) element = this.certificatesRef;
+    else if (value === PageBlock.Terminal) element = this.terminalRef;
+    else throw new Error('Unexpected Argument in scrollTo()');
+
+    element.nativeElement.scrollIntoView({
+      behavior: 'smooth',
+      block: 'end',
+      inline: 'nearest',
+    });
+  }
 
   protected mailMe(): void {
     window.location.href = 'mailto:me@kunitskyi.pp.ua';
