@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output, Renderer2 } from '@angular/core';
-import { ChangeLanguageComponent } from '@app/component';
+import { ChangeLanguageComponent } from '@app/components';
 import { PageBlock } from '@app-page/types';
 import { FeatureView } from '@app/types';
 import { TranslocoPipe } from '@jsverse/transloco';

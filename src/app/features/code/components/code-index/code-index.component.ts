@@ -13,9 +13,9 @@ import {
   SidebarComponent,
   StateBarComponent,
   WorkbenchComponent,
-} from '@app-code/component';
+} from '@app-code/components';
 import { Point } from '@app/types';
-import { ResizeDirective } from '../../directive';
+import { ResizeDirective } from '../../directives';
 
 @Component({
   selector: 'kun-code-index',

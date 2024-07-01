@@ -1,9 +1,9 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { CoverComponent, PlinkComponent } from '@app-page/component';
+import { CoverComponent, PlinkComponent } from '@app-page/components';
 import { HubLink, PageBlock } from '@app-page/types';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { CertificatesComponent } from '../certificates/certificates.component';
-import { TerminalComponent } from '@app/component/terminal/terminal.component';
+import { TerminalComponent } from '@app/components/terminal/terminal.component';
 
 @Component({
   selector: 'kun-page-index',

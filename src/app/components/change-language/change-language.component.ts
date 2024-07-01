@@ -1,5 +1,5 @@
 import { Component, HostBinding, Input } from '@angular/core';
-import { LanguageHelper } from '@app/helper';
+import { LanguageHelper } from '@app/helpers';
 import { FeatureView } from '@app/types';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 

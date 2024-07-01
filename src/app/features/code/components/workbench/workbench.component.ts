@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ResizeDirective } from '@app-code/directive';
+import { ResizeDirective } from '@app/features/code/directives';
 import { WorkbenchTabComponent } from './workbench-tab/workbench-tab.component';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ChangeLanguageComponent } from '@app/component';
+import { ChangeLanguageComponent } from '@app/components';
 import { FeatureView } from '@app/types';
 
 @Component({

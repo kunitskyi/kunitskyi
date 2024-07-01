@@ -2,13 +2,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FeatureView } from '@app/types';
-import { DogEarComponent } from '@app/component';
-import { CodeIndexComponent } from './features/code/component/code-index/code-index.component';
-import { PageIndexComponent } from './features/page/component/page-index/page-index.component';
+import { DogEarComponent } from '@app/components';
+import { CodeIndexComponent } from './features/code/components/code-index/code-index.component';
+import { PageIndexComponent } from './features/page/components/page-index/page-index.component';
 import { Title } from '@angular/platform-browser';
 import { TranslocoService } from '@jsverse/transloco';
 import { Subscription } from 'rxjs';
-import { LanguageHelper } from './helper';
+import { LanguageHelper } from './helpers';
 
 @Component({
   selector: 'kunitskyi',
@@ -24,7 +24,7 @@ import { LanguageHelper } from './helper';
 })
 export class AppComponent implements OnInit, OnDestroy {
   private titleSubscriber!: Subscription;
-  protected view: FeatureView = FeatureView.Code;
+  protected view: FeatureView = FeatureView.Page;
   protected isViewChangeTriggered = false;
   protected get FeatureView() {
     return FeatureView;
