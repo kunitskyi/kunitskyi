@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { HubLink } from '@app/features/types';
+import { HubLink } from '@app-page/types';
 import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CoverComponent, PlinkComponent } from '@app-page/component';
-import { HubLink } from '@app/features/types';
+import { HubLink } from '@app-page/types';
 import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
