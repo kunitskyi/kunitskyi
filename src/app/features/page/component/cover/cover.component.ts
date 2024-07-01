@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output, Renderer2 } from '@angular/core';
 import { ChangeLanguageComponent } from '@app/component';
+import { PageBlock } from '@app-page/types';
 import { FeatureView } from '@app/types';
 import { TranslocoPipe } from '@jsverse/transloco';
 
@@ -11,7 +12,17 @@ import { TranslocoPipe } from '@jsverse/transloco';
   styleUrl: './cover.component.scss',
 })
 export class CoverComponent {
-  protected pageView: FeatureView = FeatureView.Page;
+  @Output() private scrollToEvent = new EventEmitter<PageBlock>();
 
+  protected pageView: FeatureView = FeatureView.Page;
   protected age: number = new Date().getFullYear() - 2002;
+  protected get PageBlock() {
+    return PageBlock;
+  }
+
+  public constructor(private renderer: Renderer2) {}
+
+  protected scrollTo(value: PageBlock) {
+    this.scrollToEvent.emit(value);
+  }
 }
