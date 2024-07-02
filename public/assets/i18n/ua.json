@@ -12,6 +12,16 @@
         }
       }
     },
+    "workbench": {
+      "tabs": {
+        "problems": {
+          "name": "ПРОБЛЕМИ"
+        },
+        "terminal": {
+          "name": "ТЕРМІНАЛ"
+        }
+      }
+    },
     "notifications": {
       "header": "ПОВІДОМЛЕННЯ",
       "info": "Не забувайте пити воду щодня!"

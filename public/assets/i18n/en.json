@@ -12,6 +12,16 @@
         }
       }
     },
+    "workbench": {
+      "tabs": {
+        "problems": {
+          "name": "PROBLEMS"
+        },
+        "terminal": {
+          "name": "TERMINAL"
+        }
+      }
+    },
     "notifications": {
       "header": "NOTIFICATIONS",
       "info": "Remember to drink water everyday!"

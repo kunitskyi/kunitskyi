@@ -1,5 +1,23 @@
 @if (isShown) {
   <div class="Tabs">
-    <kun-workbench-tab></kun-workbench-tab>
+    <kun-workbench-tab
+      (changeTabEvent)="changeTab($event)"
+      [isActive]="currentView === WorkbenchView.Problems"
+      [view]="WorkbenchView.Problems"
+      name="{{ 'code.workbench.tabs.problems.name' | transloco }}"
+    ></kun-workbench-tab>
+    <kun-workbench-tab
+      (changeTabEvent)="changeTab($event)"
+      [isActive]="currentView === WorkbenchView.Terminal"
+      [view]="WorkbenchView.Terminal"
+      name="{{ 'code.workbench.tabs.terminal.name' | transloco }}"
+    ></kun-workbench-tab>
+  </div>
+  <div class="Bench">
+    @if (currentView === WorkbenchView.Problems) {
+      <kun-problems></kun-problems>
+    } @else if (currentView === WorkbenchView.Terminal) {
+      <kun-terminal></kun-terminal>
+    }
   </div>
 }
