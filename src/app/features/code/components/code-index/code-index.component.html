@@ -17,6 +17,7 @@
   [class.ActiveBorder]="isShown.workbench && isShown.editor"
   #workbench
   [isShown]="isShown.workbench"
+  [currentView]="workbenchView"
   kunResize
   resizeType="top"
   (resizeEvent)="changeWorkbenchHeight($event)"
@@ -27,5 +28,6 @@
   ></kun-notifications>
 }
 <kun-state-bar
+  (toggleWorkbenchEvent)="toggleWorkbenchView($event)"
   (toggleNotificationEvent)="toggleNotifications()"
 ></kun-state-bar>

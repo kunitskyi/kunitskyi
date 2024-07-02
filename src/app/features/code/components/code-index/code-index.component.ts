@@ -15,7 +15,8 @@ import {
   WorkbenchComponent,
 } from '@app-code/components';
 import { Point } from '@app/types';
-import { ResizeDirective } from '../../directives';
+import { ResizeDirective } from '@app-code/directives';
+import { WorkbenchView } from '@app-code/types';
 
 @Component({
   selector: 'kun-code-index',
@@ -37,6 +38,8 @@ export class CodeIndexComponent implements AfterViewInit {
   private sidePanelRef!: ElementRef;
   @ViewChild('workbench', { read: ElementRef })
   private workbenchRef!: ElementRef;
+
+  protected workbenchView: WorkbenchView = WorkbenchView.Problems;
 
   protected isShown = {
     notifications: false,
@@ -169,5 +172,21 @@ export class CodeIndexComponent implements AfterViewInit {
       `${this.isShown.editor ? 'var(--enable-editor-row)' : 'var(--disable-editor-row)'}`,
       RendererStyleFlags2.DashCase,
     );
+  }
+
+  protected toggleWorkbenchView(value: WorkbenchView) {
+    this.toggleWorkbench(
+      !(this.workbenchView === value && this.isShown.workbench),
+    );
+
+    this.toggleEditor(
+      !(
+        this.workbenchView !== value &&
+        this.isShown.workbench &&
+        !this.isShown.editor
+      ),
+    );
+
+    this.workbenchView = value;
   }
 }
