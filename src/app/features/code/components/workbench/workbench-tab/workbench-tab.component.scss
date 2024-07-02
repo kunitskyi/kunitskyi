@@ -1,0 +1,30 @@
+@use "sass:math";
+@use "sass:map";
+@use "palette";
+@use "sizes";
+
+:host {
+  display: block;
+  height: 100%;
+
+  button {
+    box-sizing: border-box;
+    padding: 0;
+    border: 0;
+    border-bottom: sizes.$border-s solid transparent;
+    height: 100%;
+    line-height: 100%;
+    color: map.get(palette.$code, "inactive");
+    background-color: transparent;
+    cursor: pointer;
+
+    &:hover {
+      color: map.get(palette.$code, "active");
+    }
+
+    &.Active {
+      border-bottom: sizes.$border-s solid map.get(palette.$code, "accent");
+      color: map.get(palette.$code, "active");
+    }
+  }
+}

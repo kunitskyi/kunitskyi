@@ -1,1 +1,8 @@
-<p>workbench-tab works!</p>
+<button
+  [class]="{
+    Active: isActive,
+  }"
+  (click)="buttonTriggered()"
+>
+  {{ name }}
+</button>
