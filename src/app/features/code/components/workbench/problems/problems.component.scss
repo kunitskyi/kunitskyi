@@ -1,0 +1,63 @@
+@use "sass:math";
+@use "sass:map";
+@use "palette";
+@use "sizes";
+
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+
+  div.Problem {
+    display: grid;
+    width: 100%;
+    grid-template-areas: "icon text";
+    grid-template-rows: auto;
+    grid-template-columns: math.div(sizes.$magic-constant, 2) 1fr;
+    align-items: center;
+
+    svg {
+      grid-area: icon;
+      display: block;
+      box-sizing: border-box;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      padding: sizes.$margin-xs;
+
+      &.Warning {
+        fill: map.get(palette.$code, "warning");
+        stroke: map.get(palette.$code, "warning");;
+
+        rect {
+          width: 80px;
+          height: 10px;
+
+          &.Left {
+            transform-origin: 15px 85px;
+            transform: rotate(-60deg);
+          }
+
+          &.Right {
+            transform-origin: 85px 85px;
+            transform: rotate(60deg);
+          }
+        }
+
+        circle {
+          stroke-width: 10px;
+        }
+      }
+    }
+
+    p {
+      grid-area: text;
+      color: map.get(palette.$code, "active");
+      margin-left: sizes.$margin-s;
+
+      a {
+        color: map.get(palette.$code, "info");
+      }
+    }
+  }
+}

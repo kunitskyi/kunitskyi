@@ -15,7 +15,13 @@
     "workbench": {
       "tabs": {
         "problems": {
-          "name": "PROBLEMS"
+          "name": "PROBLEMS",
+          "list": {
+            "info": {
+              "cute": "We detected computing problem on your end!"
+            }
+          },
+          "details": "More Info"
         },
         "terminal": {
           "name": "TERMINAL"
