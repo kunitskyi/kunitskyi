@@ -43,6 +43,7 @@
 
   kun-side-panel {
     grid-area: side-panel;
+    user-select: none;
   }
 
   kun-editor {
@@ -60,5 +61,6 @@
 
   kun-state-bar {
     grid-area: state-bar;
+    user-select: none;
   }
 }
