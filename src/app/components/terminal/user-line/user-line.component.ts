@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
+import { FeatureView } from '@app/types';
 
 @Component({
   selector: 'kun-user-line',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
   templateUrl: './user-line.component.html',
   styleUrl: './user-line.component.scss',
 })
-export class UserLineComponent {}
+export class UserLineComponent {
+  @HostBinding('class') private get getClasses() {
+    return {
+      Page: this.view === FeatureView.Page,
+      Code: this.view === FeatureView.Code,
+    };
+  }
+
+  @Input({ required: true }) view!: FeatureView;
+}

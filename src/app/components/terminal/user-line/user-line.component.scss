@@ -1,0 +1,43 @@
+@use "sass:math";
+@use "sass:map";
+@use "palette";
+@use "sizes";
+
+:host {
+  &.Page {
+    --name-color: #{map.get(palette.$page, "accent")};
+    --directory-color: #{map.get(palette.$page, "accent")};
+  }
+
+  &.Code {
+    --name-color: #{map.get(palette.$code, "accent")};
+    --directory-color: #{map.get(palette.$code, "accent")};
+  }
+
+  p {
+    font-size: 1rem;
+
+    span.Prefix {
+      font-weight: bold;
+      user-select: none;
+
+      span {
+        &.Name {
+          color: var(--name-color);
+        }
+
+        &.Directory {
+          margin: 0 sizes.$margin-s;
+          color: var(--directory-color);
+        }
+      }
+    }
+  }
+
+  &.InputLine {
+    p {
+      display: grid;
+      grid-template-columns: auto 1fr;
+    }
+  }
+}
