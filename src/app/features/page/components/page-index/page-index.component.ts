@@ -4,6 +4,7 @@ import { HubLink, PageBlock } from '@app-page/types';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { CertificatesComponent } from '../certificates/certificates.component';
 import { TerminalComponent } from '@app/components/terminal/terminal.component';
+import { FeatureView } from '@app/types';
 
 @Component({
   selector: 'kun-page-index',
@@ -52,6 +53,10 @@ export class PageIndexComponent {
       text: 'Telegram',
     },
   ];
+
+  protected get FeatureView() {
+    return FeatureView;
+  }
 
   protected scrollTo(value: PageBlock) {
     let element;

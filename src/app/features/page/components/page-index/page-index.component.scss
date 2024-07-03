@@ -32,19 +32,14 @@
       border: sizes.$border-m solid map.get(palette.$page, "helper");
       border-bottom: 0;
       background-color: map.get(palette.$page, "helper");
-      clip-path: polygon(
-        sizes.$magic-constant 0,
-        100% 0,
-        100% 100%,
-        0 100%,
-      );
+      clip-path: polygon(sizes.$magic-constant 0, 100% 0, 100% 100%, 0 100%);
 
       span {
         display: inline-block;
         box-sizing: border-box;
         padding: sizes.$border-m;
         height: 100%;
-        background-color: map.get(palette.$page, "background");
+        background-color: map.get(palette.$page, "primary");
       }
     }
 
@@ -53,6 +48,7 @@
       margin: sizes.$margin-m;
       margin-top: 0;
       border: sizes.$border-m solid map.get(palette.$page, "helper");
+      padding: 0 sizes.$margin-m;
       height: max(50vh, sizes.$magic-constant * 5);
     }
   }
