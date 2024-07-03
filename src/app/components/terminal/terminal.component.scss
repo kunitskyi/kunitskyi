@@ -1,0 +1,30 @@
+@use "sass:math";
+@use "sass:map";
+@use "palette";
+@use "sizes";
+
+:host {
+  display: block;
+  min-width: sizes.$magic-constant * 5;
+
+  &.Page {
+    --standard-color: #{map.get(palette.$page, "helper")};
+    background-color: #{map.get(palette.$page, "primary")};
+  }
+
+  &.Code {
+    --standard-color: #{map.get(palette.$code, "active")};
+  }
+
+  kun-user-line.InputLine {
+    input {
+      outline: transparent;
+      border: 0;
+      padding: 0;
+      background-color: transparent;
+      width: 100%;
+      font-size: 1rem;
+      color: var(--standard-color);
+    }
+  }
+}
