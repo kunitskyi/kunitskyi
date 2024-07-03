@@ -4,10 +4,14 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class CookieService {
-  public getCookie(name: string): string | undefined | void {
+  public getCookie(name: string): string | void {
+    let cookieValue;
+
     const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop()?.split(';').shift();
+    const parts = value.split(`; ${encodeURIComponent(name)}=`);
+
+    if (parts.length === 2) cookieValue = parts.pop()?.split(';').shift();
+    if (typeof cookieValue === 'string') return decodeURIComponent(cookieValue);
   }
 
   public setCookie(
@@ -17,13 +21,13 @@ export class CookieService {
     path = '/',
     domain = '',
     secure = false,
-    samesite: 'none' | 'lax' | 'strict' = 'strict',
+    sameSite: 'none' | 'lax' | 'strict' = 'strict',
   ) {
     const domainAttribute = domain === `` ? `` : `domain=${domain};`;
     const expiresCompute = new Date(Date.now() + expires);
     const expiresAttribute = expiresCompute.toUTCString();
     const SecureAttribute = secure ? 'secure;' : '';
-    document.cookie = `${encodeURIComponent(name)}=${encodeURIComponent(value)}; path=${path}; ${domainAttribute} expires=${expiresAttribute}; ${SecureAttribute} samesite=${samesite}`;
+    document.cookie = `${encodeURIComponent(name)}=${encodeURIComponent(value)}; path=${path}; ${domainAttribute} expires=${expiresAttribute}; ${SecureAttribute} samesite=${sameSite}`;
     return name;
   }
 }
