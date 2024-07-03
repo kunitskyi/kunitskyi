@@ -62,6 +62,12 @@
         "signature": "- Kunitskyi Vladyslav"
       }
     },
+    "certificates": {
+      "header": "My Certificates"
+    },
+    "terminal": {
+      "header": "TERMINAL"
+    },
     "linkHub": {
       "header": "Link Hub",
       "link": {

@@ -163,13 +163,13 @@
 
   div.DecorativeBar {
     position: absolute;
-    top: 30%;
+    top: 25vh;
     left: -50%;
     display: block;
     background-color: map.get(palette.$page, "helper");
     height: 20vh;
     width: 200%;
-    transform-origin: 50% 50%;
+    transform-origin: 50vh 50%;
     transform: rotate(10deg);
     z-index: 20;
     overflow: hidden;

@@ -10,26 +10,64 @@
   background-color: map.get(palette.$page, "background");
   user-select: none;
 
-  footer {
-    border-top: sizes.$border-m solid map.get(palette.$page, "helper");
+  h2 {
+    margin: sizes.$magic-constant;
+    text-align: center;
+    font-size: 3rem;
+    color: map.get(palette.$page, "accent");
+  }
 
+  div.Certificates {
+    kun-certificates {
+      display: block;
+      padding: sizes.$margin-m;
+    }
+  }
+
+  div.Terminal {
     h2 {
+      text-align: right;
       margin: sizes.$margin-m;
-      text-align: center;
-      font-size: 3rem;
-      color: map.get(palette.$page, "accent");
+      margin-bottom: 0;
+      border: sizes.$border-m solid map.get(palette.$page, "helper");
+      border-bottom: 0;
+      background-color: map.get(palette.$page, "helper");
+      clip-path: polygon(
+        sizes.$magic-constant 0,
+        100% 0,
+        100% 100%,
+        0 100%,
+      );
+
+      span {
+        display: inline-block;
+        box-sizing: border-box;
+        padding: sizes.$border-m;
+        height: 100%;
+        background-color: map.get(palette.$page, "background");
+      }
     }
 
+    kun-terminal {
+      display: block;
+      margin: sizes.$margin-m;
+      margin-top: 0;
+      border: sizes.$border-m solid map.get(palette.$page, "helper");
+      height: max(50vh, sizes.$magic-constant * 5);
+    }
+  }
+
+  footer {
     div.Links {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
-      margin: sizes.$magic-constant;
+      margin: 0 sizes.$magic-constant;
     }
 
     button#EmailMe {
       display: block;
-      margin: sizes.$margin-m auto;
+      margin: sizes.$magic-constant auto;
       border: 0;
       padding: 0 sizes.$magic-constant;
       border-radius: sizes.$magic-constant;

@@ -62,6 +62,12 @@
         "signature": "- Куніцький Владислав"
       }
     },
+    "certificates": {
+      "header": "Мої Сертифікати"
+    },
+    "terminal": {
+      "header": "ТЕРМІНАЛ"
+    },
     "linkHub": {
       "header": "Бібліотека Посилань",
       "link": {

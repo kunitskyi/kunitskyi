@@ -1,6 +1,14 @@
 <kun-cover (scrollToEvent)="scrollTo($event)"></kun-cover>
-<kun-certificates #certificates></kun-certificates>
-<kun-terminal #terminal></kun-terminal>
+<div class="Certificates">
+  <h2>{{ "page.certificates.header" | transloco }}</h2>
+  <kun-certificates #certificates></kun-certificates>
+</div>
+<div class="Terminal">
+  <h2>
+    <span>{{ "page.terminal.header" | transloco }}</span>
+  </h2>
+  <kun-terminal #terminal></kun-terminal>
+</div>
 <footer>
   <h2>{{ "page.linkHub.header" | transloco }}</h2>
   <div class="Links">
