@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ResizeDirective } from '@app/features/code/directives';
 import { WorkbenchTabComponent } from './workbench-tab/workbench-tab.component';
 import { TranslocoPipe } from '@jsverse/transloco';
@@ -20,6 +20,7 @@ import { ProblemsComponent } from './problems/problems.component';
   styleUrl: './workbench.component.scss',
 })
 export class WorkbenchComponent {
+  @Output() private changeTabEvent = new EventEmitter<WorkbenchView>();
   @Input() public isShown = true;
   @Input({ required: true }) public currentView!: WorkbenchView;
   protected get WorkbenchView() {
@@ -27,6 +28,6 @@ export class WorkbenchComponent {
   }
 
   protected changeTab(value: WorkbenchView) {
-    this.currentView = value;
+    this.changeTabEvent.emit(value);
   }
 }

@@ -21,6 +21,7 @@
   kunResize
   resizeType="top"
   (resizeEvent)="changeWorkbenchHeight($event)"
+  (changeTabEvent)="toggleWorkbenchView($event)"
 ></kun-workbench>
 @if (isShown.notifications) {
   <kun-notifications
