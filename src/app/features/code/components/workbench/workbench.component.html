@@ -17,7 +17,7 @@
     @if (currentView === WorkbenchView.Problems) {
       <kun-problems></kun-problems>
     } @else if (currentView === WorkbenchView.Terminal) {
-      <kun-terminal></kun-terminal>
+      <kun-terminal [view]="FeatureView.Code"></kun-terminal>
     }
   </div>
 }

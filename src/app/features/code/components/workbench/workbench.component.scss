@@ -31,5 +31,9 @@
     grid-area: content;
     padding: 0 sizes.$margin-m;
     overflow-y: auto;
+
+    kun-terminal {
+      height: 100%;
+    }
   }
 }

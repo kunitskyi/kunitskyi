@@ -5,6 +5,7 @@ import { TranslocoPipe } from '@jsverse/transloco';
 import { WorkbenchView } from '@app-code/types';
 import { TerminalComponent } from '@app/components/terminal/terminal.component';
 import { ProblemsComponent } from './problems/problems.component';
+import { FeatureView } from '@app/types';
 
 @Component({
   selector: 'kun-workbench',
@@ -25,6 +26,9 @@ export class WorkbenchComponent {
   @Input({ required: true }) public currentView!: WorkbenchView;
   protected get WorkbenchView() {
     return WorkbenchView;
+  }
+  protected get FeatureView() {
+    return FeatureView;
   }
 
   protected changeTab(value: WorkbenchView) {

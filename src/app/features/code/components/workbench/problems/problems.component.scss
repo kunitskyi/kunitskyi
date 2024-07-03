@@ -27,7 +27,7 @@
 
       &.Warning {
         fill: map.get(palette.$code, "warning");
-        stroke: map.get(palette.$code, "warning");;
+        stroke: map.get(palette.$code, "warning");
 
         rect {
           width: 80px;
@@ -53,7 +53,7 @@
     p {
       grid-area: text;
       color: map.get(palette.$code, "active");
-      margin-left: sizes.$margin-s;
+      margin-left: sizes.$margin-xs;
 
       a {
         color: map.get(palette.$code, "info");
