@@ -29,8 +29,14 @@
 
   div.Bench {
     grid-area: content;
-    padding: 0 sizes.$margin-m;
+    padding-top: sizes.$margin-m;
     overflow-y: auto;
+
+    kun-problems {
+      box-sizing: border-box;
+      padding-right: sizes.$margin-m;
+      padding-left: sizes.$margin-m;
+    }
 
     kun-terminal {
       height: 100%;

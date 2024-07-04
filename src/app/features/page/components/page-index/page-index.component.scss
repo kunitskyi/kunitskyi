@@ -44,11 +44,9 @@
     }
 
     kun-terminal {
-      display: block;
       margin: sizes.$margin-m;
       margin-top: 0;
       border: sizes.$border-m solid map.get(palette.$page, "helper");
-      padding: 0 sizes.$margin-m;
       height: max(50vh, sizes.$magic-constant * 5);
     }
   }
