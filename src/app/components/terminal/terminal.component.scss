@@ -5,15 +5,27 @@
 
 :host {
   display: block;
+  padding: 0 sizes.$margin-m;
   min-width: sizes.$magic-constant * 5;
+  overflow: auto;
+  user-select: text;
 
   &.Page {
     --standard-color: #{map.get(palette.$page, "helper")};
+    --red-color: #{map.get(palette.$page, "terminal-red")};
+    --green-color: #{map.get(palette.$page, "terminal-green")};
+    --blue-color: #{map.get(palette.$page, "terminal-blue")};
+    --orange-color: #{map.get(palette.$page, "terminal-orange")};
+
     background-color: #{map.get(palette.$page, "primary")};
   }
 
   &.Code {
     --standard-color: #{map.get(palette.$code, "active")};
+    --red-color: #{map.get(palette.$code, "terminal-red")};
+    --green-color: #{map.get(palette.$code, "terminal-green")};
+    --blue-color: #{map.get(palette.$code, "terminal-blue")};
+    --orange-color: #{map.get(palette.$code, "terminal-orange")};
   }
 
   kun-user-line.InputLine {
@@ -25,6 +37,44 @@
       width: 100%;
       font-size: 1rem;
       color: var(--standard-color);
+    }
+  }
+
+  .OutputLine {
+    color: var(--standard-color);
+
+    span {
+      &.red {
+        color: var(--red-color);
+      }
+      &.green {
+        color: var(--green-color);
+      }
+      &.blue {
+        color: var(--blue-color);
+      }
+      &.orange {
+        color: var(--orange-color);
+      }
+
+      &.bg-{
+        &red {
+          background-color: var(--red-color);
+        }
+        &green {
+          background-color: var(--green-color);
+        }
+        &blue {
+          background-color: var(--blue-color);
+        }
+        &orange {
+          background-color: var(--orange-color);
+        }
+      }
+
+      &.bold {
+        font-weight: bold;
+      }
     }
   }
 }

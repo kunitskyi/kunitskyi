@@ -77,5 +77,20 @@
       }
     },
     "emailMe": "E-mail Me"
+  },
+
+  "terminal": {
+    "output": {
+      "unknownCommand": "Unknown command. Use 'help' to see a list of available commands!",
+      "help": {
+        "header": "List of Available Commands:",
+        "help": " - show list of available commands",
+        "clear": " - clear terminal",
+        "toggle-language": " - toggle language of UI",
+        "hack": " - hack this website"
+      },
+      "toggle-language": "The language of the UI will be changed!",
+      "hack": "Umm... Dude, do you really want to hack my profile?"
+    }
   }
 }

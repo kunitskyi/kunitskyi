@@ -1,2 +1,30 @@
-<div class="Space"></div>
-<kun-user-line class="InputLine" [view]="view"><input #input /></kun-user-line>
+@for (line of outputLines; track line.id) {
+  @if (line.type === "input") {
+    <kun-user-line [view]="view">
+      <span class="OutputLine">
+        @for (part of line.value; track $index) {
+          <span class="{{ part.class }}">{{ part.text }}</span>
+        }
+      </span>
+    </kun-user-line>
+  } @else if (line.type === "output") {
+    <p class="OutputLine">
+      @for (part of line.value; track $index) {
+        <span class="{{ part.class }}">{{ part.text }}</span>
+      }
+    </p>
+  }
+}
+
+@if (isUserInputLineShown) {
+  <kun-user-line class="InputLine" [view]="view" (click)="focusToInput()"
+    ><input
+      #input
+      (keydown.enter)="sendCommand()"
+      [(ngModel)]="userInput"
+      name="userInput"
+      autocomplete="off"
+  /></kun-user-line>
+} @else {
+  <p>&nbsp;</p>
+}
