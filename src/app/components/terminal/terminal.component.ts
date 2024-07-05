@@ -16,6 +16,7 @@ type TerminalLine = 'input' | 'output';
 interface FormattedLinePart {
   class: string;
   text: string;
+  translate: boolean;
 }
 interface OutputLine {
   id: number;
@@ -58,15 +59,13 @@ export class TerminalComponent {
   protected async sendCommand() {
     const addLine = (
       value: FormattedLinePart[],
-      translate = true,
       type: TerminalLine = 'output',
     ) => {
-      if (translate) {
-        for (const index in value) {
+      for (const index in value) {
+        if (value[index].translate)
           value[index].text = this.translocoService.translate(
             value[index].text,
           );
-        }
       }
 
       this.outputLines = [
@@ -81,7 +80,10 @@ export class TerminalComponent {
 
     let bufferedUserInput = this.userInput.trim();
 
-    addLine([{ class: '', text: bufferedUserInput }], false, 'input');
+    addLine(
+      [{ class: '', text: bufferedUserInput, translate: false }],
+      'input',
+    );
 
     bufferedUserInput = bufferedUserInput.toLocaleLowerCase();
 
@@ -95,32 +97,53 @@ export class TerminalComponent {
           const descriptionStyle = 'bold';
           const commandStyle = `bold blue`;
           addLine([
-            { class: 'blue bold', text: 'terminal.output.help.header' },
-          ]);
-          addLine([
-            { class: commandStyle, text: 'help ' },
-            { class: descriptionStyle, text: 'terminal.output.help.help' },
-          ]);
-          addLine([
-            { class: commandStyle, text: 'clear ' },
-            { class: descriptionStyle, text: 'terminal.output.help.clear' },
-          ]);
-          addLine([
-            { class: commandStyle, text: 'toggle-language ' },
             {
-              class: descriptionStyle,
-              text: 'terminal.output.help.toggle-language',
+              class: 'blue bold',
+              text: 'terminal.output.help.header',
+              translate: true,
             },
           ]);
           addLine([
-            { class: commandStyle, text: 'hack ' },
-            { class: descriptionStyle, text: 'terminal.output.help.hack' },
+            { class: commandStyle, text: 'help ', translate: false },
+            {
+              class: descriptionStyle,
+              text: 'terminal.output.help.help',
+              translate: true,
+            },
+          ]);
+          addLine([
+            { class: commandStyle, text: 'clear ', translate: false },
+            {
+              class: descriptionStyle,
+              text: 'terminal.output.help.clear',
+              translate: true,
+            },
+          ]);
+          addLine([
+            { class: commandStyle, text: 'toggle-language ', translate: false },
+            {
+              class: descriptionStyle,
+              text: 'terminal.output.help.toggle-language',
+              translate: true,
+            },
+          ]);
+          addLine([
+            { class: commandStyle, text: 'hack ', translate: false },
+            {
+              class: descriptionStyle,
+              text: 'terminal.output.help.hack',
+              translate: true,
+            },
           ]);
           break;
         }
         case 'toggle-language': {
           addLine([
-            { class: 'green bold', text: 'terminal.output.toggle-language' },
+            {
+              class: 'green bold',
+              text: 'terminal.output.toggle-language',
+              translate: true,
+            },
           ]);
           this.languageHelper.setLanguage(
             this.translocoService.getActiveLang() === 'en' ? 'ua' : 'en',
@@ -128,12 +151,22 @@ export class TerminalComponent {
           break;
         }
         case 'hack': {
-          addLine([{ class: 'orange bold', text: 'terminal.output.hack' }]);
+          addLine([
+            {
+              class: 'orange bold',
+              text: 'terminal.output.hack',
+              translate: true,
+            },
+          ]);
           break;
         }
         default: {
           addLine([
-            { class: 'red bold', text: 'terminal.output.unknownCommand' },
+            {
+              class: 'red bold',
+              text: 'terminal.output.unknownCommand',
+              translate: true,
+            },
           ]);
           break;
         }
