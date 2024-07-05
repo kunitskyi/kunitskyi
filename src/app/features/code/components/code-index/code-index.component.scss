@@ -19,7 +19,10 @@
           )}
       )
     );
-  --disable-editor-row: 0 auto;
+  --disable-editor-row: 0 calc(100% - #{math.div(
+    sizes.$magic-constant,
+    2
+  )});
   --two-rows: var(--enable-editor-row);
 
   display: grid;
@@ -52,6 +55,7 @@
   }
 
   kun-workbench {
+    box-sizing: border-box;
     grid-area: workbench;
 
     &.ActiveBorder {
