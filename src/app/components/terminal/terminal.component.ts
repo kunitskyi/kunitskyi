@@ -6,23 +6,16 @@ import {
   Input,
   ViewChild,
 } from '@angular/core';
-import { FeatureView } from '@app/types';
+import {
+  FeatureView,
+  FormattedLinePart,
+  OutputLine,
+  TerminalLine,
+} from '@app/types';
 import { UserLineComponent } from './user-line/user-line.component';
 import { FormsModule } from '@angular/forms';
 import { TranslocoService } from '@jsverse/transloco';
 import { LanguageHelper } from '@app/helpers';
-
-type TerminalLine = 'input' | 'output';
-interface FormattedLinePart {
-  class: string;
-  text: string;
-  translate: boolean;
-}
-interface OutputLine {
-  id: number;
-  type: TerminalLine;
-  value: FormattedLinePart[];
-}
 
 @Component({
   selector: 'kun-terminal',
