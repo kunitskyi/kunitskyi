@@ -7,7 +7,7 @@
   display: grid;
   background-color: map.get(palette.$code, "foreground");
 
-  svg {
+  svg.CodeIcon {
     place-self: center;
     grid: 1;
     max-width: 100%;
@@ -18,7 +18,7 @@
       transition: fill 1s;
     }
 
-    &.CodeIcon g {
+    g {
       &.Less {
         rect {
           transform-origin: 150px 500px;
@@ -48,6 +48,16 @@
           }
         }
       }
+    }
+  }
+
+  div {
+    &.Tabs {
+      display: flex;
+      height: math.div(sizes.$magic-constant, 2) + sizes.$padding-s * 2;
+      width: 100%;
+      background-color: map.get(palette.$code, "editor-tabs-bg");
+      overflow-x: auto;
     }
   }
 }
