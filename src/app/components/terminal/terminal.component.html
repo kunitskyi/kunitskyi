@@ -3,14 +3,14 @@
     <kun-user-line [view]="view">
       <span class="OutputLine">
         @for (part of line.value; track $index) {
-          <span class="{{ part.class }}">{{ part.text }}</span>
+          <span [class]="part.class">{{ part.text }}</span>
         }
       </span>
     </kun-user-line>
   } @else if (line.type === "output") {
     <p class="OutputLine">
       @for (part of line.value; track $index) {
-        <span class="{{ part.class }}">{{ part.text }}</span>
+        <span [class]="part.class">{{ part.text }}</span>
       }
     </p>
   }

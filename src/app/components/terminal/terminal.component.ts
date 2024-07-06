@@ -8,9 +8,10 @@ import {
 } from '@angular/core';
 import {
   FeatureView,
-  FormattedLinePart,
+  FormattedOutputLine,
   OutputLine,
   TerminalLine,
+  TerminalLineClasses,
 } from '@app/types';
 import { UserLineComponent } from './user-line/user-line.component';
 import { FormsModule } from '@angular/forms';
@@ -51,7 +52,7 @@ export class TerminalComponent {
 
   protected async sendCommand() {
     const addLine = (
-      value: FormattedLinePart[],
+      value: FormattedOutputLine,
       type: TerminalLine = 'output',
     ) => {
       for (const index in value) {
@@ -74,7 +75,7 @@ export class TerminalComponent {
     let bufferedUserInput = this.userInput.trim();
 
     addLine(
-      [{ class: '', text: bufferedUserInput, translate: false }],
+      [{ class: [], text: bufferedUserInput, translate: false }],
       'input',
     );
 
@@ -87,11 +88,11 @@ export class TerminalComponent {
           break;
         }
         case 'help': {
-          const descriptionStyle = 'bold';
-          const commandStyle = `bold blue`;
+          const descriptionStyle: TerminalLineClasses = ['bold'];
+          const commandStyle: TerminalLineClasses = ['bold', `blue`];
           addLine([
             {
-              class: 'blue bold',
+              class: ['blue', 'bold'],
               text: 'terminal.output.help.header',
               translate: true,
             },
@@ -133,7 +134,7 @@ export class TerminalComponent {
         case 'toggle-language': {
           addLine([
             {
-              class: 'green bold',
+              class: ['green', 'bold'],
               text: 'terminal.output.toggle-language',
               translate: true,
             },
@@ -146,7 +147,7 @@ export class TerminalComponent {
         case 'hack': {
           addLine([
             {
-              class: 'orange bold',
+              class: ['orange', 'bold'],
               text: 'terminal.output.hack',
               translate: true,
             },
@@ -156,7 +157,7 @@ export class TerminalComponent {
         default: {
           addLine([
             {
-              class: 'red bold',
+              class: ['red', 'bold'],
               text: 'terminal.output.unknownCommand',
               translate: true,
             },
