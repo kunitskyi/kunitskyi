@@ -1,1 +1,10 @@
-<p>editor-tab works!</p>
+<button class="Main" (click)="makeActiveTab()">
+  <img class="Icon" src="{{ FILES[file].iconSrc }}" alt="{{ file }} icon" />
+  <span class="Label">{{ file }}</span>
+</button>
+<button class="Close" (click)="closeTab()">
+  <svg viewBox="0 0 100 100">
+    <rect class="First" rx="5" x="10" y="45" />
+    <rect class="Second" rx="5" x="10" y="45" />
+  </svg>
+</button>

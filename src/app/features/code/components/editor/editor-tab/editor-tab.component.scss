@@ -1,0 +1,87 @@
+@use "sass:map";
+@use "sass:math";
+@use "palette";
+@use "sizes";
+
+:host {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  border-top: sizes.$border-s solid transparent;
+  height: 100%;
+  background-color: map.get(palette.$code, "background");
+
+  button {
+    border: 0;
+    height: 100%;
+    padding: 0 sizes.$padding-s;
+    font-size: 1rem;
+    background-color: transparent;
+    cursor: pointer;
+
+    &.Main {
+      display: flex;
+      align-items: center;
+      color: map.get(palette.$code, "inactive");
+
+      img.Icon {
+        box-sizing: border-box;
+        padding: sizes.$padding-s;
+        height: math.div(sizes.$magic-constant, 2);
+        width: math.div(sizes.$magic-constant, 2);
+      }
+
+      span.Label {
+        padding: 0 sizes.$padding-s;
+      }
+    }
+  }
+
+  button.Close {
+    height: 100%;
+    width: math.div(sizes.$magic-constant, 2) + sizes.$padding-s * 2;
+
+    svg {
+      display: none;
+      padding: sizes.$padding-s;
+      border-radius: sizes.$border-radius-s;
+      fill: map.get(palette.$code, "inactive");
+
+      rect {
+        width: 80px;
+        height: 10px;
+        transform-origin: 50px 50px;
+
+        &.First {
+          transform: rotate(45deg);
+        }
+
+        &.Second {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+
+    &:hover,
+    &:focus {
+      svg {
+        background-color: map.get(palette.$code, "active-bg");
+      }
+    }
+  }
+
+  &.Active {
+    border-color: map.get(palette.$code, "accent");
+    background-color: map.get(palette.$code, "foreground");
+  }
+
+  &.Active,
+  &:hover,
+  &:focus-within {
+    button.Close {
+      svg {
+        display: block;
+      }
+    }
+  }
+}
