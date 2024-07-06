@@ -5,16 +5,16 @@
 
 :host {
   display: flex;
-  align-items: center;
   box-sizing: border-box;
-  border-top: sizes.$border-s solid transparent;
+  align-items: center;
+  border-top: sizes.$border-s solid map.get(palette.$code, "background");
   height: 100%;
   background-color: map.get(palette.$code, "background");
 
   button {
     border: 0;
+    padding: 0;
     height: 100%;
-    padding: 0 sizes.$padding-s;
     font-size: 1rem;
     background-color: transparent;
     cursor: pointer;
@@ -26,18 +26,16 @@
 
       img.Icon {
         box-sizing: border-box;
+        margin: sizes.$margin-s;
         padding: sizes.$padding-s;
         height: math.div(sizes.$magic-constant, 2);
         width: math.div(sizes.$magic-constant, 2);
-      }
-
-      span.Label {
-        padding: 0 sizes.$padding-s;
       }
     }
   }
 
   button.Close {
+    padding: sizes.$padding-s;
     height: 100%;
     width: math.div(sizes.$magic-constant, 2) + sizes.$padding-s * 2;
 
@@ -73,6 +71,10 @@
   &.Active {
     border-color: map.get(palette.$code, "accent");
     background-color: map.get(palette.$code, "foreground");
+
+    button.Main {
+      color: map.get(palette.$code, "active");
+    }
   }
 
   &.Active,

@@ -4,7 +4,8 @@
 @use "sizes";
 
 :host {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   background-color: map.get(palette.$code, "foreground");
 
   svg.CodeIcon {
@@ -54,10 +55,17 @@
   div {
     &.Tabs {
       display: flex;
-      height: math.div(sizes.$magic-constant, 2) + sizes.$padding-s * 2;
+      min-height: math.div(sizes.$magic-constant, 2) + sizes.$padding-s * 2 + sizes.$border-s;
       width: 100%;
       background-color: map.get(palette.$code, "editor-tabs-bg");
       overflow-x: auto;
+    }
+
+    &.Space {
+      box-sizing: border-box;
+      margin-top: math.div(sizes.$magic-constant, 2);
+      height: 100%;
+      width: 100%;
     }
   }
 }

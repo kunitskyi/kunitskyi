@@ -10,6 +10,7 @@ import { AvailableWorkspaceFiles } from '@app-code/types';
   imports: [EditorTabComponent],
 })
 export class EditorComponent {
+  @Input({ required: true }) public isShown!: boolean;
   @Input() public set addFile(value: AvailableWorkspaceFiles | undefined) {
     if (value !== undefined) {
       this.openFiles.add(value);

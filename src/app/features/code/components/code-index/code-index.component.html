@@ -10,9 +10,9 @@
   (resizeEvent)="changeSidePanelWidth($event)"
   (selectFileEvent)="selectFile($event)"
 ></kun-side-panel>
-@if (isShown.editor) {
-  <kun-editor [addFile]="lastAddedFile"></kun-editor>
-}
+
+<kun-editor [isShown]="isShown.editor" [addFile]="lastAddedFile"></kun-editor>
+
 <kun-workbench
   [class.ActiveBorder]="isShown.workbench && isShown.editor"
   #workbench
