@@ -1,26 +1,28 @@
 $code: (
+  accent: #ff79c6,
+
+  active: #f8f8f2,
+  inactive: #5c6a9a,
+
   background: #21222c,
   ground: #272a3c,
   foreground: #282a36,
 
   active-bg: #373a49,
 
+  error: red,
+  warning: #fd5f00,
+  info: #2c52fd,
+
   sidebar-bg: #343746,
   sidebar-bg-active: #463441,
   sidebar-front: #6272a4,
 
+  editor-tabs-bg: #191a21,
+
   state-bar-bg: #191a21,
   state-bar-bg-active: #202230,
   state-bar-front: white,
-
-  inactive: #5c6a9a,
-  active: #f8f8f2,
-
-  accent: #ff79c6,
-
-  error: red,
-  warning: #fd5f00,
-  info: #2c52fd,
 
   terminal-red: #fa0053,
   terminal-green: #59ff59,
