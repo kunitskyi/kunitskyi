@@ -1,1 +1,1 @@
-export * from './available-files';
+export * from './files-metadata';

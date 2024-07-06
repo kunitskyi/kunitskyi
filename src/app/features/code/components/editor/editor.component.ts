@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { EditorTabComponent } from './editor-tab/editor-tab.component';
-import { AvailableWorkspaceFiles } from '../../types';
+import { AvailableWorkspaceFiles } from '@app-code/types';
 
 @Component({
   selector: 'kun-editor',
