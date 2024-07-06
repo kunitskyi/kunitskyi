@@ -193,5 +193,9 @@ export class CodeIndexComponent implements AfterViewInit {
 
   protected selectFile(fileName: AvailableWorkspaceFiles) {
     this.lastAddedFile = fileName;
+
+    setTimeout(() => {
+      this.lastAddedFile = undefined;
+    }, 0);
   }
 }
