@@ -16,7 +16,7 @@ import {
 } from '@app-code/components';
 import { Point } from '@app/types';
 import { ResizeDirective } from '@app-code/directives';
-import { WorkbenchView } from '@app-code/types';
+import { AvailableWorkspaceFiles, WorkbenchView } from '@app-code/types';
 
 @Component({
   selector: 'kun-code-index',
@@ -40,6 +40,7 @@ export class CodeIndexComponent implements AfterViewInit {
   private workbenchRef!: ElementRef;
 
   protected workbenchView: WorkbenchView = WorkbenchView.Problems;
+  protected lastAddedFile?: AvailableWorkspaceFiles;
 
   protected isShown = {
     notifications: false,
@@ -188,5 +189,9 @@ export class CodeIndexComponent implements AfterViewInit {
     );
 
     this.workbenchView = value;
+  }
+
+  protected selectFile(fileName: AvailableWorkspaceFiles) {
+    this.lastAddedFile = fileName;
   }
 }

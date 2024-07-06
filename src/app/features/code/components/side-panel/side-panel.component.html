@@ -1,13 +1,12 @@
 @if (isShown) {
   <p>{{ "code.sidePanel.explorer.header" | transloco }}</p>
   <kun-accordion [text]="'code.sidePanel.explorer.workspace.title' | transloco">
-    <kun-files
-      [imgPath]="'/assets/js_64x64.png'"
-      [name]="'profile.js'"
-    ></kun-files>
-    <kun-files
-      [imgPath]="'/assets/php_64x64.png'"
-      [name]="'profile.php'"
-    ></kun-files>
+    @for (file of availableFiles; track file) {
+      <kun-files
+        [iconSrc]="availableFiles[file].iconSrc"
+        [name]="file"
+        (fileSelectedEvent)="selectFile(file)"
+      ></kun-files>
+    }
   </kun-accordion>
 }

@@ -19,10 +19,7 @@
           )}
       )
     );
-  --disable-editor-row: 0 calc(100% - #{math.div(
-    sizes.$magic-constant,
-    2
-  )});
+  --disable-editor-row: 0 calc(100% - #{math.div(sizes.$magic-constant, 2)});
   --two-rows: var(--enable-editor-row);
 
   display: grid;
