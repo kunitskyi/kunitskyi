@@ -10,7 +10,7 @@ $code: (
 
   active-bg: #373a49,
 
-  error: red,
+  error: #fa0053,
   warning: #fd5f00,
   info: #2c52fd,
 
@@ -19,6 +19,15 @@ $code: (
   sidebar-front: #6272a4,
 
   editor-tabs-bg: #191a21,
+
+  editor-construction: #ff79c6,
+  editor-method: #50fa7b,
+  editor-constant: #bd93f9,
+  editor-property: white,
+  editor-string: #f1fa8c,
+  editor-type: #8be9fd,
+  editor-argument: #ffb86c,
+  editor-comment: #5c6a9a,
 
   state-bar-bg: #191a21,
   state-bar-bg-active: #202230,
