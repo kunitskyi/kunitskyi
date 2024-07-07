@@ -92,5 +92,15 @@
       "toggle-language": "The language of the UI will be changed!",
       "hack": "Umm... Dude, do you really want to hack my profile?"
     }
+  },
+
+  "files": {
+    "ProfileJS": {
+      "fullName": "Kunitskyi Vladyslav",
+      "comments": {
+        "notPerfect": "I know it's not perfect, but it's simple. ;)"
+      }
+    },
+    "ProfilePHP": {}
   }
 }
