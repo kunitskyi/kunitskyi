@@ -55,17 +55,84 @@
   div {
     &.Tabs {
       display: flex;
-      min-height: math.div(sizes.$magic-constant, 2) + sizes.$padding-s * 2 + sizes.$border-s;
+      align-items: stretch;
+      min-height: math.div(sizes.$magic-constant, 2) + sizes.$padding-s * 2 +
+        sizes.$border-s;
       width: 100%;
       background-color: map.get(palette.$code, "editor-tabs-bg");
       overflow-x: auto;
     }
 
     &.Space {
-      box-sizing: border-box;
+      display: grid;
+      grid-template-columns: auto 1fr 0;
+      grid-auto-rows: min-content;
       margin-top: math.div(sizes.$magic-constant, 2);
-      height: 100%;
       width: 100%;
+      overflow: auto;
+
+      span {
+        white-space: pre-wrap;
+
+        &.LineNumber {
+          text-align: right;
+          padding: 0 sizes.$margin-m;
+          color: map.get(palette.$code, "inactive");
+          user-select: none;
+        }
+
+        &.LineText {
+          padding-right: sizes.$margin-m;
+          color: map.get(palette.$code, "active");
+
+          span {
+            &.bold {
+              font-weight: bold;
+            }
+
+            &.italic {
+              font-style: italic;
+            }
+
+            &.unused {
+              opacity: 0.667;
+            }
+
+            &.construction {
+              color: map.get(palette.$code, "editor-construction");
+            }
+
+            &.method {
+              color: map.get(palette.$code, "editor-method");
+            }
+
+            &.constant {
+              color: map.get(palette.$code, "editor-constant");
+            }
+
+            &.property {
+              color: map.get(palette.$code, "editor-property");
+            }
+
+            &.string {
+              color: map.get(palette.$code, "editor-string");
+            }
+
+            &.type {
+              color: map.get(palette.$code, "editor-type");
+            }
+
+            &.argument {
+              color: map.get(palette.$code, "editor-argument");
+              font-style: italic;
+            }
+
+            &.comment {
+              color: map.get(palette.$code, "editor-comment");
+            }
+          }
+        }
+      }
     }
   }
 }

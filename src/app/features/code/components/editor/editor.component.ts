@@ -1,13 +1,15 @@
 import { Component, Input } from '@angular/core';
 import { EditorTabComponent } from './editor-tab/editor-tab.component';
 import { AvailableWorkspaceFiles } from '@app-code/types';
+import { FILES_CONTENT } from '@app-code/constants';
+import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
   selector: 'kun-editor',
   standalone: true,
   templateUrl: './editor.component.html',
   styleUrl: './editor.component.scss',
-  imports: [EditorTabComponent],
+  imports: [EditorTabComponent, TranslocoPipe],
 })
 export class EditorComponent {
   @Input({ required: true }) public isShown!: boolean;
@@ -17,7 +19,7 @@ export class EditorComponent {
       this.activeFile = value;
     }
   }
-
+  protected FILES = FILES_CONTENT;
   protected openFiles = new Set<AvailableWorkspaceFiles>();
   protected activeFile?: AvailableWorkspaceFiles;
 

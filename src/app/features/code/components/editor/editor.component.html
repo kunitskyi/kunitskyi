@@ -24,6 +24,20 @@
         ></kun-editor-tab>
       }
     </div>
-    <div class="Space"></div>
+    <div class="Space">
+      @if (activeFile !== undefined) {
+        @for (line of FILES[activeFile]; track $index) {
+          <span class="LineNumber">{{ $index + 1 }}</span>
+          <span class="LineText">
+            @for (linePart of line; track $index) {
+              <span [class]="linePart.class">{{
+                linePart.translate ? (linePart.text | transloco) : linePart.text
+              }}</span>
+            }
+          </span>
+          <br />
+        }
+      }
+    </div>
   }
 }

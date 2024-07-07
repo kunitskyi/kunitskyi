@@ -10,10 +10,12 @@
   border-top: sizes.$border-s solid map.get(palette.$code, "background");
   height: 100%;
   background-color: map.get(palette.$code, "background");
+  user-select: none;
 
   button {
     border: 0;
     padding: 0;
+    box-sizing: border-box;
     height: 100%;
     font-size: 1rem;
     background-color: transparent;
