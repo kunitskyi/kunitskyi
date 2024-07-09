@@ -20,7 +20,7 @@ export class LanguageHelper {
     if (this.cookieService.getCookie('lang') === 'ua') this.setLanguage('ua');
     else if (this.cookieService.getCookie('lang') === 'en')
       this.setLanguage('en');
-    else if (getBrowserLang() === 'ua') this.setLanguage('ua');
+    else if (getBrowserLang() === 'uk') this.setLanguage('ua');
     else this.setLanguage('en');
   }
 }
