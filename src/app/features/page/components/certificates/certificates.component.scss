@@ -1,0 +1,10 @@
+@use "sass:math";
+@use "sass:map";
+@use "palette";
+@use "sizes";
+
+:host {
+  height: sizes.$magic-constant * 5;
+  background-color: map.get(palette.$page, "primary");
+  margin-bottom: sizes.$magic-constant;
+}
