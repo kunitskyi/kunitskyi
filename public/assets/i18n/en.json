@@ -102,7 +102,10 @@
       }
     },
     "ProfilePHP": {
-      "fullName": "Kunitskyi Vladyslav"
+      "fullName": "Kunitskyi Vladyslav",
+      "comments": {
+        "notPerfect": "Not perfect, but not bad either. ;)"
+      }
     }
   }
 }

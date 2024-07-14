@@ -188,6 +188,14 @@ export const ProfilePHP: FormattedLine<FileLineClass[]>[] = [
   ],
   [{ class: ['construction'], text: '    {', translate: false }],
   [
+    { class: ['comment'], text: '        // ', translate: false },
+    {
+      class: ['comment'],
+      text: 'files.ProfilePHP.comments.notPerfect',
+      translate: true,
+    },
+  ],
+  [
     { class: ['construction'], text: '        return ', translate: false },
     { class: ['type'], text: 'intval(date', translate: false },
     { class: ['method'], text: '(', translate: false },
