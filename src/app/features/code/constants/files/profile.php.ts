@@ -170,7 +170,7 @@ export const ProfilePHP: FormattedLine<FileLineClass[]>[] = [
     { class: ['construction'], text: '        return ', translate: false },
     { class: ['constant', 'italic'], text: '$this', translate: false },
     { class: ['construction'], text: '->', translate: false },
-    { class: ['property'], text: '$fullName', translate: false },
+    { class: ['property'], text: 'fullName', translate: false },
     { class: [], text: ';', translate: false },
   ],
   [{ class: ['construction'], text: '    }', translate: false }],
@@ -184,7 +184,7 @@ export const ProfilePHP: FormattedLine<FileLineClass[]>[] = [
   [
     { class: ['construction'], text: '    public function ', translate: false },
     { class: ['method'], text: 'getAge', translate: false },
-    { class: ['construction'], text: '(): string', translate: false },
+    { class: ['construction'], text: '(): int', translate: false },
   ],
   [{ class: ['construction'], text: '    {', translate: false }],
   [
@@ -198,7 +198,7 @@ export const ProfilePHP: FormattedLine<FileLineClass[]>[] = [
     { class: ['construction'], text: '- ', translate: false },
     { class: ['constant', 'italic'], text: '$this', translate: false },
     { class: ['construction'], text: '->', translate: false },
-    { class: ['property'], text: '$timeOfBirth', translate: false },
+    { class: ['property'], text: 'timeOfBirth', translate: false },
     { class: ['method'], text: ')', translate: false },
     { class: ['type'], text: ') ', translate: false },
     { class: ['construction'], text: '- ', translate: false },
@@ -216,14 +216,14 @@ export const ProfilePHP: FormattedLine<FileLineClass[]>[] = [
   [
     { class: ['construction'], text: '    public function ', translate: false },
     { class: ['method'], text: 'getProgrammingLanguages', translate: false },
-    { class: ['construction'], text: '(): string', translate: false },
+    { class: ['construction'], text: '(): array', translate: false },
   ],
   [{ class: ['construction'], text: '    {', translate: false }],
   [
     { class: ['construction'], text: '        return ', translate: false },
     { class: ['constant', 'italic'], text: '$this', translate: false },
     { class: ['construction'], text: '->', translate: false },
-    { class: ['property'], text: '$programmingLanguages', translate: false },
+    { class: ['property'], text: 'programmingLanguages', translate: false },
     { class: [], text: ';', translate: false },
   ],
   [{ class: ['construction'], text: '    }', translate: false }],
@@ -237,14 +237,14 @@ export const ProfilePHP: FormattedLine<FileLineClass[]>[] = [
   [
     { class: ['construction'], text: '    public function ', translate: false },
     { class: ['method'], text: 'getFrameworks', translate: false },
-    { class: ['construction'], text: '(): string', translate: false },
+    { class: ['construction'], text: '(): array', translate: false },
   ],
   [{ class: ['construction'], text: '    {', translate: false }],
   [
     { class: ['construction'], text: '        return ', translate: false },
     { class: ['constant', 'italic'], text: '$this', translate: false },
     { class: ['construction'], text: '->', translate: false },
-    { class: ['property'], text: '$frameworks', translate: false },
+    { class: ['property'], text: 'frameworks', translate: false },
     { class: [], text: ';', translate: false },
   ],
   [{ class: ['construction'], text: '    }', translate: false }],
@@ -258,14 +258,14 @@ export const ProfilePHP: FormattedLine<FileLineClass[]>[] = [
   [
     { class: ['construction'], text: '    public function ', translate: false },
     { class: ['method'], text: 'getITKnowledges', translate: false },
-    { class: ['construction'], text: '(): string', translate: false },
+    { class: ['construction'], text: '(): array', translate: false },
   ],
   [{ class: ['construction'], text: '    {', translate: false }],
   [
     { class: ['construction'], text: '        return ', translate: false },
     { class: ['constant', 'italic'], text: '$this', translate: false },
     { class: ['construction'], text: '->', translate: false },
-    { class: ['property'], text: '$ITKnowledges', translate: false },
+    { class: ['property'], text: 'ITKnowledges', translate: false },
     { class: [], text: ';', translate: false },
   ],
   [{ class: ['construction'], text: '    }', translate: false }],
@@ -287,7 +287,7 @@ export const ProfilePHP: FormattedLine<FileLineClass[]>[] = [
   [
     { class: ['constant', 'italic'], text: '        $this', translate: false },
     { class: ['construction'], text: '->', translate: false },
-    { class: ['property'], text: '$programmingLanguages', translate: false },
+    { class: ['property'], text: 'programmingLanguages', translate: false },
     { class: ['type'], text: '[] ', translate: false },
     { class: ['construction'], text: '= ', translate: false },
     { class: ['property'], text: '$language', translate: false },
@@ -312,7 +312,7 @@ export const ProfilePHP: FormattedLine<FileLineClass[]>[] = [
   [
     { class: ['constant', 'italic'], text: '        $this', translate: false },
     { class: ['construction'], text: '->', translate: false },
-    { class: ['property'], text: '$frameworks', translate: false },
+    { class: ['property'], text: 'frameworks', translate: false },
     { class: ['type'], text: '[] ', translate: false },
     { class: ['construction'], text: '= ', translate: false },
     { class: ['property'], text: '$framework', translate: false },
@@ -337,7 +337,7 @@ export const ProfilePHP: FormattedLine<FileLineClass[]>[] = [
   [
     { class: ['constant', 'italic'], text: '        $this', translate: false },
     { class: ['construction'], text: '->', translate: false },
-    { class: ['property'], text: '$ITKnowledges', translate: false },
+    { class: ['property'], text: 'ITKnowledges', translate: false },
     { class: ['type'], text: '[] ', translate: false },
     { class: ['construction'], text: '= ', translate: false },
     { class: ['property'], text: '$ITKnowledge', translate: false },
@@ -355,7 +355,7 @@ export const ProfilePHP: FormattedLine<FileLineClass[]>[] = [
   [
     { class: ['property'], text: '$Kunitskyi_Vladyslav ', translate: false },
     { class: ['construction'], text: '= new ', translate: false },
-    { class: ['type'], text: 'Developer', translate: false },
+    { class: ['type', 'italic'], text: 'Developer', translate: false },
     { class: [], text: '(', translate: false },
   ],
   [
