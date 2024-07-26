@@ -41,7 +41,7 @@
       "bio": {
         "sex": {
           "name": "Sex",
-          "description": "Man (His/Him)"
+          "description": "Man (He/Him/His)"
         },
         "age": {
           "name": "Age",
