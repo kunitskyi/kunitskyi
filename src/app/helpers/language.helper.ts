@@ -17,10 +17,10 @@ export class LanguageHelper {
   }
 
   public initLanguage() {
-    if (this.cookieService.getCookie('lang') === 'ua') this.setLanguage('ua');
+    if (this.cookieService.getCookie('lang') === 'uk') this.setLanguage('uk');
     else if (this.cookieService.getCookie('lang') === 'en')
       this.setLanguage('en');
-    else if (getBrowserLang() === 'uk') this.setLanguage('ua');
+    else if (getBrowserLang() === 'uk') this.setLanguage('uk');
     else this.setLanguage('en');
   }
 }

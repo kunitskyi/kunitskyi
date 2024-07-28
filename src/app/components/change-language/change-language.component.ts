@@ -31,7 +31,7 @@ export class ChangeLanguageComponent {
 
   protected changeLanguage(): void {
     this.languageHelper.setLanguage(
-      this.translocoService.getActiveLang() === 'en' ? 'ua' : 'en',
+      this.translocoService.getActiveLang() === 'en' ? 'uk' : 'en',
     );
   }
 }
