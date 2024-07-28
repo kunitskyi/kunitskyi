@@ -1,5 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector */
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FeatureView } from '@app/types';
 import { DogEarComponent } from '@app/components';
@@ -24,6 +24,7 @@ import { LanguageHelper } from './helpers';
 })
 export class AppComponent implements OnInit, OnDestroy {
   private titleSubscriber!: Subscription;
+  private langAttributeSubscriber!: Subscription;
   protected view: FeatureView = FeatureView.Page;
   protected isViewChangeTriggered = false;
   protected get FeatureView() {
@@ -34,6 +35,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private translocoService: TranslocoService,
     private languageHelper: LanguageHelper,
     private titleService: Title,
+    private renderer: Renderer2,
   ) {}
 
   ngOnInit(): void {
@@ -41,11 +43,20 @@ export class AppComponent implements OnInit, OnDestroy {
 
     this.titleSubscriber = this.translocoService
       .selectTranslate('author')
-      .subscribe((value) => this.titleService.setTitle(value));
+      .subscribe((value) => {
+        this.titleService.setTitle(value);
+      });
+
+    this.langAttributeSubscriber = this.translocoService
+      .selectTranslate('langAttribute')
+      .subscribe((value) => {
+        this.renderer.setAttribute(document.documentElement, 'lang', value);
+      });
   }
 
   ngOnDestroy(): void {
     this.titleSubscriber.unsubscribe();
+    this.langAttributeSubscriber.unsubscribe();
   }
 
   protected startChangeView(e: boolean) {
