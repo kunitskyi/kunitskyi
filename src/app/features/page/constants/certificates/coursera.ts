@@ -11,7 +11,7 @@ function add(
 ): void {
   certificates.push({
     id,
-    name: `certificates.coursera.course.${name}.pdf`,
+    name: `certificates.coursera.course.${name}`,
     issued: 'coursera',
     score,
     date: date * 100,

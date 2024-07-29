@@ -17,7 +17,7 @@ function add(
 
   certificates.push({
     id,
-    name: `certificates.itvdn.course.${name}.pdf`,
+    name: `certificates.itvdn.course.${name}`,
     issued: 'itvdn',
     score,
     date: date * 100,

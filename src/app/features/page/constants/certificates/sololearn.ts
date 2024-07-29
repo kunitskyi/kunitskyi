@@ -10,7 +10,7 @@ function add(
 ): void {
   certificates.push({
     id,
-    name: `certificates.sololearn.course.${name}.pdf`,
+    name: `certificates.sololearn.course.${name}`,
     issued: 'sololearn',
     date: date * 100,
     source: `/sololearn_${id}`,
