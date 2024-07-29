@@ -25,10 +25,11 @@
   }
 
   div.Terminal {
+    margin: sizes.$magic-constant sizes.$margin-l;
+    
     h2 {
       text-align: right;
-      margin: sizes.$margin-m;
-      margin-bottom: 0;
+      margin: 0;
       border: sizes.$border-m solid map.get(palette.$page, "helper");
       border-bottom: 0;
       background-color: map.get(palette.$page, "helper");
@@ -44,8 +45,7 @@
     }
 
     kun-terminal {
-      margin: sizes.$margin-m;
-      margin-top: 0;
+      margin: 0;
       border: sizes.$border-m solid map.get(palette.$page, "helper");
       height: max(50vh, sizes.$magic-constant * 5);
     }
