@@ -108,5 +108,121 @@
         "notPerfect": "Не ідеально, але і не погано. ;)"
       }
     }
+  },
+
+  "certificates": {
+    "coursera": {
+      "course": {
+        "frontend_angular": "Розробка інтерфейсу за допомогою Angular"
+      }
+    },
+    "diia": {
+      "course": {
+        "digigram_civ2": "Цифрограм 2.0 для громадян"
+      }
+    },
+    "sololearn": {
+      "course": {
+        "gamedev_js": "Розробка ігор за допомогою JS",
+        "tech_everyone": "Технології для Кожного",
+        "angular_nestjs": "Angular + NestJS",
+        "angular_google": "Angular",
+        "html_intro": "Введення в HTML",
+        "css_intro": "Введення в CSS",
+        "csharp": "C#",
+        "sql": "SQL",
+        "html": "HTML",
+        "jquery": "jQuery",
+        "css": "CSS",
+        "php": "PHP",
+        "javascript": "JavaScript"
+      }
+    },
+    "itvdn": {
+      "course": {
+        "nodejs_basic": "Node.js Базовий",
+        "java_basic": "Java Базовий",
+        "wordpress_basic": "WordPress Базовий",
+        "project_management": "Введення в Project Management",
+        "golang": "Golang",
+        "mongodb": "MongoDB",
+        "scrum": "Методології управління проектами. Вступ до SCRUM",
+        "qa_start": "QA Стартовий",
+        "jenkins": "Jenkins",
+        "uxui_basic": "UX/UI Design Базовий",
+        "asp_web2": "ASP.NET WEB API 2",
+        "unit_test_csharp": "Модульне тестування на C#",
+        "entity_framework6": "Entity Framework 6",
+        "csharp_universal_patterns": "C# Універсальні шаблони",
+        "entity_framework_core_basic": "Entity Framework Core Базовий",
+        "unit_test_php": "Unit-тестування в PHP",
+        "uxui_mobile": "UX/UI Design мобільних додатків",
+        "unit_test_csharp_ua": "Unit-тестування у С#",
+        "asp_core_advance": "ASP.NET Core Поглиблений",
+        "test_asp_mvc": "Тестування ASP.NET Core MVC додатків",
+        "uxui_start": "UX/UI Design Стартовий",
+        "asp_signalr": "ASP.NET Core SignalR",
+        "create_asp_ui": "Створення користувальницького інтерфейсу в ASP.NET Core",
+        "csharp_universal_patterns_ua": "Універсальні шаблони С#",
+        "asp_mvc_fundamentals": "ASP.NET Core Базовий",
+        "web_test": "Web Testing",
+        "magento2": "Magento 2",
+        "laravel": "Laravel",
+        "unity_advanced": "Unity Поглиблений",
+        "unity_start_ua": "Unity Стартовий",
+        "unity_basic": "Unity Базовий",
+        "unity_start": "Unity Стартовий",
+        "figma_store": "Figma. Дизайн інтернет-магазину",
+        "async_sharp": "C# Асинхронне програмування",
+        "yii2_advanced": "YII2 Поглиблений",
+        "yii2_basic": "YII2 Базовий",
+        "symfony": "Веб розробка на PHP Symfony",
+        "web_grid": "Верстка сайту на CSS Grid",
+        "test_web_apps": "Тестування безпеки веб-застосунків",
+        "vue_start_ua": "Vue.js Стартовий",
+        "design_patterns": "Шаблони проектування",
+        "transact_sql": "Transact SQL",
+        "sql_basic": "SQL Базовий",
+        "landing_practice": "Практичний курс з верстки лендінгу",
+        "vuejs": "Vue.js Стартовий",
+        "html_css_advanced": "HTML5 & CSS3 Поглибленний",
+        "html_css_start_ua": "HTML5 & CSS3 Стартовий",
+        "csharp_professional": "C# Поглиблений",
+        "html_css_start": "HTML5 & CSS3 Стартовий",
+        "js_extended": "JavaScript: Розширені можливості",
+        "js_patterns": "JavaScript Шаблони",
+        "js_start_ua": "JavaScript Стартовий",
+        "ecmascript6": "ECMAScript 6",
+        "js_start": "JavaScript Стартовий",
+        "react_advanced": "React Поглиблений",
+        "csharp_basic": "С# Базовий (ООП)",
+        "php_start": "PHP 8.0 Стартовий",
+        "postgresql": "PostgreSQL",
+        "bootstrap4": "Bootstrap 4",
+        "git_ua": "Основи використання Git",
+        "csharp8_start": "C# 8.0 Стартовий",
+        "react_native": "React Native",
+        "react_basic": "React Базовий",
+        "html_css_basic": "HTML5 і CSS3 Базовий",
+        "angular_essential": "Angular 11.0 Базовий",
+        "php_basic": "PHP 7.4 Базовий",
+        "linux_basic": "Основи адміністрування Linux",
+        "js_basic_2021": "JavaScript Базовий",
+        "async_js": "Асинхронне програмування у JavaScript",
+        "test_angular": "Тестування Angular додатків",
+        "windows_server_basic": "Основи адміністрування Windows Server",
+        "react_advanced_ua": "React Поглиблений",
+        "react_basic_ua": "React Базовий",
+        "angular_essential_ua": "Angular Базовий",
+        "docker": "Docker",
+        "git": "Основи роботи з Git",
+        "algorithms_data_structure_new": "Алгоритми та структури даних",
+        "typescript_fundamentals": "TypeScript Fundamentals",
+        "typescript": "TypeScript",
+        "angular_advanced": "Angular Поглиблений",
+        "mysql_basic": "MySQL Базовий",
+        "postgresql_ua": "PostgreSQL"
+      }
+    }
   }
 }

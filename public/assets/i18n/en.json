@@ -108,5 +108,121 @@
         "notPerfect": "Not perfect, but not bad either. ;)"
       }
     }
+  },
+
+  "certificates": {
+    "coursera": {
+      "course": {
+        "frontend_angular": "Frontend Development using Angular"
+      }
+    },
+    "diia": {
+      "course": {
+        "digigram_civ2": "Digigram 2.0 for citizens"
+      }
+    },
+    "sololearn": {
+      "course": {
+        "gamedev_js": "Game Development with JS",
+        "tech_everyone": "Tech for Everyone",
+        "angular_nestjs": "Angular + NestJS",
+        "angular_google": "Angular",
+        "html_intro": "Introduction to HTML",
+        "css_intro": "Introduction to CSS",
+        "csharp": "C#",
+        "sql": "SQL",
+        "html": "HTML",
+        "jquery": "jQuery",
+        "css": "CSS",
+        "php": "PHP",
+        "javascript": "JavaScript"
+      }
+    },
+    "itvdn": {
+      "course": {
+        "nodejs_basic": "Node.js Essential",
+        "java_basic": "Java Essential UA",
+        "wordpress_basic": "WordPress Essential",
+        "project_management": "Introduction to Project Management",
+        "golang": "Golang",
+        "mongodb": "MongoDB",
+        "scrum": "Scrum and Project Management Methodologies",
+        "qa_start": "QA Starter",
+        "jenkins": "Jenkins",
+        "uxui_basic": "UX/UI Design Essential",
+        "asp_web2": "ASP.NET Web API 2",
+        "unit_test_csharp": "Unit testing in C#",
+        "entity_framework6": "Entity Framework 6",
+        "csharp_universal_patterns": "C# Universal Patterns",
+        "entity_framework_core_basic": "Entity Framework Core Essential",
+        "unit_test_php": "Unit testing in PHP",
+        "uxui_mobile": "UX/UI Mobile App Design",
+        "unit_test_csharp_ua": "Unit testing in C#",
+        "asp_core_advance": "ASP.NET Core Advanced",
+        "test_asp_mvc": "Testing ASP.NET Core MVC Application",
+        "uxui_start": "UX/UI Design Starter",
+        "asp_signalr": "ASP.NET Core SignalR",
+        "create_asp_ui": "Creating a user interface in ASP.NET Core",
+        "csharp_universal_patterns_ua": "Generics in C#",
+        "asp_mvc_fundamentals": "ASP.NET MVC Fundamentals",
+        "web_test": "Web Testing",
+        "magento2": "Introducing Magento 2",
+        "laravel": "Laravel",
+        "unity_advanced": "Unity Advanced",
+        "unity_start_ua": "Unity Starter UA",
+        "unity_basic": "Unity Essential",
+        "unity_start": "Unity Starter",
+        "figma_store": "Figma. Online store design",
+        "async_sharp": "Asynchronous programming in C#",
+        "yii2_advanced": "Yii2 Advanced",
+        "yii2_basic": "YII2 Essential",
+        "symfony": "PHP Symfony Web Development",
+        "web_grid": "Layout of pages using Grid",
+        "test_web_apps": "Web Application Security Testing",
+        "vue_start_ua": "Vue.js Start",
+        "design_patterns": "Patterns of Design",
+        "transact_sql": "Transact SQL",
+        "sql_basic": "SQL Essential",
+        "landing_practice": "Practical Landing Course",
+        "vuejs": "Vue.js",
+        "html_css_advanced": "HTML5&CSS3 Advanced",
+        "html_css_start_ua": "HTML5 & CSS3 Starter",
+        "csharp_professional": "C# Professional Renewed",
+        "html_css_start": "HTML5 & CSS3 Starter",
+        "js_extended": "Javascript Extended capabilities",
+        "js_patterns": "JavaScript Patterns",
+        "js_start_ua": "JavaScript Starter UA",
+        "ecmascript6": "ECMASCRIPT 6",
+        "js_start": "JavaScript Starter",
+        "react_advanced": "React Advanced",
+        "csharp_basic": "C# Essential",
+        "php_start": "PHP Starter renewed",
+        "postgresql": "PostgreSQL",
+        "bootstrap4": "Twitter Bootstrap 4",
+        "git_ua": "The basics of using Git",
+        "csharp8_start": "C# 8.0 Starter",
+        "react_native": "React Native",
+        "react_basic": "React Essential",
+        "html_css_basic": "HTML5&CSS3 Essential",
+        "angular_essential": "Angular Essential",
+        "php_basic": "PHP Essential",
+        "linux_basic": "Linux administration basics",
+        "js_basic_2021": "JavaScript Essential 2021",
+        "async_js": "Asynchronous programming in JavaScript",
+        "test_angular": "Testing Angular applications",
+        "windows_server_basic": "Basics of Windows Server administration",
+        "react_advanced_ua": "React Advanced",
+        "react_basic_ua": "React Essential",
+        "angular_essential_ua": "Angular Essential",
+        "docker": "Docker",
+        "git": "Git basics",
+        "algorithms_data_structure_new": "Algorisms and data structures (renewed)",
+        "typescript_fundamentals": "TypeScript Fundamentals",
+        "typescript": "TypeScript",
+        "angular_advanced": "Angular Advanced",
+        "mysql_basic": "MySQL essential",
+        "postgresql_ua": "PostgreSQL"
+      }
+    }
   }
 }
