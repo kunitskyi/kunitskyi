@@ -8,7 +8,13 @@ function add(
   score: number,
   date: number,
   tags: CertificateTag[],
+  _imgs = 2,
 ): void {
+  const images: string[] = [];
+  for (let i = 1; i <= _imgs; i++) {
+    images.push(`/itvdn_${id}_${i}.webp`);
+  }
+
   certificates.push({
     id,
     name: `certificates.itvdn.course.${name}.pdf`,
@@ -17,7 +23,7 @@ function add(
     date: date * 100,
     source: `/itvdn_${id}`,
     verify: `https://osvita.diia.gov.ua/certificate-check/${id}/`,
-    imgs: [`/itvdn_${id}_1.webp`, `/itvdn_${id}_2.webp`],
+    imgs: images,
     tags,
   });
 }
@@ -142,8 +148,8 @@ add('TP25489163', 'bootstrap4', 1000, 1715083200, []);
 add('TP51408865', 'bootstrap4', 1000, 1715083200, []);
 add('TP26539774', 'git_ua', 1000, 1714996800, []);
 add('TP70297108', 'git_ua', 1000, 1714996800, []);
-add('TP70464953', 'csharp8_start', 976, 1714910400, []);
-add('TP55974627', 'csharp8_start', 1000, 1714910400, []);
+add('TP70464953', 'csharp8_start', 976, 1714910400, [], 4);
+add('TP55974627', 'csharp8_start', 1000, 1714910400, [], 4);
 add('TP94134720', 'react_native', 1000, 1714737600, []);
 add('TP44247017', 'react_native', 1000, 1714737600, []);
 add('TP82770285', 'react_basic', 1000, 1714651200, []);
