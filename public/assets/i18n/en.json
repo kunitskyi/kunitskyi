@@ -118,7 +118,9 @@
     },
     "diia": {
       "course": {
-        "digigram_civ2": "Digigram 2.0 for citizens"
+        "digigram_civ1": "Digigram 1.0 for citizens",
+        "digigram_civ2": "Digigram 2.0 for citizens",
+        "icdl": "ICDL Ukrainian digital citizen"
       }
     },
     "sololearn": {
