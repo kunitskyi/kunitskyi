@@ -16,7 +16,7 @@ function add(
     issued: 'itvdn',
     score,
     date,
-    verify: `https://osvita.diia.gov.ua/certificate-check/${id}/`,
+    verify: `https://testprovider.com/ru/search-certificate/${id}/`,
     imgs,
     tags,
   });
