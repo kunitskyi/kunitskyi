@@ -17,16 +17,9 @@
     color: map.get(palette.$page, "accent");
   }
 
-  div.Certificates {
-    kun-certificates {
-      display: block;
-      padding: sizes.$margin-m;
-    }
-  }
-
   div.Terminal {
     margin: sizes.$magic-constant sizes.$margin-l;
-    
+
     h2 {
       text-align: right;
       margin: 0;

@@ -1,0 +1,46 @@
+<div class="CertificatesContainer">
+  @for (certificate of certificates; track $index) {
+    <div class="Certificate">
+      <button (click)="selectCertificate(certificate)">
+        <div class="FrontSide">
+          <img
+            src="/assets/certificates/previewW400/{{
+              certificate.issued + '_' + certificate.id + '.webp'
+            }}"
+            loading="lazy"
+            alt="{{
+              'certificates.' +
+                certificate.issued +
+                '.course.' +
+                certificate.name | transloco
+            }}"
+          />
+        </div>
+        <div class="BackSide">
+          <p class="Name">
+            {{
+              "certificates." +
+                certificate.issued +
+                ".course." +
+                certificate.name | transloco
+            }}
+          </p>
+          <p class="Issued">
+            {{ "certificates." + certificate.issued + ".name" | transloco }}
+            <br />
+            {{ certificate.id }}
+          </p>
+          <p class="Date">
+            {{
+              certificate.date * 1000
+                | date: "MM" : "UTC"
+                | prefix: "month."
+                | transloco
+            }}
+            {{ certificate.date * 1000 | date: "d, Y" : "UTC" }}
+          </p>
+        </div>
+      </button>
+    </div>
+  }
+</div>

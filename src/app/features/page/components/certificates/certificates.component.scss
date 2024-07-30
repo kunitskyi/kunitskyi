@@ -4,7 +4,100 @@
 @use "sizes";
 
 :host {
-  height: sizes.$magic-constant * 5;
+  display: block;
+  height: sizes.$magic-constant * 11;
+  margin: sizes.$margin-m sizes.$magic-constant;
+  // padding: sizes.$margin-l 0;
+  border: sizes.$border-m solid map.get(palette.$page, "accent");
+  border-radius: 0 0 sizes.$border-radius-s sizes.$border-radius-s;
   background-color: map.get(palette.$page, "primary");
-  margin-bottom: sizes.$magic-constant;
+
+  overflow: hidden;
+
+  div.CertificatesContainer {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    overflow-y: scroll;
+
+    div.Certificate {
+      margin: sizes.$margin-m;
+      border-radius: sizes.$border-radius-s;
+      max-width: sizes.$magic-constant * 7;
+      overflow: hidden;
+
+      button {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        cursor: pointer;
+
+        div {
+          width: 100%;
+          height: 100%;
+          transition: transform 0.5s;
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+
+          &.FrontSide {
+            display: flex;
+            background-color: map.get(palette.$page, "helper");
+
+            img {
+              object-fit: contain;
+              width: 100%;
+              vertical-align: middle;
+            }
+          }
+
+          &.BackSide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: rotateY(180deg);
+            background-color: map.get(palette.$page, "background");
+
+            p {
+              margin: sizes.$margin-m;
+              color: map.get(palette.$page, "accent");
+              font-weight: bold;
+              font-size: 1rem;
+
+              &.Name {
+                padding: sizes.$margin-m;
+                border-radius: sizes.$border-radius-s;
+                color: map.get(palette.$page, "primary");
+                background-color: map.get(palette.$page, "accent");
+              }
+
+              &.Issued {
+                padding: sizes.$margin-m;
+                border-radius: sizes.$border-radius-s;
+                color: map.get(palette.$page, "primary");
+                background-color: map.get(palette.$page, "helper");
+              }
+            }
+          }
+        }
+
+        &:hover {
+          div {
+            &.FrontSide {
+              transform: rotateY(180deg);
+            }
+
+            &.BackSide {
+              transform: rotateY(0deg);
+            }
+          }
+        }
+      }
+    }
+  }
 }
