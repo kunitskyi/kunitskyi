@@ -112,11 +112,13 @@
 
   "certificates": {
     "coursera": {
+      "name": "Coursera",
       "course": {
         "frontend_angular": "Frontend Development using Angular"
       }
     },
     "diia": {
+      "name": "Diia.Education",
       "course": {
         "digigram_civ1": "Digigram 1.0 for citizens",
         "digigram_civ2": "Digigram 2.0 for citizens",
@@ -124,6 +126,7 @@
       }
     },
     "sololearn": {
+      "name": "Sololearn",
       "course": {
         "gamedev_js": "Game Development with JS",
         "tech_everyone": "Tech for Everyone",
@@ -141,6 +144,7 @@
       }
     },
     "itvdn": {
+      "name": "ITVDN",
       "course": {
         "nodejs_basic": "Node.js Essential",
         "java_basic": "Java Essential UA",

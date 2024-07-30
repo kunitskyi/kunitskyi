@@ -112,18 +112,21 @@
 
   "certificates": {
     "coursera": {
+      "name": "Coursera",
       "course": {
         "frontend_angular": "Розробка інтерфейсу за допомогою Angular"
       }
     },
     "diia": {
+      "name": "Дія.Освіта",
       "course": {
         "digigram_civ1": "Цифрограм 1.0 для громадян",
-        "digigram_civ2": "Цифрограм 2.0 для громадян",        
+        "digigram_civ2": "Цифрограм 2.0 для громадян",
         "icdl": "ICDL Український цифровий громадянин"
       }
     },
     "sololearn": {
+      "name": "Sololearn",
       "course": {
         "gamedev_js": "Розробка ігор за допомогою JS",
         "tech_everyone": "Технології для Кожного",
@@ -141,6 +144,7 @@
       }
     },
     "itvdn": {
+      "name": "ITVDN",
       "course": {
         "nodejs_basic": "Node.js Базовий",
         "java_basic": "Java Базовий",
