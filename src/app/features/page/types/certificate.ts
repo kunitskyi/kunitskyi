@@ -8,8 +8,7 @@ export interface Certificate {
   issued: CertificateIssued;
   score?: number;
   date: number;
-  source: string;
   verify: string;
-  imgs: string[];
+  imgs: number;
   tags: CertificateTag[];
 }
