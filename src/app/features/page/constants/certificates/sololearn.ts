@@ -10,12 +10,11 @@ function add(
 ): void {
   certificates.push({
     id,
-    name: `certificates.sololearn.course.${name}`,
+    name,
     issued: 'sololearn',
-    date: date * 100,
-    source: `/sololearn_${id}`,
+    date,
     verify: `https://www.sololearn.com/certificates/${id}`,
-    imgs: [`/sololearn_${id}_1.webp`],
+    imgs: 1,
     tags,
   });
 }

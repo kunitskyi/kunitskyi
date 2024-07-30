@@ -11,13 +11,12 @@ function add(
 ): void {
   certificates.push({
     id,
-    name: `certificates.diia.course.${name}`,
+    name,
     issued: 'diia',
     score,
-    date: date * 100,
-    source: `/sololearn_${id}`,
+    date,
     verify: `https://osvita.diia.gov.ua/certificate-check/${id}/`,
-    imgs: [`/diia_${id}_1.webp`],
+    imgs: 1,
     tags,
   });
 }

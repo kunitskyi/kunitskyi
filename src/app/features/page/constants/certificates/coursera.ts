@@ -11,13 +11,12 @@ function add(
 ): void {
   certificates.push({
     id,
-    name: `certificates.coursera.course.${name}`,
+    name,
     issued: 'coursera',
     score,
-    date: date * 100,
-    source: `/coursera_${id}`,
+    date,
     verify: `https://coursera.org/verify/${id}`,
-    imgs: [`/coursera_${id}_1.webp`],
+    imgs: 1,
     tags,
   });
 }

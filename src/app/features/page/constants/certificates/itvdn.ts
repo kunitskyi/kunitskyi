@@ -8,22 +8,16 @@ function add(
   score: number,
   date: number,
   tags: CertificateTag[],
-  _imgs = 2,
+  imgs = 2,
 ): void {
-  const images: string[] = [];
-  for (let i = 1; i <= _imgs; i++) {
-    images.push(`/itvdn_${id}_${i}.webp`);
-  }
-
   certificates.push({
     id,
-    name: `certificates.itvdn.course.${name}`,
+    name,
     issued: 'itvdn',
     score,
-    date: date * 100,
-    source: `/itvdn_${id}`,
+    date,
     verify: `https://osvita.diia.gov.ua/certificate-check/${id}/`,
-    imgs: images,
+    imgs,
     tags,
   });
 }
