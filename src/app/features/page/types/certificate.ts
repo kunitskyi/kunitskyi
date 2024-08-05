@@ -1,14 +1,19 @@
-export type CertificateIssued = 'coursera' | 'diia' | 'itvdn' | 'sololearn';
+export enum CertificateIssued {
+  Coursera = 'coursera',
+  Diia = 'diia',
+  ITVDN = 'itvdn',
+  Sololearn = 'sololearn',
+}
 
-export type CertificateTag = '';
+export enum CertificateTag {}
 
 export interface Certificate {
   id: string;
   name: string;
   issued: CertificateIssued;
-  score?: number;
+  score: number;
   date: number;
   verify: string;
   imgs: number;
-  tags: CertificateTag[];
+  tags: Set<CertificateTag>;
 }
