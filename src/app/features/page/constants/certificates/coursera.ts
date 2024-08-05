@@ -1,4 +1,8 @@
-import { Certificate, CertificateTag } from '@app-page/types';
+import {
+  Certificate,
+  CertificateIssued,
+  CertificateTag,
+} from '@app-page/types';
 
 const certificates: Certificate[] = [];
 
@@ -12,12 +16,12 @@ function add(
   certificates.push({
     id,
     name,
-    issued: 'coursera',
+    issued: CertificateIssued.Coursera,
     score,
     date,
     verify: `https://coursera.org/verify/${id}`,
     imgs: 1,
-    tags,
+    tags: new Set(tags),
   });
 }
 

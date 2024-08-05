@@ -1,4 +1,8 @@
-import { Certificate, CertificateTag } from '@app-page/types';
+import {
+  Certificate,
+  CertificateIssued,
+  CertificateTag,
+} from '@app-page/types';
 
 const certificates: Certificate[] = [];
 
@@ -13,12 +17,12 @@ function add(
   certificates.push({
     id,
     name,
-    issued: 'itvdn',
+    issued: CertificateIssued.ITVDN,
     score,
     date,
     verify: `https://testprovider.com/ru/search-certificate/${id}/`,
     imgs,
-    tags,
+    tags: new Set(tags),
   });
 }
 

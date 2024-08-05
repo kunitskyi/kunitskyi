@@ -1,4 +1,8 @@
-import { Certificate, CertificateTag } from '@app-page/types';
+import {
+  Certificate,
+  CertificateIssued,
+  CertificateTag,
+} from '@app-page/types';
 
 const certificates: Certificate[] = [];
 
@@ -11,11 +15,12 @@ function add(
   certificates.push({
     id,
     name,
-    issued: 'sololearn',
+    issued: CertificateIssued.Sololearn,
     date,
     verify: `https://www.sololearn.com/certificates/${id}`,
     imgs: 1,
-    tags,
+    tags: new Set(tags),
+    score: 0,
   });
 }
 

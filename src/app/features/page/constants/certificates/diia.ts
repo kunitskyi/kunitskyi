@@ -1,4 +1,8 @@
-import { Certificate, CertificateTag } from '@app-page/types';
+import {
+  Certificate,
+  CertificateIssued,
+  CertificateTag,
+} from '@app-page/types';
 
 const certificates: Certificate[] = [];
 
@@ -12,12 +16,12 @@ function add(
   certificates.push({
     id,
     name,
-    issued: 'diia',
+    issued: CertificateIssued.Diia,
     score,
     date,
     verify: `https://osvita.diia.gov.ua/certificate-check/${id}/`,
     imgs: 1,
-    tags,
+    tags: new Set(tags),
   });
 }
 
