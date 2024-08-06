@@ -5,26 +5,213 @@
 
 :host {
   display: block;
-  height: sizes.$magic-constant * 11;
-  margin: sizes.$margin-m sizes.$magic-constant;
-  // padding: sizes.$margin-l 0;
+  margin: sizes.$magic-constant sizes.$margin-l;
   border: sizes.$border-m solid map.get(palette.$page, "accent");
   border-radius: 0 0 sizes.$border-radius-s sizes.$border-radius-s;
   background-color: map.get(palette.$page, "primary");
 
   overflow: hidden;
 
+  div.TopBar {
+    font-size: 1rem;
+
+    p.Header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 1rem;
+      margin: sizes.$margin-m;
+
+      button {
+        font-size: 1rem;
+        cursor: pointer;
+
+        &.FilterToggle {
+          border: sizes.$border-s solid map.get(palette.$page, "accent");
+          border-radius: sizes.$border-radius-s;
+          padding: sizes.$padding-s;
+          font-weight: bold;
+          color: map.get(palette.$page, "accent");
+          background-color: transparent;
+          transition:
+            color 0.5s,
+            background-color 0.5s;
+
+          &.Active {
+            color: map.get(palette.$page, "primary");
+            background-color: map.get(palette.$page, "accent");
+          }
+        }
+
+        &.Sort {
+          min-width: 60px; // !!! Magic number
+          border: 0;
+          padding: 0;
+          background-color: transparent;
+          color: map.get(palette.$page, "helper");
+          font-weight: bold;
+          text-decoration: map.get(palette.$page, "helper") wavy underline;
+        }
+      }
+
+      span {
+        color: map.get(palette.$page, "accent");
+        font-size: 1rem;
+        font-weight: bold;
+        border-bottom: sizes.$border-s solid map.get(palette.$page, "accent");
+      }
+    }
+
+    div.Filters {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-width: math.div(sizes.$border-m, 2) 0;
+      border-style: solid;
+      border-color: map.get(palette.$page, "accent");
+      background-color: map.get(palette.$page, "accent");
+      overflow: hidden;
+
+      div.Tags {
+        width: 100%;
+        margin: 0 sizes.$margin-m;
+
+        div.Issued,
+        div.General,
+        div.Duplicates {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-evenly;
+          box-sizing: border-box;
+          width: 100%;
+          padding: sizes.$margin-m;
+
+          button {
+            margin: sizes.$margin-xs;
+            border: 0;
+            padding: sizes.$margin-s;
+            border-radius: sizes.$border-radius-s;
+            color: map.get(palette.$page, "primary");
+            font-size: 1rem;
+            font-weight: bold;
+            background-color: transparent;
+            transition: 0.5s all;
+            cursor: pointer;
+
+            &.Active {
+              background-color: map.get(palette.$page, "helper");
+            }
+          }
+        }
+
+        div.General {
+          border-top: sizes.$border-s solid map.get(palette.$page, "primary");
+          border-bottom: sizes.$border-s solid map.get(palette.$page, "primary");
+        }
+
+        div.Duplicates {
+          button {
+            display: grid;
+            align-items: center;
+            grid-template-columns: 1fr auto;
+            padding: sizes.$margin-m;
+            border-radius: sizes.$border-radius-s;
+            color: map.get(palette.$page, "helper");
+            background-color: map.get(palette.$page, "primary");
+
+            svg {
+              width: math.div(sizes.$magic-constant, 2);
+              border-radius: sizes.$border-radius-s;
+              border: sizes.$border-s solid map.get(palette.$page, "helper");
+
+              rect {
+                transform-origin: 50% 50%;
+                fill: transparent;
+                transition: fill 0.5s;
+
+                &.First {
+                  transform: rotate(-60deg);
+                }
+
+                &.Second {
+                  transform: rotate(-120deg);
+                }
+              }
+            }
+
+            span {
+              margin-left: sizes.$margin-m;
+            }
+
+            &.Checked {
+              color: map.get(palette.$page, "accent");
+
+              svg {
+                border-color: map.get(palette.$page, "accent");
+
+                rect {
+                  fill: map.get(palette.$page, "accent");
+                }
+              }
+            }
+          }
+        }
+      }
+
+      button.ResetFilters {
+        margin: sizes.$margin-m;
+        border: 0;
+        border-radius: sizes.$border-radius-s;
+        padding: sizes.$padding-s;
+        background-color: map.get(palette.$page, "primary");
+        color: map.get(palette.$page, "accent");
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+
+        svg {
+          g {
+            transform-origin: 50% 50%;
+            transition: transform 0.5s;
+
+            rect {
+              transform-origin: 50% 50%;
+              fill: map.get(palette.$page, "accent");
+
+              &.First {
+                transform: rotate(45deg);
+              }
+
+              &.Second {
+                transform: rotate(-45deg);
+              }
+            }
+          }
+        }
+
+        &:active {
+          svg {
+            g {
+              transform: rotate(180deg);
+            }
+          }
+        }
+      }
+    }
+  }
+
   div.CertificatesContainer {
-    height: 100%;
+    height: sizes.$magic-constant * 11;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    overflow-y: scroll;
+    overflow-y: auto;
 
     div.Certificate {
       margin: sizes.$margin-m;
       border-radius: sizes.$border-radius-s;
+      max-height: sizes.$magic-constant * 10;
       max-width: sizes.$magic-constant * 7;
       overflow: hidden;
 

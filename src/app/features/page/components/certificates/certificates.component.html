@@ -1,5 +1,79 @@
+<div class="TopBar">
+  <p class="Header">
+    <button
+      (click)="toggleFilters()"
+      [class]="{ Active: isFilterShown, FilterToggle: true }"
+    >
+      {{ "page.certificates.filters.name" | transloco }}
+    </button>
+    <span> {{ filterCertificates().length }} / {{ certificates.length }} </span>
+    <button (click)="sortByNewestDate(!isNewestFirst)" class="Sort">
+      {{
+        isNewestFirst
+          ? ("page.certificates.sort.newest" | transloco)
+          : ("page.certificates.sort.oldest" | transloco)
+      }}
+    </button>
+  </p>
+  <div [@showHide]="isFilterShown ? 'show' : 'hide'" class="Filters">
+    <div class="Tags">
+      <div class="Issued">
+        @for (issuer of CertificateIssued(); track $index) {
+          <button
+            (click)="selectIssuerTag(issuer)"
+            [class]="{
+              Active: filerConfig.issuers.has(issuer),
+            }"
+          >
+            {{ "certificates." + issuer + ".name" | transloco }}
+          </button>
+        }
+      </div>
+      <div class="General">
+        @for (tag of CertificateTag(); track $index) {
+          <button
+            (click)="selectGeneralTag(tag)"
+            [class]="{
+              Active: filerConfig.tags.has(tag),
+            }"
+          >
+            {{ "certificates.tags." + tag | transloco }}
+          </button>
+        }
+      </div>
+      <div class="Duplicates">
+        <button
+          (click)="filerConfig.showDuplicates = !filerConfig.showDuplicates"
+          [class]="{
+            Checked: filerConfig.showDuplicates,
+          }"
+        >
+          <svg viewBox="0 0 100 100">
+            <g style="transform: translateY(25%)">
+              <rect class="First" x="46" y="46" width="70" height="8" rx="4" />
+              <rect class="Second" x="46" y="46" width="40" height="8" rx="4" />
+            </g>
+          </svg>
+          <span>
+            {{ "page.certificates.filters.duplicates" | transloco }}
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <button (click)="resetFilters()" class="ResetFilters">
+      <svg viewBox="0 0 100 100">
+        <g>
+          <rect class="First" x="10" y="45" width="80" height="10" rx="5" />
+          <rect class="Second" x="10" y="45" width="80" height="10" rx="5" />
+        </g>
+      </svg>
+      {{ "page.certificates.filters.reset" | transloco }}
+    </button>
+  </div>
+</div>
 <div class="CertificatesContainer">
-  @for (certificate of certificates; track $index) {
+  @for (certificate of filterCertificates(); track $index) {
     <div class="Certificate">
       <button (click)="selectCertificate(certificate)">
         <div class="FrontSide">
@@ -7,7 +81,7 @@
             src="/assets/certificates/previewW400/{{
               certificate.issued + '_' + certificate.id + '.webp'
             }}"
-            loading="lazy"
+            loading="eager"
             alt="{{
               'certificates.' +
                 certificate.issued +
