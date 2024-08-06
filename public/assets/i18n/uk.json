@@ -135,6 +135,31 @@
   },
 
   "certificates": {
+    "tags": {
+      "general": "Загальне",
+      "theory": "Теорія",
+      "web": "ВЕБ",
+      "administration": "Адміністрування",
+      "db": "Бази Даних",
+      "devops": "DevOps",
+      "design": "Дизайн",
+      "management": "Управління",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "gamedev": "GameDev",
+      "test": "Тестування",
+      "html": "HTML",
+      "css": "CSS",
+      "js": "JavaScript",
+      "ts": "TypeScript",
+      "php": "PHP",
+      "angular": "Angular",
+      "react": "React",
+      "vue": "Vue",
+      "csharp": "C#",
+      "language": "Мова",
+      "framework": "Фреймворк"
+    },
     "coursera": {
       "name": "Coursera",
       "course": {

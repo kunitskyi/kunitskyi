@@ -135,6 +135,31 @@
   },
 
   "certificates": {
+    "tags": {
+      "general": "General",
+      "theory": "Theory",
+      "web": "WEB",
+      "administration": "Administration",
+      "db": "Databases",
+      "devops": "DevOps",
+      "design": "Design",
+      "management": "Management",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "gamedev": "GameDev",
+      "test": "Tests",
+      "html": "HTML",
+      "css": "CSS",
+      "js": "JavaScript",
+      "ts": "TypeScript",
+      "php": "PHP",
+      "angular": "Angular",
+      "react": "React",
+      "vue": "Vue",
+      "csharp": "C#",
+      "language": "Language",
+      "framework": "Framework"
+    },
     "coursera": {
       "name": "Coursera",
       "course": {
