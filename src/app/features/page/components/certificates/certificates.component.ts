@@ -127,13 +127,20 @@ export class CertificatesComponent {
           : this.filerConfig.issuers.has(value.issued);
       })
       .filter((value) => {
-        let isAllInSet = true;
+        let isOneInSet = false;
 
         this.filerConfig.tags.forEach((setValue) => {
-          isAllInSet = value.tags.has(setValue) ? isAllInSet : false;
+          isOneInSet = value.tags.has(setValue) ? true : isOneInSet;
         });
 
-        return isAllInSet;
+        return this.filerConfig.tags.size === 0 ? true : isOneInSet;
+        // let isAllInSet = true;
+
+        // this.filerConfig.tags.forEach((setValue) => {
+        //   isAllInSet = value.tags.has(setValue) ? isAllInSet : false;
+        // });
+
+        // return isAllInSet;
       })
       .filter((value, index, array) => {
         if (!this.filerConfig.showDuplicates) {
