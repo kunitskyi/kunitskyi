@@ -64,7 +64,16 @@
       }
     },
     "certificates": {
-      "header": "Мої Сертифікати"
+      "header": "Мої Сертифікати",
+      "sort": {
+        "newest": "Новіші",
+        "oldest": "Старіші"
+      },
+      "filters": {
+        "name": "Фільтри",
+        "duplicates": "Дублікати",
+        "reset": "Скинути"
+      }
     },
     "terminal": {
       "header": "ТЕРМІНАЛ"

@@ -64,7 +64,16 @@
       }
     },
     "certificates": {
-      "header": "My Certificates"
+      "header": "My Certificates",
+      "sort": {
+        "newest": "Newest",
+        "oldest": "Oldest"
+      },
+      "filters": {
+        "name": "Filters",
+        "duplicates": "Duplicates",
+        "reset": "Reset"
+      }
     },
     "terminal": {
       "header": "TERMINAL"
