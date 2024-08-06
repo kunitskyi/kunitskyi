@@ -25,6 +25,15 @@ function add(
   });
 }
 
-add('EVDZHHY8T88Y', 'frontend_angular', 98.21, 1710936000, []);
+add('EVDZHHY8T88Y', 'frontend_angular', 98.21, 1710936000, [
+  CertificateTag.Web,
+  CertificateTag.Frontend,
+  CertificateTag.Framework,
+  CertificateTag.Angular,
+  CertificateTag.TypeScript,
+  CertificateTag.JavaScript,
+  CertificateTag.Css,
+  CertificateTag.Html,
+]);
 
 export const COURSERA: Certificate[] = [...certificates];
