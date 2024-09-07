@@ -195,6 +195,7 @@
     "itvdn": {
       "name": "ITVDN",
       "course": {
+        "android_basic": "Android Базовий",
         "nodejs_basic": "Node.js Базовий",
         "java_basic": "Java Базовий",
         "wordpress_basic": "WordPress Базовий",

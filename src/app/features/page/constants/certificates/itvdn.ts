@@ -27,6 +27,7 @@ function add(
 }
 
 tagsDeclaration = {
+  android_basic: [CertificateTag.General],
   nodejs_basic: [CertificateTag.Web, CertificateTag.JavaScript],
   java_basic: [CertificateTag.Language],
   wordpress_basic: [CertificateTag.Web, CertificateTag.Backend],
@@ -290,6 +291,8 @@ tagsDeclaration = {
   postgresql_ua: [CertificateTag.Backend, CertificateTag.DataBase],
 };
 
+add('TP31472027', 'android_basic', 1080, 1725710400);
+add('TP24626667', 'android_basic', 1000, 1725710400);
 add('TP69655880', 'nodejs_basic', 980, 1721908800);
 add('TP28075409', 'nodejs_basic', 1000, 1721908800);
 add('TP54929446', 'java_basic', 1000, 1720353600);
