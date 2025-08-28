@@ -3,7 +3,7 @@
 _I'm **Kunitskyi Vladyslav**_ :smiley:
 
 - **Man** _(He/Him/His)_ :man:
-- **22** _y.o._ :older_man:
+- **23** _y.o._ :older_man:
 - **Ukraine** :ukraine:
 - _**Speaking:**_ _english :uk: **/** :ukraine: ukrainian_
 
